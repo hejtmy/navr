@@ -44,6 +44,18 @@ radian_to_angle <- function(radian){
   return(angle)
 }
 
+#' Converts angle to radian
+#'
+#' @param angle
+#'
+#' @return radians
+#' @export
+#'
+#' @examples
+angle_to_radian <- function(angle){
+  return(angle/180 * pi)
+}
+
 #' Calculates angle from two 2d positions
 #'
 #' @param pos_from
@@ -65,3 +77,18 @@ angle_from_positions <- function(pos_from, pos_to, zero_vec = c(0,1)){
   angle <- radian_to_angle(theta)
   return(angle)
 }
+
+#' Creates x y coordinate of point position given angle X
+#'
+#' @param angle numeric angle in degrees (0-360)
+#'
+#' @return vector
+#' @export
+#'
+#' @examples
+vector_from_angle <- function(angle){
+  rad <- angle_to_radian(angle)
+  vector <- c(sin(rad), cos(rad))
+  return(vector)
+}
+
