@@ -92,6 +92,7 @@ vector_from_angle <- function(angle, radius = NULL, center = NULL){
   if(is.null(center)) center <- c(0, 0)
   if(is.null(radius)) radius <- 1
   rad <- angle_to_radian(angle)
+  #TODO - the sin and cos create very small numbers that should be 1 or 0, but are like 6*10^-17
   vector <- c(center[2] + radius * sin(rad), center[1] + radius * cos(rad))
   return(vector)
 }
