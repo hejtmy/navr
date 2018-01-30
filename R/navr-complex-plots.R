@@ -1,22 +1,16 @@
 #' Title
 #'
-#' @param xlim
-#' @param ylim
-#'
 #' @return
 #' @export
 #'
 #' @examples
-create_plot <- function(xlim = NA, ylim = NA){
+create_plot <- function(){
   if(!requireNamespace("ggplot2", quietly = T)){
     stop("Needs ggplot2 package")
   }
   plt <- ggplot2::ggplot()
-  if (!is.na(xlim)) plt <- plt + xlim(xlim)
-  if (!is.na(ylim)) plt <- plt + ylim(ylim)
   return(plt)
 }
-
 
 #' Title
 #'
@@ -26,10 +20,13 @@ create_plot <- function(xlim = NA, ylim = NA){
 #'
 #' @return
 #' @export
+#' @import grid
 #'
 #' @examples
 multiplot <- function(plotlist = NULL, cols = 1, layout = NULL) {
-  library(grid)
+  if(!requireNamespace("grid", quietly = T)){
+    stop("Cannot continue without grid")
+  }
   numPlots <- length(plotlist)
   # If layout is NULL, then use 'cols' to determine layout
   if (is.null(layout)) {

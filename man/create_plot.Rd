@@ -4,10 +4,7 @@
 \alias{create_plot}
 \title{Title}
 \usage{
-create_plot(xlim = NA, ylim = NA)
-}
-\arguments{
-\item{ylim}{}
+create_plot()
 }
 \description{
 Title
