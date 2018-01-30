@@ -1,11 +1,18 @@
 Package: navr
 Type: Package
-Title: What the Package Does (Title Case)
+Title: Collection of functions that find typical use in human navigation cognitive paradigms
 Version: 0.1.0
-Author: Who wrote it
-Maintainer: The package maintainer <yourself@somewhere.net>
+Author: Lukáš "hejtmy" Hejtmánek
+Maintainer: Lukáš Hejtmánek <hejtmy@gmail.com>
 Description: More about what it does (maybe more than one line)
     Use four spaces when indenting paragraphs within the Description.
-License: What license is it under?
+License: MIT
 Encoding: UTF-8
 LazyData: true
+Suggests:
+  testthat,
+  knitr,
+  rmarkdown
+Imports:
+  ggplot2,
+  grid
