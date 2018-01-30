@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-angle-calculations.R
 \name{angle_from_positions}
 \alias{angle_from_positions}
-\title{Calculates angle}
+\title{Calculates angle from two 2d positions}
 \usage{
 angle_from_positions(pos_from, pos_to, zero_vec = c(0, 1))
 }
@@ -10,5 +10,5 @@ angle_from_positions(pos_from, pos_to, zero_vec = c(0, 1))
 \item{zero_vec}{defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)}
 }
 \description{
-Calculates angle
+Calculates angle from two 2d positions
 }
