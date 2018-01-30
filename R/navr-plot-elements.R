@@ -9,7 +9,7 @@
 #'
 #' @examples
 plot_add_path <- function(plt, df_position){
-  plt <- plt + geom_path(data = df_position, aes(Position.X, Position.Y))
+  plt <- plt + geom_path(data = df_position, aes(Position.x, Position.y))
   return(plt)
 }
 
