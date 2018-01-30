@@ -81,14 +81,18 @@ angle_from_positions <- function(pos_from, pos_to, zero_vec = c(0,1)){
 #' Creates x y coordinate of point position given angle X
 #'
 #' @param angle numeric angle in degrees (0-360)
+#' @param radius vector size
+#' @param center vector origin
 #'
 #' @return vector
 #' @export
 #'
 #' @examples
-vector_from_angle <- function(angle){
+vector_from_angle <- function(angle, radius = NULL, center = NULL){
+  if(is.null(center)) center <- c(0, 0)
+  if(is.null(radius)) radius <- 1
   rad <- angle_to_radian(angle)
-  vector <- c(sin(rad), cos(rad))
+  vector <- c(center[2] + radius * sin(rad), center[1] + radius * cos(rad))
   return(vector)
 }
 

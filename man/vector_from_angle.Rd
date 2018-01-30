@@ -4,10 +4,14 @@
 \alias{vector_from_angle}
 \title{Creates x y coordinate of point position given angle X}
 \usage{
-vector_from_angle(angle)
+vector_from_angle(angle, radius = NULL, center = NULL)
 }
 \arguments{
 \item{angle}{numeric angle in degrees (0-360)}
+
+\item{radius}{vector size}
+
+\item{center}{vector origin}
 }
 \value{
 vector
