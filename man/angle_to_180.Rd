@@ -15,9 +15,3 @@ number between -180 to 180
 \description{
 
 }
-\examples{
-> angle_to_180(90)
-[1] 90
-> angle_to_180(270)
-[1] -90
-}

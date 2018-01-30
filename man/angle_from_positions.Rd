@@ -12,7 +12,3 @@ angle_from_positions(pos_from, pos_to, zero_vec = c(0, 1))
 \description{
 Calculates angle
 }
-\examples{
-ATAN takes Y and X, but we want to scale it against Z axis,
-therefore Y in carthesian, so the input is reversed
-}

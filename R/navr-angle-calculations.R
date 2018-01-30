@@ -9,6 +9,7 @@
 #' @export
 #'
 #' @examples
+#'
 angle_to_360 <- function(angle){
   return((angle + 360) %% 360)
 }
@@ -24,15 +25,10 @@ angle_to_360 <- function(angle){
 #' @export
 #'
 #' @examples
-#' > angle_to_180(90)
-#' [1] 90
-#' > angle_to_180(270)
-#' [1] -90
 angle_to_180 <- function(angle){
   angle <- ((angle + 180) %% 360) - 180
   return(angle)
 }
-
 
 #' Converts Pi radian angle to degrees
 #'
@@ -48,7 +44,7 @@ radian_to_angle <- function(radian){
   return(angle)
 }
 
-#' Calculates angle
+#' Calculates angle from two 2d positions
 #'
 #' @param pos_from
 #' @param pos_to
@@ -63,8 +59,8 @@ angle_from_positions <- function(pos_from, pos_to, zero_vec = c(0,1)){
     error("ERROR:angle_from_positions, DESCRIPTION:input does not have two 2d position")
   }
   target_vector <- pos_to - pos_from
-  #' ATAN takes Y and X, but we want to scale it against Z axis,
-  #' therefore Y in carthesian, so the input is reversed
+  # ATAN takes Y and X, but we want to scale it against Z axis,
+  # therefore Y in carthesian, so the input is reversed
   theta <- atan2(target_vector[1], target_vector[2])
   angle <- radian_to_angle(theta)
   return(angle)
