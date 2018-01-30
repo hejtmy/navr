@@ -7,7 +7,7 @@
 plot_add_path(plt, df_position)
 }
 \arguments{
-\item{df_pos}{data,frame with Position.X, Position.Y columns}
+\item{df_pos}{data.frame with Position.X, Position.Y columns}
 }
 \description{
 Title

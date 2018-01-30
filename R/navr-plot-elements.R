@@ -1,9 +1,10 @@
 #' Title
 #'
 #' @param plt
-#' @param df_pos data,frame with Position.X, Position.Y columns
+#' @param df_pos data.frame with Position.X, Position.Y columns
 #'
 #' @return
+#' @import ggplot2
 #' @export
 #'
 #' @examples
@@ -19,6 +20,7 @@ plot_add_path <- function(plt, df_position){
 #' @param color dot color
 #' @param ls list with XY vectors. eg. (list(start = c(0, 0), end = C(10, 5)))
 #'
+#' @import ggplot2
 #' @return modified plot
 #'
 #' @export
@@ -40,6 +42,8 @@ plot_add_points <- function(plt, ls, size = 4, color = "blue"){
 #' @param position_df data.frame. Needs to have columns x, y, angle, length, type
 #' @param plt PLot to which to add the arrow
 #' @return built ggplot2
+#'
+#' @import ggplot2
 #'
 #' @example
 #' plt <- plot_add_direction(plt,
