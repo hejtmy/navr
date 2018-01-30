@@ -12,8 +12,8 @@ add_angle_difference <- function(df_log, rotation, name){
   new_col_name <- paste0("angle_diff_", name)
 
   angle_diffs <- c(0, diff(rotation))
-  angle_diffs <- angle_to_180(axis_angle_diffs)
+  angle_diffs <- angle_to_180(angle_diffs)
 
-  player_log$new_col_name <- axis_angle_diffs
-  return(player_log)
+  df_log$new_col_name <- angle_diffs
+  return(df_log)
 }
