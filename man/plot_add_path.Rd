@@ -4,7 +4,7 @@
 \alias{plot_add_path}
 \title{Title}
 \usage{
-plot_add_path(plt, df_pos)
+plot_add_path(plt, df_position)
 }
 \arguments{
 \item{df_pos}{data,frame with Position.X, Position.Y columns}
