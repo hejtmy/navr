@@ -1,14 +1,16 @@
 #' Title
 #'
+#' @param x vector of positions
+#' @param y vector of y positions
 #' @param plt
-#' @param df_pos data.frame with Position.X, Position.Y columns
 #'
 #' @return
 #' @import ggplot2
 #' @export
 #'
 #' @examples
-plot_add_path <- function(plt, df_position){
+plot_add_path <- function(plt, x, y){
+  df_position <- data.frame(Position.x = x, Position.y = y)
   plt <- plt + geom_path(data = df_position, aes(Position.x, Position.y))
   return(plt)
 }

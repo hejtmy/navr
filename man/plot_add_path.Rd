@@ -4,10 +4,14 @@
 \alias{plot_add_path}
 \title{Title}
 \usage{
-plot_add_path(plt, df_position)
+plot_add_path(plt, x, y)
 }
 \arguments{
-\item{df_pos}{data.frame with Position.X, Position.Y columns}
+\item{plt}{}
+
+\item{x}{vector of positions}
+
+\item{y}{vector of y positions}
 }
 \description{
 Title
