@@ -68,3 +68,32 @@ get_trial_goal_position <- function(obj, trialId, ...){
 get_trial_start_position <- function(obj, trialId, ...){
   UseMethod("get_trial_start_position")
 }
+
+#' Gets log between determined times
+#'
+#' @param obj
+#' @param start start time as it appears in the log
+#' @param end end time as it appears in the log
+#' @param ...
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
+get_log_timewindow <- function(obj, start, end, ...){
+  UseMethod("get_log_timewindow")
+}
+
+#' Gets log
+#'
+#' @param obj
+#' @param ...
+#'
+#' @return data.frame
+#' @export
+#'
+#' @examples
+get_log <- function(obj, ...){
+  UseMethod("get_log")
+}
+
