@@ -7,7 +7,7 @@
 plot_trial_path(obj, trialId, ...)
 }
 \arguments{
-\item{trialId}{}
+\item{...}{Optional parameters}
 }
 \value{
 ggplot object
