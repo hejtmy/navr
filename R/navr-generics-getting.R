@@ -18,7 +18,7 @@ get_trial_log <- function(obj, trialId, ...){
 #' @param trialId
 #' @param ...
 #'
-#' @return list with start and end field
+#' @return list with start and finish field
 #' @export
 #'
 #' @examples

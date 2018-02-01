@@ -10,7 +10,7 @@ get_trial_times(obj, trialId, ...)
 \item{...}{}
 }
 \value{
-list with start and end field
+list with start and finish field
 }
 \description{
 Returns list with trial times
