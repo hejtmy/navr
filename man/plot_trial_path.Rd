@@ -7,6 +7,8 @@
 plot_trial_path(obj, trialId, ...)
 }
 \arguments{
+\item{trialId}{vector of trial ids}
+
 \item{...}{Optional parameters}
 }
 \value{

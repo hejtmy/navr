@@ -9,7 +9,7 @@ add_goal_positions(obj, df, ...)
 \arguments{
 \item{df}{data frame with goal positions with appropriate column naming}
 
-\item{...}{}
+\item{...}{aditional arguments}
 }
 \value{
 modified object
