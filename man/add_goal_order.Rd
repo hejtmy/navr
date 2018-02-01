@@ -4,12 +4,12 @@
 \alias{add_goal_order}
 \title{Adds goal order to the object}
 \usage{
-add_goal_order(obj, df, ...)
+add_goal_order(obj, order, ...)
 }
 \arguments{
-\item{...}{aditional arguments}
-
 \item{order}{vector with goal order. Indexed from 1 to n:rows of goal positions}
+
+\item{...}{aditional arguments}
 }
 \value{
 modified object
