@@ -9,7 +9,7 @@ create_plot <- function(){
     stop("Needs ggplot2 package")
   }
   plt <- ggplot2::ggplot()
-  plt <- plot + theme_invisible()
+  plt <- plt + theme_void()
   return(plt)
 }
 
