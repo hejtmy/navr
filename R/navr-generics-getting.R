@@ -41,34 +41,6 @@ get_trial_action_times <- function(obj, trialId, action, ...){
   UseMethod("get_trial_action_times")
 }
 
-#' Returns X and Y position of a goal location
-#'
-#' @param obj
-#' @param trialId
-#' @param ...
-#'
-#' @return vector 2 of x and Y of the goal position
-#' @export
-#'
-#' @examples
-get_trial_goal_position <- function(obj, trialId, ...){
-  UseMethod("get_trial_goal_position")
-}
-
-#' Returns X and Y position of a starting location
-#'
-#' @param obj
-#' @param trialId
-#' @param ...
-#'
-#' @return vector 2 of x and Y of the start position
-#' @export
-#'
-#' @examples
-get_trial_start_position <- function(obj, trialId, ...){
-  UseMethod("get_trial_start_position")
-}
-
 #' Gets log between determined times
 #'
 #' @param obj

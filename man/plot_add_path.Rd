@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-plot-elements.R
 \name{plot_add_path}
 \alias{plot_add_path}
-\title{Title}
+\title{Adds path to the plot data}
 \usage{
 plot_add_path(plt, x, y)
 }
@@ -14,5 +14,5 @@ plot_add_path(plt, x, y)
 \item{y}{vector of y positions}
 }
 \description{
-Title
+Adds path to the plot data
 }

@@ -2,10 +2,10 @@
 % Please edit documentation in R/navr-complex-plots.R
 \name{create_plot}
 \alias{create_plot}
-\title{Title}
+\title{Creates empty plot with invisible theme to clearly plot paths and points}
 \usage{
 create_plot()
 }
 \description{
-Title
+Creates empty plot with invisible theme to clearly plot paths and points
 }

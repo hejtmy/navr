@@ -1,4 +1,4 @@
-#' Title
+#' Creates empty plot with invisible theme to clearly plot paths and points
 #'
 #' @return
 #' @export
@@ -9,6 +9,7 @@ create_plot <- function(){
     stop("Needs ggplot2 package")
   }
   plt <- ggplot2::ggplot()
+  plt <- plot + theme_invisible()
   return(plt)
 }
 
