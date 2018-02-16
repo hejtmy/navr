@@ -94,7 +94,7 @@ get_action_times <- function(obj, trialId, action, ...){
 #'
 #' @examples
 get_n_actions <- function(obj, action, ...){
-  return(length(get_action_times(obj, action, ...)))
+  UseMethod("get_n_actions")
 }
 
 #' Returns how many actions of particular type were recorded during particular trial
@@ -109,5 +109,5 @@ get_n_actions <- function(obj, action, ...){
 #'
 #' @examples
 get_trial_n_actions <- function(obj, trialId, action, ...){
-  return(length(get_trial_action_times(obj, trialId, action, ...)))
+  UseMethod("get_trial_n_actions")
 }
