@@ -54,6 +54,20 @@ get_log <- function(obj, ...){
   UseMethod("get_log")
 }
 
+#' Returns times when certain action was performend
+#'
+#' @param obj
+#' @param action string with the action name
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_action_times <- function(obj, action, ...){
+  UseMethod("get_action_times")
+}
+
 #' Returns times when certain action was performend during a particular trial
 #'
 #' @param obj
@@ -66,20 +80,6 @@ get_log <- function(obj, ...){
 #'
 #' @examples
 get_trial_action_times <- function(obj, trialId, action, ...){
-  UseMethod("get_trial_action_times")
-}
-
-#' Returns times when certain action was performend
-#'
-#' @param obj
-#' @param action string with the action name
-#' @param ...
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get_action_times <- function(obj, trialId, action, ...){
   UseMethod("get_trial_action_times")
 }
 

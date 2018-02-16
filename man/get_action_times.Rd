@@ -4,7 +4,7 @@
 \alias{get_action_times}
 \title{Returns times when certain action was performend}
 \usage{
-get_action_times(obj, trialId, action, ...)
+get_action_times(obj, action, ...)
 }
 \arguments{
 \item{action}{string with the action name}
