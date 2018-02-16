@@ -7,6 +7,8 @@
 get_trial_times(obj, trialId, ...)
 }
 \arguments{
+\item{trialId}{integer with valid trialId}
+
 \item{...}{}
 }
 \value{

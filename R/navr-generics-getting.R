@@ -1,7 +1,7 @@
 #' Gets log data.frame for a particular trial
 #'
 #' @param obj
-#' @param trialId
+#' @param trialId integer with valid trialId
 #' @param ... aditional arguments
 #'
 #' @return
@@ -15,7 +15,7 @@ get_trial_log <- function(obj, trialId, ...){
 #' Returns list with trial times
 #'
 #' @param obj
-#' @param trialId
+#' @param trialId integer with valid trialId
 #' @param ...
 #'
 #' @return list with start and finish field
@@ -24,21 +24,6 @@ get_trial_log <- function(obj, trialId, ...){
 #' @examples
 get_trial_times <- function(obj, trialId, ...){
   UseMethod("get_trial_times")
-}
-
-#' Returns times when certain action was performend during a particular trial
-#'
-#' @param obj
-#' @param trialId
-#' @param action string with the action name
-#' @param ...
-#'
-#' @return
-#' @export
-#'
-#' @examples
-get_trial_action_times <- function(obj, trialId, action, ...){
-  UseMethod("get_trial_action_times")
 }
 
 #' Gets log between determined times
@@ -69,3 +54,60 @@ get_log <- function(obj, ...){
   UseMethod("get_log")
 }
 
+#' Returns times when certain action was performend during a particular trial
+#'
+#' @param obj
+#' @param trialId integer with valid trialId
+#' @param action string with the action name
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_trial_action_times <- function(obj, trialId, action, ...){
+  UseMethod("get_trial_action_times")
+}
+
+#' Returns times when certain action was performend
+#'
+#' @param obj
+#' @param action string with the action name
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_action_times <- function(obj, trialId, action, ...){
+  UseMethod("get_trial_action_times")
+}
+
+#' Returns how many actions of particular type were recorded
+#'
+#' @param obj
+#' @param action string with searched action name
+#' @param ... extra parameters
+#'
+#' @return integer with number of recorded actions
+#' @export
+#'
+#' @examples
+get_n_actions <- function(obj, action, ...){
+  return(length(get_action_times(obj, action, ...)))
+}
+
+#' Returns how many actions of particular type were recorded during particular trial
+#'
+#' @param obj
+#' @param trialId integer with valid trialId
+#' @param action string with searched action name
+#' @param ...
+#'
+#' @return integer with number of recorded actions during particular trial
+#' @export
+#'
+#' @examples
+get_trial_n_actions <- function(obj, trialId, action, ...){
+  return(length(get_trial_action_times(obj, trialId, action, ...)))
+}

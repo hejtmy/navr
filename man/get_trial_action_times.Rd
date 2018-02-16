@@ -7,6 +7,8 @@
 get_trial_action_times(obj, trialId, action, ...)
 }
 \arguments{
+\item{trialId}{integer with valid trialId}
+
 \item{action}{string with the action name}
 
 \item{...}{}

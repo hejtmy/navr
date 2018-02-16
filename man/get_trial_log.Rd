@@ -7,6 +7,8 @@
 get_trial_log(obj, trialId, ...)
 }
 \arguments{
+\item{trialId}{integer with valid trialId}
+
 \item{...}{aditional arguments}
 }
 \description{
