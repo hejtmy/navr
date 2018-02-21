@@ -24,7 +24,7 @@ plot_add_path <- function(plt, x, y){
 #'
 #' @return
 #' @export
-#' @import png jpeg grid
+#' @import ggplot2 png jpeg grid
 #'
 #' @examples
 plot_add_image <- function(plt, image_path, xlim, ylim){
@@ -46,13 +46,18 @@ plot_add_image <- function(plt, image_path, xlim, ylim){
 #' @param plt existing plot
 #' @param x vector with pologyon X coordinates
 #' @param y vector with pologyon Y coordinates
+#' @param ... plygon aesthetics, such as fill, color, alpha etc.
 #'
 #' @return
 #' @export
+#' @import ggplot2
 #'
 #' @examples
-plot_add_shape <- function(plt, x, y){
-
+plot_add_shape <- function(plt, x, y, ...){
+  #VALIDATIONS
+  df_poly <- data.frame(x = x, y = y)
+  plt <- plt + ggplot2::geom_polygon(data = df_poly, aes(x=x, y=y), ...)
+  return(plt)
 }
 
 #' Adds specified points to the given plot
