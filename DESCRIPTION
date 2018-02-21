@@ -16,4 +16,6 @@ Suggests:
   rmarkdown
 Imports:
   ggplot2,
-  grid
+  grid,
+  png, 
+  jpeg

@@ -15,6 +15,46 @@ plot_add_path <- function(plt, x, y){
   return(plt)
 }
 
+#' Adds image to the background of the plot
+#'
+#' @param plt existing plot
+#' @param image_path path the png image
+#' @param xlim
+#' @param ylim
+#'
+#' @return
+#' @export
+#' @import png jpeg grid
+#'
+#' @examples
+plot_add_image <- function(plt, image_path, xlim, ylim){
+  #Checks if png or jpg
+  img <- png::readPNG(image_path)
+  rast <- grid::rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = T)
+  if(!(is.null(xlim) | is.null(ylim))){
+    #checks size of xlim and Ylim
+    plt <- plt + annotation_custom(rast, xmin = xlim[1], xmax = xlim[2], ymin = ylim[1], ymax = ylim[2])
+  } else {
+    plt <- plt + annotation_custom(rast)
+  }
+
+  return(plt)
+}
+
+#' Adds shape to the background of the plot
+#'
+#' @param plt existing plot
+#' @param x vector with pologyon X coordinates
+#' @param y vector with pologyon Y coordinates
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_add_shape <- function(plt, x, y){
+
+}
+
 #' Adds specified points to the given plot
 #'
 #' @param plt previous ggplot
