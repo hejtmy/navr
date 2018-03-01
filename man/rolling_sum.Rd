@@ -12,7 +12,7 @@ rolling_sum(vec, n_points)
 \item{n_points}{}
 }
 \value{
-rolled vector sum
+rolled vector sum or NULL if the n_points is larger than length of the vector
 }
 \description{
 Calculates rolling sum of a vector across N points
