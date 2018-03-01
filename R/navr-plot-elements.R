@@ -37,7 +37,6 @@ plot_add_image <- function(plt, image_path, xlim, ylim){
   } else {
     plt <- plt + annotation_custom(rast)
   }
-
   return(plt)
 }
 

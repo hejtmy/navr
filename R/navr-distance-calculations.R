@@ -34,5 +34,3 @@ euclid_distance_between_rows <- function(points){
   vec_sums <- apply(points_sub, 1, function(x) sqrt(sum(x ^ 2)))
   return(vec_sums)
 }
-
-
