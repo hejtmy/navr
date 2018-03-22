@@ -68,7 +68,7 @@ angle_to_radian <- function(angle){
 #' @examples
 angle_from_positions <- function(pos_from, pos_to, zero_vec = c(0,1)){
   if(length(pos_from) != 2 || length(pos_to) != 2){
-    error("ERROR:angle_from_positions, DESCRIPTION:input does not have two 2d position")
+    stop("ERROR:angle_from_positions, DESCRIPTION:input does not have two 2d position")
   }
   target_vector <- pos_to - pos_from
   # ATAN takes Y and X, but we want to scale it against Z axis,
