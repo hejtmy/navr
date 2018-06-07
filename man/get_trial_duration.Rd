@@ -4,10 +4,10 @@
 \alias{get_trial_duration}
 \title{Returns duration of the trial in s}
 \usage{
-get_trial_duration(obj, trialId, ...)
+get_trial_duration(obj, trialId, without_pauses = T, ...)
 }
 \arguments{
-\item{...}{}
+\item{without_pauses}{if T, tries to remove pauses from the trial duration}
 }
 \value{
 time in s

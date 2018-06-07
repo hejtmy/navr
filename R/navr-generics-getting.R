@@ -32,12 +32,13 @@ get_trial_times <- function(obj, trialId, ...){
 #' @param obj
 #' @param trialId
 #' @param ...
+#' @param without_pauses if T, tries to remove pauses from the trial duration
 #'
 #' @return time in s
 #' @export
 #'
 #' @examples
-get_trial_duration <- function(obj, trialId, ...){
+get_trial_duration <- function(obj, trialId, without_pauses = T, ...){
   UseMethod("get_trial_duration")
 }
 
