@@ -26,6 +26,35 @@ get_trial_times <- function(obj, trialId, ...){
   UseMethod("get_trial_times")
 }
 
+
+#' Returns duration of the trial in s
+#'
+#' @param obj
+#' @param trialId
+#' @param ...
+#'
+#' @return time in s
+#' @export
+#'
+#' @examples
+get_trial_duration <- function(obj, trialId, ...){
+  UseMethod("get_trial_duration")
+}
+
+#' REturns disntace traveled during a particular trial
+#'
+#' @param obj
+#' @param trialId
+#' @param ...
+#'
+#' @return distance in appropriate units
+#' @export
+#'
+#' @examples
+get_trial_distance <- function(obj, trialId, ...){
+  UseMethod("get_trial_distance")
+}
+
 #' Gets log between determined times
 #'
 #' @param obj
