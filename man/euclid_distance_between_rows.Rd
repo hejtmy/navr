@@ -7,7 +7,7 @@
 euclid_distance_between_rows(points)
 }
 \arguments{
-\item{points}{m x 2 matrix with first column being X and second designating Y coordinates}
+\item{points}{m x 2 matrix or data.frame with first column X and second Y coordinates}
 }
 \value{
 vector of distances of length m (prepends 0 to the beginning)
