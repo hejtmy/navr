@@ -18,7 +18,6 @@ angle_to_360 <- function(angle){
 #'
 #' @description
 #'
-#'
 #' @param angle
 #'
 #' @return number between -180 to 180
