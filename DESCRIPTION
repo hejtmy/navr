@@ -19,3 +19,4 @@ Imports:
   grid,
   png, 
   jpeg
+VignetteBuilder: knitr
