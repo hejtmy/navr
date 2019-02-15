@@ -1,5 +1,9 @@
-#' Creates and returns navr object
+#' Navr Object
 #'
+#' @return navr object
+#' @export
+#'
+#' @examples
 NavrObject <- function(){
   obj <- list()
   data <- NULL

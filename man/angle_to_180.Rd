@@ -13,5 +13,5 @@ angle_to_180(angle)
 number between -180 to 180
 }
 \description{
-
+Converts angle to -180 to 180 difference
 }

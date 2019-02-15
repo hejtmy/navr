@@ -16,3 +16,17 @@ add_angle_difference <- function(df_log, rotation, name){
   df_log[, new_col_name] <- angle_diffs
   return(df_log)
 }
+
+calculate_times_since_start <- function(){
+
+}
+
+calculate_times_diffs <- function(){
+
+}
+
+
+
+calculate_speeds <- function(){
+
+}
