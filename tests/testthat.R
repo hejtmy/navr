@@ -1,6 +1,5 @@
 library(testthat)
-data("navr_log")
-obj <- navr::navr_object()
-obj$data <- navr_log
+data("navr_object")
+obj <- navr_object
 
 test_check("navr")
