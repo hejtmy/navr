@@ -17,12 +17,12 @@ add_angle_difference <- function(df_log, rotation, name){
   return(df_log)
 }
 
-#' Title
+#' Adds tiems since start column to the navr object
 #'
-#' @param obj
+#' @param obj object of appropriate class
 #' @param ...
 #'
-#' @return
+#' @return object with its
 #' @export
 #'
 #' @examples

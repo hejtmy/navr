@@ -2,13 +2,18 @@
 % Please edit documentation in R/navr-data-modifications.R
 \name{add_times_since_start}
 \alias{add_times_since_start}
-\title{Title}
+\title{Adds tiems since start column to the navr object}
 \usage{
 add_times_since_start(obj, ...)
 }
 \arguments{
+\item{obj}{object of appropriate class}
+
 \item{...}{}
 }
+\value{
+object with its
+}
 \description{
-Title
+Adds tiems since start column to the navr object
 }

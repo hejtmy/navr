@@ -1,5 +1,4 @@
 library(testthat)
-data("navr_object")
-obj <- navr_object
+library(navr)
 
 test_check("navr")
