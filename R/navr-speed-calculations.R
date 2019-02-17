@@ -8,7 +8,7 @@
 #'
 #' @examples
 calculate_speeds <- function(distances,timestamps){
-  time_diffs <- navr::calculate_times_diffs(timestamps, NA)
+  time_diffs <- navr::calculate_time_diffs(timestamps, NA)
   speeds <- distances/time_diffs
   return(speeds)
 }

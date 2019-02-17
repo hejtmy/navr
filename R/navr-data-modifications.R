@@ -17,6 +17,26 @@ add_angle_difference <- function(df_log, rotation, name){
   return(df_log)
 }
 
+#'
+#'
+#' @param obj
+#' @param ...
+add_time_columns <- function(obj, ...){
+  UseMethod('add_time_columns')
+}
+#' Title
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_time_columns.navr <- function(obj){
+  obj <- add_times_since_start(obj)
+  obj <- add_times_diffs(obj)
+}
+
 #' Adds tiems since start column to the navr object
 #'
 #' @param obj object of appropriate class
@@ -32,6 +52,24 @@ add_times_since_start <- function(obj, ...){
 #' @export
 add_times_since_start.navr <- function(obj){
   obj$data$time_since_start <- navr::calculate_times_since_start(obj$data$timestamp)
+  return(obj)
+}
+
+#' Adds tiems since start column to the navr object
+#'
+#' @param obj object of appropriate class
+#' @param ...
+#'
+#' @return object with its
+#' @export
+#'
+#' @examples
+add_time_diffs <- function(obj, ...){
+  UseMethod("add_time_diffs")
+}
+#' @export
+add_time_diffs.navr <- function(obj){
+  obj$data$time_diff <- navr::calculate_time_diffs(obj$data$timestamp)
   return(obj)
 }
 
@@ -54,3 +92,23 @@ add_distances.navr <- function(obj){
   obj$data$distance_total <- cumsum(obj$data$distance)
   return(obj)
 }
+
+#' Adds distance and cumulative distances (distance_total) columns
+#'
+#' @param obj valid navr object
+#' @param ...
+#'
+#' @return navr object
+#' @export
+#'
+#' @examples
+add_speeds <- function(obj, ...){
+  UseMethod("add_speeds")
+}
+#' @export
+add_speeds.navr <- function(obj){
+  distances <- get_distances(obj)
+  obj$data$speed <- navr::calculate_speeds(distances, obj$data$timestamp)
+  return(obj)
+}
+

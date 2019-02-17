@@ -24,20 +24,15 @@ filter_times.navr <- function(obj, times, zero_based = F){
   return(obj)
 }
 
-
 #' Title
 #'
 #' @param obj
-#' @param ...
 #'
 #' @return
 #' @export
-#'
-#' @examples
 get_times_since_start <- function(obj, ...){
   UseMethod('get_times_since_start')
 }
-
 #' Title
 #'
 #' @param obj Navr Object
@@ -48,5 +43,43 @@ get_times_since_start <- function(obj, ...){
 #' @examples
 get_times_since_start.navr <- function(obj){
   if(!is.null(obj$data$time_since_start)) return(obj$data$time_since_start)
-  stop("The object doesn't have time_since_start column. Have you ran *add_times_since_start*?")
+  stop("The object doesn't have time_since_start column. Have you ran *add_times_since_start* on the object?")
+}
+
+#' Title
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+get_time_diffs <- function(obj, ...){
+  UseMethod('get_time_diffs')
+}
+#' Title
+#'
+#' @param obj Navr Object
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_time_diffs.navr <- function(obj){
+  if(!is.null(obj$data$time_diff)) return(obj$data$time_diff)
+  stop("The object doesn't have time_diff column. Have you ran *add_time_diffs* on the object?")
+}
+
+#' Gets distance column from the object
+#' @param obj navr object with calculated distances
+#'
+#' @param ...
+#'
+#' @export
+get_distances <- function(obj, ...){
+  UseMethod("get_distances")
+}
+#'
+#' @examples
+get_distances.navr <- function(obj){
+  if(!is.null(obj$data$distance)) return(obj$data$distance)
+  stop("The object doesn't have distances column. Have you ran *add_distances* on the object?")
 }

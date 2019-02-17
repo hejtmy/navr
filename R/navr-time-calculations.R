@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-calculate_times_diffs <- function(timestamps, first_value = NULL){
+calculate_time_diffs <- function(timestamps, first_value = NULL){
   time_diffs <- diff(timestamps)
   if(!is.null(first_value)) time_diffs <- c(first_value, time_diffs)
   return(time_diffs)
