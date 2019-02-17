@@ -21,6 +21,7 @@ add_angle_difference <- function(df_log, rotation, name){
 #'
 #' @param obj
 #' @param ...
+#' @export
 add_time_columns <- function(obj, ...){
   UseMethod('add_time_columns')
 }
@@ -34,7 +35,8 @@ add_time_columns <- function(obj, ...){
 #' @examples
 add_time_columns.navr <- function(obj){
   obj <- add_times_since_start(obj)
-  obj <- add_times_diffs(obj)
+  obj <- add_time_diffs(obj)
+  return(obj)
 }
 
 #' Adds tiems since start column to the navr object
@@ -69,7 +71,7 @@ add_time_diffs <- function(obj, ...){
 }
 #' @export
 add_time_diffs.navr <- function(obj){
-  obj$data$time_diff <- navr::calculate_time_diffs(obj$data$timestamp)
+  obj$data$time_diff <- navr::calculate_time_diffs(obj$data$timestamp, first_value = 0)
   return(obj)
 }
 
@@ -112,3 +114,29 @@ add_speeds.navr <- function(obj){
   return(obj)
 }
 
+#' Title
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @examples
+remove_unreal_speeds <- function(obj, ...){
+  UseMethod("remove_unreal_speeds")
+}
+#' Inserts NA values to speed and distance
+#'
+#' @param obj
+#' @param indices indices of speeds to clean out
+#' @param total_recalculate if true, recalculates total_distance column to reflect removed distances
+#'
+#' @return navr object with NA values in appropriate places
+#' @export
+#'
+#' @examples
+remove_unreal_speeds.navr <- function(obj, indices, total_recalculate = T){
+  obj$data[indices, c("distance", "speed")] <- c(0, 0)
+  obj$data$distance_total <- cumsum(obj$data$distance)
+  return(obj)
+}

@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-speed-calculations.R
 \name{calculate_speeds}
 \alias{calculate_speeds}
-\title{Title}
+\title{Calcualtes vector of doubles with speeds}
 \usage{
 calculate_speeds(distances, timestamps)
 }
@@ -15,5 +15,5 @@ calculate_speeds(distances, timestamps)
 vector of immediate speeds in given unit per second
 }
 \description{
-Title
+Calcualtes vector of doubles with speeds
 }
