@@ -21,7 +21,3 @@ filter_times.navr <- function(obj, times, zero_based = F){
   }
   return(obj)
 }
-
-get_times_since_start <- function(obj, ...){
-
-}

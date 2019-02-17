@@ -17,16 +17,40 @@ add_angle_difference <- function(df_log, rotation, name){
   return(df_log)
 }
 
-calculate_times_since_start <- function(){
-
+#' Title
+#'
+#' @param obj
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_times_since_start <- function(obj, ...){
+  UseMethod("add_times_since_start")
+}
+#' @export
+add_times_since_start.navr <- function(obj){
+  obj$data$time_since_start <- navr::calculate_times_since_start(obj$data$timestamp)
+  return(obj)
 }
 
-calculate_times_diffs <- function(){
-
+#' Adds distance and cumulative distances (distance_total) columns
+#'
+#' @param obj valid navr object
+#' @param ...
+#'
+#' @return navr object
+#' @export
+#'
+#' @examples
+add_distances <- function(obj, ...){
+  UseMethod("add_distances")
 }
-
-
-
-calculate_speeds <- function(){
-
+#' @export
+add_distances.navr <- function(obj){
+  mat_xy <- cbind(obj$data$position_x, obj$data$position_y)
+  obj$data$distance <- navr::calculate_distances(mat_xy, 0)
+  obj$data$distance_total <- cumsum(obj$data$distance)
+  return(obj)
 }
