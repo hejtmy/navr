@@ -10,7 +10,7 @@ euclid_distance_between_rows(points)
 \item{points}{m x 2 matrix or data.frame with first column X and second Y coordinates}
 }
 \value{
-vector of distances of length m (prepends 0 to the beginning)
+vector of distances of length m - 1
 }
 \description{
 Calculates distance between points in each row

@@ -39,7 +39,7 @@ euclid_distance <- function(point1, point2){
 #'
 #' @param points m x 2 matrix or data.frame with first column X and second Y coordinates
 #'
-#' @return vector of distances of length m (prepends 0 to the beginning)
+#' @return vector of distances of length m - 1
 #'
 #' @examples
 #'
@@ -48,5 +48,6 @@ euclid_distance_between_rows <- function(points){
   points_shifted <- rbind(points[1,], points[1:nrow(points) - 1, ])
   points_sub <- points - points_shifted
   vec_sums <- apply(points_sub, 1, function(x) sqrt(sum(x ^ 2)))
+  vec_sums <- vec_sums[-1] #removing the first element
   return(vec_sums)
 }
