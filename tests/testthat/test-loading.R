@@ -6,4 +6,5 @@ test_that("Data can be loaded", {
 })
 
 test_that("Data are validated properly", {
+  expect_s3_class(navr_object, "navr")
 })
