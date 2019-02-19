@@ -13,3 +13,10 @@ test_that("Testing speed calculations", {
   obj_prep <- add_speeds(obj_prep)
   expect_type(obj_prep$data$speed, "double")
 })
+
+test_that("Testing angle calculations", {
+  obj <- navr_object
+  obj_prep <- add_angle_differences(obj)
+  expect_type(obj_prep$data$rotation_x_diff, "double")
+  expect_type(obj_prep$data$rotation_y_diff, "double")
+})

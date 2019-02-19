@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-data-modifications.R
 \name{add_speeds}
 \alias{add_speeds}
-\title{Adds distance and cumulative distances (distance_total) columns}
+\title{Adds speed column}
 \usage{
 add_speeds(obj, ...)
 }
@@ -15,5 +15,5 @@ add_speeds(obj, ...)
 navr object
 }
 \description{
-Adds distance and cumulative distances (distance_total) columns
+Adds speed column
 }

@@ -1,25 +1,6 @@
-#' Adds new colum angle_diff_axis where it calculates angle difference between rows
-#' @param df_log data frame log that gets modified
-#' @param rotation
-#' @param name what should be appended to "angle_diff_"
+#' Add time_since_start and time_diff columns
 #'
-#' @export
-#'
-#' @example
-#' add_angle_difference(player_log, player_log$Rotation.x, "x")
-add_angle_difference <- function(df_log, rotation, name){
-  new_col_name <- paste0("angle_diff_", name)
-
-  angle_diffs <- round(c(0, diff(rotation)), 4)
-  angle_diffs <- angle_to_180(angle_diffs)
-
-  df_log[, new_col_name] <- angle_diffs
-  return(df_log)
-}
-
-#'
-#'
-#' @param obj
+#' @param obj Navr Object
 #' @param ...
 #' @export
 add_time_columns <- function(obj, ...){
@@ -95,7 +76,25 @@ add_distances.navr <- function(obj){
   return(obj)
 }
 
-#' Adds distance and cumulative distances (distance_total) columns
+#' Adds extra diff column to each column that has "rotation" in its name
+#'
+#' @param obj
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_angle_differences <- function(obj){
+  cols <- colnames(obj$data)
+  for(i in grep("rotation", cols)){
+    colname <- cols[i]
+    new_name <- paste0(colname, "_diff") #appends
+    obj$data[[new_name]] <- navr::calculate_angle_differences(obj$data[[colname]])
+  }
+  return(obj)
+}
+
+#' Adds speed column
 #'
 #' @param obj valid navr object
 #' @param ...
@@ -114,17 +113,6 @@ add_speeds.navr <- function(obj){
   return(obj)
 }
 
-#' Title
-#'
-#' @param obj
-#'
-#' @return
-#' @export
-#'
-#' @examples
-remove_unreal_speeds <- function(obj, ...){
-  UseMethod("remove_unreal_speeds")
-}
 #' Inserts NA values to speed and distance
 #'
 #' @param obj
@@ -135,6 +123,10 @@ remove_unreal_speeds <- function(obj, ...){
 #' @export
 #'
 #' @examples
+remove_unreal_speeds <- function(obj, indices, total_recalculate = T){
+  UseMethod("remove_unreal_speeds")
+}
+#' @export
 remove_unreal_speeds.navr <- function(obj, indices, total_recalculate = T){
   obj$data[indices, c("distance", "speed")] <- c(0, 0)
   obj$data$distance_total <- cumsum(obj$data$distance)

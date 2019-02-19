@@ -2,13 +2,18 @@
 % Please edit documentation in R/navr-data-modifications.R
 \name{remove_unreal_speeds}
 \alias{remove_unreal_speeds}
-\title{Title}
+\title{Inserts NA values to speed and distance}
 \usage{
-remove_unreal_speeds(obj, ...)
+remove_unreal_speeds(obj, indices, total_recalculate = T)
 }
 \arguments{
-\item{obj}{}
+\item{indices}{indices of speeds to clean out}
+
+\item{total_recalculate}{if true, recalculates total_distance column to reflect removed distances}
+}
+\value{
+navr object with NA values in appropriate places
 }
 \description{
-Title
+Inserts NA values to speed and distance
 }
