@@ -6,8 +6,8 @@
 #' @examples
 NavrObject <- function(){
   obj <- list()
-  data <- NULL
-  size <- NA
+  ojb$data <- NULL
+  obj$size <- NULL
   class(obj) <- append(class(obj), "navr")
   return(obj)
 }
