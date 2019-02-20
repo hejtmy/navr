@@ -103,3 +103,19 @@ plot_add_direction <- function(plt, position, angle, len = 1, ...){
                             arrow = ARROW_DEF, ... )
   return(plt)
 }
+
+#' Checks if object has map limits variable and adds plot limits if so
+#'
+#' @param plt existing plot
+#' @param obj navr object
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_add_limits <- function(plt, obj){
+  if(!is.null(obj$area_boundaries)){
+    plt <- plt + xlim(obj$area_boundaries$x) + ylim(obj$area_boundaries$y)
+  }
+  return(plt)
+}

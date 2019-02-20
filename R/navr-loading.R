@@ -20,6 +20,21 @@ load_position_data.navr <- function(obj, df){
   return(obj)
 }
 
+#' Validates and adds area boudaries
+#'
+#' @param obj navr object
+#' @param ls list of list(x = c(0, 100), y=c(0,100)) type. Needs to have
+#' x and y boundaries for the graphs to work properly
+#'
+#' @return modified object
+#' @export
+#'
+#' @examples
+add_area_boundaries <- function(obj, ls){
+  obj$area_boundaries <- ls
+  return(obj)
+}
+
 #' Checks if the data are valid
 #'
 #' @param df
