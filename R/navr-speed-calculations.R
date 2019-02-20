@@ -30,6 +30,11 @@ pick_unreal_speeds <- function(obj, cutoff, type="value"){
 }
 #' @export
 pick_unreal_speeds.navr <- function(obj, cutoff, type="value"){
+  #needs to check of the speed even exists as a column
+  if(!("speed" %in% colnames(obj$data))){
+    warning("The object doesn't have speed column. You need to add it first using add_speeds function")
+    return(NULL)
+  }
   return(pick_unreal_speeds(obj$data$speed, cutoff, type))
 }
 #' @export

@@ -18,3 +18,14 @@ test_that("Testing angle calculations", {
   expect_type(obj_prep$data$rotation_x_diff, "double")
   expect_type(obj_prep$data$rotation_y_diff, "double")
 })
+
+test_that("testing selection of unreal speeds", {
+  expect_warning(pick_unreal_speeds(obj, 3, "std"))
+  expect_null(pick_unreal_speeds(obj))
+  obj_prep <- add_distances(obj)
+
+  obj_prep <- add_speeds(obj_prep)
+  expect_silent(pick_unreal_speeds(obj_prep, 3, "std"))
+  i_unreal <- pick_unreal_speeds(obj_prep, 3, "std")
+  expect_type(i_unreal, "integer")
+})
