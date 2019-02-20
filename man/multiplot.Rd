@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-complex-plots.R
 \name{multiplot}
 \alias{multiplot}
-\title{Title}
+\title{Multiplot requiring Grd package}
 \usage{
 multiplot(plotlist = NULL, cols = 1, layout = NULL)
 }
@@ -10,5 +10,5 @@ multiplot(plotlist = NULL, cols = 1, layout = NULL)
 \item{layout}{}
 }
 \description{
-Title
+Multiplot requiring Grd package
 }

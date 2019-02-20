@@ -10,8 +10,8 @@
 #'
 #' @examples
 plot_add_path <- function(plt, x, y){
-  df_position <- data.frame(Position.x = x, Position.y = y)
-  plt <- plt + geom_path(data = df_position, aes(Position.x, Position.y))
+  df_position <- data.frame(position_x = x, position_y = y)
+  plt <- plt + geom_path(data = df_position, aes(position_x, position_y))
   return(plt)
 }
 
@@ -19,7 +19,7 @@ plot_add_path <- function(plt, x, y){
 #'
 #' @param plt existing plot
 #' @param image_path path the png image
-#' @param xlim
+#' @param xlim places the image on the background
 #' @param ylim
 #'
 #' @return
@@ -27,7 +27,8 @@ plot_add_path <- function(plt, x, y){
 #' @import ggplot2 png jpeg grid
 #'
 #' @examples
-plot_add_image <- function(plt, image_path, xlim, ylim){
+plot_add_background <- function(plt, image_path, xlim, ylim){
+  #TODO - check for grid
   #Checks if png or jpg
   img <- png::readPNG(image_path)
   rast <- grid::rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = T)
@@ -45,7 +46,7 @@ plot_add_image <- function(plt, image_path, xlim, ylim){
 #' @param plt existing plot
 #' @param x vector with pologyon X coordinates
 #' @param y vector with pologyon Y coordinates
-#' @param ... plygon aesthetics, such as fill, color, alpha etc.
+#' @param ... polygon aesthetics, such as fill, color, alpha etc.
 #'
 #' @return
 #' @export
@@ -72,14 +73,14 @@ plot_add_shape <- function(plt, x, y, ...){
 #' @export
 plot_add_points <- function(plt, ls, size = 4, color = "blue"){
   list_names <- names(ls)
-  df <- data.frame(point.x = numeric(0), point.y = numeric(0), point.name = character(), stringsAsFactors = F)
+  df <- data.frame(point_x = numeric(0), point_y = numeric(0), point_name = character(), stringsAsFactors = F)
   for (i in 1:length(ls)){
     df[i, 1] <- ls[[i]][1]
     df[i, 2] <- ls[[i]][2]
     df[i, 3] <- list_names[i]
   }
-  plt <- plt + geom_point(data = df, aes(point.x, point.y), size = size, color = color) +
-    geom_text(data = df, aes(point.x, point.y, label = point.name))
+  plt <- plt + geom_point(data = df, aes(point_x, point_y), size = size, color = color) +
+    geom_text(data = df, aes(point_x, point_y, label = point_name))
   return(plt)
 }
 

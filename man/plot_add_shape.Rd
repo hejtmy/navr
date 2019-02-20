@@ -13,7 +13,7 @@ plot_add_shape(plt, x, y, ...)
 
 \item{y}{vector with pologyon Y coordinates}
 
-\item{...}{plygon aesthetics, such as fill, color, alpha etc.}
+\item{...}{polygon aesthetics, such as fill, color, alpha etc.}
 }
 \description{
 Adds shape to the background of the plot
