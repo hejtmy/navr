@@ -9,9 +9,9 @@
 #' @export
 #'
 #' @examples
-plot_add_path <- function(plt, x, y){
+plot_add_path <- function(plt, x, y, ...){
   df_position <- data.frame(position_x = x, position_y = y)
-  plt <- plt + geom_path(data = df_position, aes(position_x, position_y))
+  plt <- plt + geom_path(data = df_position, aes(position_x, position_y), ...)
   return(plt)
 }
 
