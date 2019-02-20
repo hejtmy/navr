@@ -63,15 +63,14 @@ plot_add_shape <- function(plt, x, y, ...){
 #' Adds specified points to the given plot
 #'
 #' @param plt previous ggplot
-#' @param size size of the dot
-#' @param color dot color
+#' @param ... ggplot additional params
 #' @param ls list with XY vectors. eg. (list(start = c(0, 0), end = C(10, 5)))
 #'
 #' @import ggplot2
 #' @return modified plot
 #'
 #' @export
-plot_add_points <- function(plt, ls, size = 4, color = "blue"){
+plot_add_points <- function(plt, ls, ...){
   list_names <- names(ls)
   df <- data.frame(point_x = numeric(0), point_y = numeric(0), point_name = character(), stringsAsFactors = F)
   for (i in 1:length(ls)){
@@ -79,14 +78,14 @@ plot_add_points <- function(plt, ls, size = 4, color = "blue"){
     df[i, 2] <- ls[[i]][2]
     df[i, 3] <- list_names[i]
   }
-  plt <- plt + geom_point(data = df, aes(point_x, point_y), size = size, color = color) +
+  plt <- plt + geom_point(data = df, aes(point_x, point_y), ...) +
     geom_text(data = df, aes(point_x, point_y, label = point_name))
   return(plt)
 }
 
 #' Adds arrow pointing from a point in a specified angle
 #'
-#' @param position_df data.frame. Needs to have columns x, y, angle, length, type
+#' @param position data.frame. Needs to have columns x, y, angle, length, type
 #' @param plt PLot to which to add the arrow
 #' @return built ggplot2
 #'
@@ -96,11 +95,11 @@ plot_add_points <- function(plt, ls, size = 4, color = "blue"){
 #' plt <- plot_add_direction(plt,
 #'
 #' @export
-plot_add_direction <- function(plt, position, angle, len = 1, color = 'black'){
+plot_add_direction <- function(plt, position, angle, len = 1, ...){
   ARROW_DEF <- arrow(length = unit(0.25, "cm"))
   arrow_line <- create_direction_line(position, angle, len)
   plt <- plt + geom_segment(data = arrow_line,
                             aes(x = x, y = y, xend = xend, yend = yend),
-                            size = 1, arrow = ARROW_DEF, color = color)
+                            arrow = ARROW_DEF, ... )
   return(plt)
 }

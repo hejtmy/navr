@@ -35,7 +35,7 @@ plot_path <- function(obj){
 #' @examples
 plot_path.navr <- function(obj){
   plt <- create_plot()
-  #removes
+  #TODO - removes points that have surreal speeds
   plt <- plot_add_path(plt, obj$data$position_x, obj$data$position_y)
   return(plt)
 }
