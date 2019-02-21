@@ -115,7 +115,7 @@ plot_add_direction <- function(plt, position, angle, len = 1, ...){
 #' @examples
 plot_add_limits <- function(plt, obj){
   if(is.null(obj$area_boundaries)) return(plt)
-  if(!is.null(obj$area_boundaries$x)) plt <- plt + ylim(obj$area_boundaries$x)
+  if(!is.null(obj$area_boundaries$x)) plt <- plt + xlim(obj$area_boundaries$x)
   if(!is.null(obj$area_boundaries$y)) plt <- plt + ylim(obj$area_boundaries$y)
   return(plt)
 }
