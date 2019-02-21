@@ -1,3 +1,16 @@
+#' Adds new colum angle_diff_axis where it calculates angle difference between rows
+#'
+#' @param rotations vector of angles in 360
+#'
+#' @export
+#'
+#' @example
+calculate_angle_differences <- function(rotations){
+  angle_diffs <- round(c(0, diff(rotations)), 4)
+  angle_diffs <- angle_to_180(angle_diffs)
+  return(angle_diffs)
+}
+
 # converts positive and negative angles to 0-360
 # asumes it is not below -360
 # 390 is converted to 30, -40 to 320 etc
@@ -17,7 +30,6 @@ angle_to_360 <- function(angle){
 #' Converts angle to -180 to 180 difference
 #'
 #' @description
-#'
 #' @param angle
 #'
 #' @return number between -180 to 180

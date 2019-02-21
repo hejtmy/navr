@@ -4,12 +4,12 @@
 \alias{plot_add_direction}
 \title{Adds arrow pointing from a point in a specified angle}
 \usage{
-plot_add_direction(plt, position, angle, len = 1, color = "black")
+plot_add_direction(plt, position, angle, len = 1, ...)
 }
 \arguments{
 \item{plt}{PLot to which to add the arrow}
 
-\item{position_df}{data.frame. Needs to have columns x, y, angle, length, type}
+\item{position}{data.frame. Needs to have columns x, y, angle, length, type}
 }
 \value{
 built ggplot2

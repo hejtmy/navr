@@ -1,19 +1,4 @@
-#' Creates empty plot with invisible theme to clearly plot paths and points
-#'
-#' @return
-#' @export
-#'
-#' @examples
-create_plot <- function(){
-  if(!requireNamespace("ggplot2", quietly = T)){
-    stop("Needs ggplot2 package")
-  }
-  plt <- ggplot2::ggplot()
-  plt <- plt + theme_void()
-  return(plt)
-}
-
-#' Title
+#' Multiplot requiring Grd package
 #'
 #' @param plotlist
 #' @param cols

@@ -4,7 +4,7 @@
 \alias{plot_add_path}
 \title{Adds path to the plot data}
 \usage{
-plot_add_path(plt, x, y)
+plot_add_path(plt, x, y, ...)
 }
 \arguments{
 \item{plt}{}

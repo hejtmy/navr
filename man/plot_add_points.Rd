@@ -4,16 +4,14 @@
 \alias{plot_add_points}
 \title{Adds specified points to the given plot}
 \usage{
-plot_add_points(plt, ls, size = 4, color = "blue")
+plot_add_points(plt, ls, ...)
 }
 \arguments{
 \item{plt}{previous ggplot}
 
 \item{ls}{list with XY vectors. eg. (list(start = c(0, 0), end = C(10, 5)))}
 
-\item{size}{size of the dot}
-
-\item{color}{dot color}
+\item{...}{ggplot additional params}
 }
 \value{
 modified plot
