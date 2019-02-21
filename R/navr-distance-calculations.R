@@ -13,3 +13,8 @@ calculate_distances <- function(mat_xy, first_value = NULL){
   if(!is.null(first_value)) distances <- c(first_value, distances)
   return(distances)
 }
+
+calculate_total_distance <- function(distances){
+  distances[is.na(distances)] <- 0
+  return(cumsum(distances))
+}

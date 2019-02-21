@@ -72,7 +72,7 @@ add_distances <- function(obj, ...){
 add_distances.navr <- function(obj){
   mat_xy <- cbind(obj$data$position_x, obj$data$position_y)
   obj$data$distance <- navr::calculate_distances(mat_xy, 0)
-  obj$data$distance_total <- cumsum(obj$data$distance[!is.na(obj$data$distance)])
+  obj$data$distance_total <- calculate_total_distance(obj$data$distance)
   return(obj)
 }
 
@@ -129,6 +129,6 @@ remove_unreal_speeds <- function(obj, indices, total_recalculate = T){
 #' @export
 remove_unreal_speeds.navr <- function(obj, indices, total_recalculate = T){
   obj$data[indices, c("distance", "speed")] <- c(NA, NA)
-  obj$data$distance_total <- cumsum(obj$data$distance[!is.na(obj$data$distance)])
+  obj$data$distance_total <- calculate_total_distance(obj$data$distance)
   return(obj)
 }
