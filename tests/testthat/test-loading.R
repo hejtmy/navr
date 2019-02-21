@@ -29,4 +29,3 @@ test_that("Dataframes can be automatically prepared", {
   navr_log_test <- prepare_column_names(navr_log_bad)
   expect_identical(navr_log_test, navr_object$data)
 })
-

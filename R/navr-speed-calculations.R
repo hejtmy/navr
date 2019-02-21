@@ -10,6 +10,7 @@
 calculate_speeds <- function(distances,timestamps){
   time_diffs <- navr::calculate_time_diffs(timestamps, NA)
   speeds <- distances/time_diffs
+  speeds[is.infinite(abs(speeds))] <- NA
   return(speeds)
 }
 
