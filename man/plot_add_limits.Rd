@@ -4,12 +4,12 @@
 \alias{plot_add_limits}
 \title{Checks if object has map limits variable and adds plot limits if so}
 \usage{
-plot_add_limits(plt, obj)
+plot_add_limits(plt, limits)
 }
 \arguments{
 \item{plt}{existing plot}
 
-\item{obj}{navr object}
+\item{limits}{list with , x, y touples}
 }
 \description{
 Checks if object has map limits variable and adds plot limits if so
