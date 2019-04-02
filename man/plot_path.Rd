@@ -4,10 +4,12 @@
 \alias{plot_path}
 \title{Plots path of dataset}
 \usage{
-plot_path(obj)
+plot_path(obj, ...)
 }
 \arguments{
-\item{obj}{}
+\item{obj}{Object}
+
+\item{...}{optional ggplot parameters}
 }
 \description{
 Plots path of dataset
