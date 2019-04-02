@@ -15,27 +15,30 @@ create_plot <- function(){
 
 #' Plots path of dataset
 #'
-#' @param obj
+#' @param obj Object
+#' @param ... optional ggplot parameters
 #'
 #' @return
 #' @export
 #'
 #' @examples
-plot_path <- function(obj){
+plot_path <- function(obj, ...){
   UseMethod('plot_path')
 }
 
 #' plots the _x and _X coordinates
 #'
 #' @param obj valid navr object
+#' @param ... optional ggplot parameters for the path geom
 #'
 #' @return
 #' @export
 #'
 #' @examples
-plot_path.navr <- function(obj){
+plot_path.navr <- function(obj, ...){
   plt <- create_plot()
   #TODO - removes points that have surreal speeds
-  plt <- plot_add_path(plt, obj$data$position_x, obj$data$position_y)
+  plt <- plot_add_path(plt, obj$data$position_x, obj$data$position_y, ...)
   return(plt)
 }
+
