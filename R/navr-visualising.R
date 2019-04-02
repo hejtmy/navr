@@ -104,4 +104,3 @@ plot_add_position_heatmap <- function(plt, obj, bins, ...){
   plt <- plt + geom_position_heatmap(obj$data$position_x, obj$data$position_y, bins)
   return(plt)
 }
-
