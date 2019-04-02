@@ -1,6 +1,6 @@
 ---
-title: "Vignette Title"
-author: "Vignette Author"
+title: "Loading and preprocessing"
+author: "Lukáš 'hejtmy' Hejtmánek"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
@@ -29,7 +29,6 @@ obj <- add_distances(obj)
 obj <- add_speeds(obj)
 ```
 
-
 Removing too large speeds/teleports
 ```{r}
 #this function picks unreal speeds
@@ -37,5 +36,4 @@ i_speeds <- pick_unreal_speeds(obj, 3, "std")
 
 #this function removes given speed AND distance measurements and recalculates total distance
 obj <- remove_unreal_speeds(obj, i_speeds, total_recalculate = T)
-
 ```
