@@ -38,10 +38,24 @@ plot_path <- function(obj, ...){
 plot_path.navr <- function(obj, ...){
   plt <- create_plot()
   #TODO - removes points that have surreal speeds
-  plt <- plot_add_path(plt, obj$data$position_x, obj$data$position_y, ...)
+  plt <- plot_add_path(plt, obj, ...)
   return(plt)
 }
 
+#' Adds path to the plot data
+#'
+#' @param obj navr object to which
+#' @param plt
+#'
+#' @return
+#' @import ggplot2
+#' @export
+#'
+#' @examples
+plot_add_path <- function(plt, obj, ...){
+  plt <- plt + navr_geom_path(obj$data$position_x, obj$data$position_y, ...)
+  return(plt)
+}
 
 #' Plots position heatmap with given granularity
 #'
@@ -72,3 +86,22 @@ plot_position_heatmap.navr <- function(obj, bins = 25, ...){
   plt <- plot_add_position_heatmap(plt, obj$data$position_x, obj$data$position_y, bins, ...)
   return(plt)
 }
+
+# https://stackoverflow.com/questions/48282989/show-only-high-density-areas-with-ggplot2s-stat-density-2d
+#' PLots heatmap using stat_density2d
+#'
+#' @param plt plot to which to add
+#' @param bins number of bins in each direction (n parameter in statn_density)
+#' @param ...
+#' @param obj navr object which to plot
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_add_position_heatmap <- function(plt, obj, bins, ...){
+  df <- data.frame(x, y)
+  plt <- plt + geom_position_heatmap(obj$data$position_x, obj$data$position_y, bins)
+  return(plt)
+}
+

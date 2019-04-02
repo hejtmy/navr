@@ -1,18 +1,16 @@
-#' Adds path to the plot data
+#' Geom of plotting navr path
 #'
 #' @param x vector of positions
 #' @param y vector of y positions
-#' @param plt
+#' @param ...
 #'
 #' @return
-#' @import ggplot2
 #' @export
 #'
 #' @examples
-plot_add_path <- function(plt, x, y, ...){
+geom_navr_path <- function(x, y, ...){
   df_position <- data.frame(position_x = x, position_y = y)
-  plt <- plt + geom_path(data = df_position, aes(position_x, position_y), ...)
-  return(plt)
+  return(geom_path(data = df_position, aes(position_x, position_y), ...))
 }
 
 #' Adds image to the background of the plot
@@ -120,9 +118,9 @@ plot_add_limits <- function(plt, limits){
   return(plt)
 }
 
-#' PLots heatmap using stat_density2d
+
+#' geom to add stat_density2d position heatmap
 #'
-#' @param plt plot to which to add
 #' @param x x positions
 #' @param y y positions
 #' @param bins number of bins in each direction (n parameter in statn_density)
@@ -132,8 +130,6 @@ plot_add_limits <- function(plt, limits){
 #' @export
 #'
 #' @examples
-plot_add_position_heatmap <- function(plt, x, y, bins, ...){
-  df <- data.frame(x, y)
-  plt <- plt + stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...)
-  return(plt)
+geom_position_heatmap <- function(x, y, bins, ...){
+  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
 }
