@@ -119,3 +119,21 @@ plot_add_limits <- function(plt, limits){
   if(!is.null(limits$y)) plt <- plt + ylim(limits$y)
   return(plt)
 }
+
+#' PLots heatmap using stat_density2d
+#'
+#' @param plt plot to which to add
+#' @param x x positions
+#' @param y y positions
+#' @param bins number of bins in each direction (n parameter in statn_density)
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_add_position_heatmap <- function(plt, x, y, bins, ...){
+  df <- data.frame(x, y)
+  plt <- plt + stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...)
+  return(plt)
+}

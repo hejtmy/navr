@@ -31,7 +31,7 @@ plot_path <- function(obj, ...){
 #' @param obj valid navr object
 #' @param ... optional ggplot parameters for the path geom
 #'
-#' @return
+#' @return ggplot
 #' @export
 #'
 #' @examples
@@ -42,3 +42,33 @@ plot_path.navr <- function(obj, ...){
   return(plt)
 }
 
+
+#' Plots position heatmap with given granularity
+#'
+#' @param obj object
+#' @param ... optional ggplot parameters
+#' @param bins number of bins to segment the area
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_position_heatmap <- function(obj, bins, ...){
+  UseMethod('plot_position_heatmap')
+}
+
+#' Plots position heatmap with given granularity
+#'
+#' @param ... optional ggplot parameters
+#' @param obj object
+#' @param bins number of bins to segment the area
+#'
+#' @return ggplot
+#' @export
+#'
+#' @examples
+plot_position_heatmap.navr <- function(obj, bins = 25, ...){
+  plt <- create_plot()
+  plt <- plot_add_position_heatmap(plt, obj$data$position_x, obj$data$position_y, bins, ...)
+  return(plt)
+}

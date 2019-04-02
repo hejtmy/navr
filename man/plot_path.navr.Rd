@@ -11,6 +11,9 @@
 
 \item{...}{optional ggplot parameters for the path geom}
 }
+\value{
+ggplot
+}
 \description{
 plots the _x and _X coordinates
 }
