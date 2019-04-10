@@ -99,7 +99,7 @@ plot_speed.navr <- function(obj, scale = c(), ...){
     stop("Cannot plot speeds. No speed column present. Have you run add_speeds function on your object?")
   }
   #plot value
-  plt <- create_minimal_plot() + geom_navr_timeseries(obj$data$time_since_start, obj$data$speed, normalise, ...)
+  plt <- create_minimal_plot() + geom_navr_timeseries(obj$data$time_since_start, obj$data$speed, scale, ...)
   return(plt)
 }
 

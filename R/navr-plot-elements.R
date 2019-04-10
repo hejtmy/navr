@@ -136,7 +136,7 @@ geom_navr_timeseries <- function(times, values, scale = c(), ...){
   if(length(scale == 2)){
 
   }
-  return(geom_line(aes(time, value), ...))
+  return(geom_line(data=df, aes(time, value), ...))
 }
 
 
