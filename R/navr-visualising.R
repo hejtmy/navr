@@ -53,7 +53,7 @@ plot_path.navr <- function(obj, ...){
 #'
 #' @examples
 plot_add_path <- function(plt, obj, ...){
-  plt <- plt + navr_geom_path(obj$data$position_x, obj$data$position_y, ...)
+  plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
   return(plt)
 }
 
