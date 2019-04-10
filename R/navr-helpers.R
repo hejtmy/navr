@@ -41,7 +41,6 @@ euclid_distance <- function(point1, point2){
 #' @return vector of distances of length m - 1
 #'
 #' @examples
-#'
 euclid_distance_between_rows <- function(points){
   #first distance shoudl be rezo, that's why we copy the first row in the shifted matrix
   points_shifted <- rbind(points[1,], points[1:nrow(points) - 1, ])
@@ -49,4 +48,9 @@ euclid_distance_between_rows <- function(points){
   vec_sums <- apply(points_sub, 1, function(x) sqrt(sum(x ^ 2)))
   vec_sums <- vec_sums[-1] #removing the first element
   return(vec_sums)
+}
+
+
+has_column <- function(df, column_name){
+  return(column_name %in% colnames(df))
 }

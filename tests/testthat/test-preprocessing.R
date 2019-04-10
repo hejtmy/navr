@@ -1,5 +1,6 @@
 context('Preprocessing data')
 obj <- navr_object
+
 test_that("Testing distance calculations", {
   obj_dist <- add_distances(obj)
   expect_equal(round(sum(obj_dist$data$distance)), 14865) #needs stupid rounding
@@ -22,8 +23,8 @@ test_that("Testing angle calculations", {
 test_that("testing selection of unreal speeds", {
   expect_warning(pick_unreal_speeds(obj, 3, "std"))
   expect_null(pick_unreal_speeds(obj))
+  #adding speeds now
   obj_prep <- add_distances(obj)
-
   obj_prep <- add_speeds(obj_prep)
   expect_silent(pick_unreal_speeds(obj_prep, 3, "std"))
   i_unreal <- pick_unreal_speeds(obj_prep, 3, "std")

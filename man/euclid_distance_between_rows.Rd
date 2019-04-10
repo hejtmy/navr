@@ -15,6 +15,3 @@ vector of distances of length m - 1
 \description{
 Calculates distance between points in each row
 }
-\examples{
-
-}

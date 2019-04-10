@@ -12,6 +12,7 @@
 filter_times <- function(obj, times, zero_based, ...){
   UseMethod("filter_times")
 }
+
 #' @export
 filter_times.navr <- function(obj, times, zero_based = F){
   if (zero_based){
@@ -55,6 +56,7 @@ get_times_since_start.navr <- function(obj){
 get_time_diffs <- function(obj, ...){
   UseMethod('get_time_diffs')
 }
+
 #' Title
 #'
 #' @param obj Navr Object

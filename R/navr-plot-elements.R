@@ -119,6 +119,27 @@ plot_add_limits <- function(plt, limits){
 }
 
 
+#' Adds timeseries to the given plot
+#'
+#' @param plt existing ggplot
+#' @param times times on the x axis
+#' @param values values on the y axis to plot
+#' @param scale if the values should be scaled to given values (min, max)
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_timeseries <- function(times, values, scale = c(), ...){
+  df <- data.frame(time = times, value=values)
+  if(length(scale == 2)){
+
+  }
+  return(geom_line(aes(time, value), ...))
+}
+
+
 #' geom to add stat_density2d position heatmap
 #'
 #' @param x x positions

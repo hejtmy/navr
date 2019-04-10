@@ -1,5 +1,8 @@
 context("Visualising")
 obj <- navr_object
+obj <- add_time_columns(obj)
+obj <- add_distances(obj)
+obj <- add_speeds(obj)
 
 test_that("graphs don't throw errors",{
   expect_silent(plot_path(obj))
@@ -9,4 +12,5 @@ test_that("graphs don't throw errors",{
   #testa adding points
   #test adding path
   expect_silent(plot_position_heatmap(obj))
+  expect_silent(plot_speed(obj))
 })

@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-calculate_speeds <- function(distances,timestamps){
+calculate_speeds <- function(distances, timestamps){
   time_diffs <- navr::calculate_time_diffs(timestamps, NA)
   speeds <- distances/time_diffs
   speeds[is.infinite(abs(speeds))] <- NA
@@ -29,6 +29,7 @@ calculate_speeds <- function(distances,timestamps){
 pick_unreal_speeds <- function(obj, cutoff, type="value"){
   UseMethod('pick_unreal_speeds')
 }
+
 #' @export
 pick_unreal_speeds.navr <- function(obj, cutoff, type="value"){
   #needs to check of the speed even exists as a column
@@ -38,6 +39,7 @@ pick_unreal_speeds.navr <- function(obj, cutoff, type="value"){
   }
   return(pick_unreal_speeds(obj$data$speed, cutoff, type))
 }
+
 #' @export
 pick_unreal_speeds.double <- function(speeds, cutoff, type="value"){
   if(type=="value"){

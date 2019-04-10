@@ -1,15 +1,27 @@
 #' Creates empty plot with invisible theme to clearly plot paths and points
 #'
 #' @return
-#' @export
 #'
 #' @examples
-create_plot <- function(){
+create_void_plot <- function(){
   if(!requireNamespace("ggplot2", quietly = T)){
     stop("Needs ggplot2 package")
   }
   plt <- ggplot2::ggplot()
   plt <- plt + theme_void()
+  return(plt)
+}
+
+#' Returns blank plot
+#'
+#' @return ggplot blank plot
+#' @examples
+create_minimal_plot <- function(){
+  if(!requireNamespace("ggplot2", quietly = T)){
+    stop("Needs ggplot2 package")
+  }
+  plt <- ggplot2::ggplot()
+  plt <- plt + theme_minimal()
   return(plt)
 }
 
@@ -36,7 +48,7 @@ plot_path <- function(obj, ...){
 #'
 #' @examples
 plot_path.navr <- function(obj, ...){
-  plt <- create_plot()
+  plt <- create_void_plot()
   #TODO - removes points that have surreal speeds
   plt <- plot_add_path(plt, obj, ...)
   return(plt)
@@ -54,6 +66,40 @@ plot_path.navr <- function(obj, ...){
 #' @examples
 plot_add_path <- function(plt, obj, ...){
   plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
+  return(plt)
+}
+
+
+#' PLots speed values in time
+#'
+#' @param obj
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+plot_speed <- function(obj, ...){
+  UseMethod("plot_speed")
+}
+
+#' PLots speed values in time
+#'
+#' @param obj
+#' @param scale if the values should be scaled to certain values - needs vector of length 2 c(0,1)
+#' @param ...
+#'
+#' @return ggplot
+#' @export
+#'
+#' @examples
+plot_speed.navr <- function(obj, scale = c(), ...){
+  #validates
+  if(!has_column(obj$data, "speed")){
+    stop("Cannot plot speeds. No speed column present. Have you run add_speeds function on your object?")
+  }
+  #plot value
+  plt <- create_minimal_plot() + geom_navr_timeseries(obj$data$time_since_start, obj$data$speed, normalise, ...)
   return(plt)
 }
 
@@ -82,7 +128,7 @@ plot_position_heatmap <- function(obj, bins, ...){
 #'
 #' @examples
 plot_position_heatmap.navr <- function(obj, bins = 25, ...){
-  plt <- create_plot()
+  plt <- create_void_plot()
   plt <- plot_add_position_heatmap(plt, obj, bins, ...)
   return(plt)
 }
