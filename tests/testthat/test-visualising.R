@@ -8,4 +8,5 @@ test_that("graphs don't throw errors",{
   #test adding background
   #testa adding points
   #test adding path
+  expect_silent(plot_position_heatmap(obj))
 })

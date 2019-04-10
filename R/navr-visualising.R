@@ -83,7 +83,7 @@ plot_position_heatmap <- function(obj, bins, ...){
 #' @examples
 plot_position_heatmap.navr <- function(obj, bins = 25, ...){
   plt <- create_plot()
-  plt <- plot_add_position_heatmap(plt, obj$data$position_x, obj$data$position_y, bins, ...)
+  plt <- plot_add_position_heatmap(plt, obj, bins, ...)
   return(plt)
 }
 
@@ -100,7 +100,6 @@ plot_position_heatmap.navr <- function(obj, bins = 25, ...){
 #'
 #' @examples
 plot_add_position_heatmap <- function(plt, obj, bins, ...){
-  df <- data.frame(x, y)
   plt <- plt + geom_position_heatmap(obj$data$position_x, obj$data$position_y, bins)
   return(plt)
 }
