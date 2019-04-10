@@ -4,7 +4,7 @@
 \alias{plot_speed.navr}
 \title{PLots speed values in time}
 \usage{
-\method{plot_speed}{navr}(obj, scaling_type = "none", scale = c(), ...)
+\method{plot_speed}{navr}(obj, scaling = "none", scale = c(), ...)
 }
 \description{
 PLots speed values in time
