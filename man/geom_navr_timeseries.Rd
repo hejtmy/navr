@@ -4,18 +4,18 @@
 \alias{geom_navr_timeseries}
 \title{Adds timeseries to the given plot}
 \usage{
-geom_navr_timeseries(times, values, normalise = c(), ...)
+geom_navr_timeseries(times, values, scaling = "none", scale = c(), ...)
 }
 \arguments{
 \item{times}{times on the x axis}
 
 \item{values}{values on the y axis to plot}
 
-\item{normalise}{if the values should be normalised to given values (min, max)}
+\item{scaling}{type of scaling to implemnent. "none", "std", "minmax"}
+
+\item{scale}{if the values should be scaled to given values}
 
 \item{...}{}
-
-\item{plt}{existing ggplot}
 }
 \description{
 Adds timeseries to the given plot

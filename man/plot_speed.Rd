@@ -4,10 +4,15 @@
 \alias{plot_speed}
 \title{PLots speed values in time}
 \usage{
-plot_speed(obj, ...)
+plot_speed(obj, scaling = "none", scale = c(), ...)
 }
 \arguments{
-\item{...}{}
+\item{scaling}{type of scaling to implement, possibilities are "std", "minmax"}
+
+\item{scale}{if the values should be scaled to certain values - needs vector of length 2 c(0,1)}
+}
+\value{
+ggplot
 }
 \description{
 PLots speed values in time

@@ -4,15 +4,7 @@
 \alias{plot_speed.navr}
 \title{PLots speed values in time}
 \usage{
-\method{plot_speed}{navr}(obj, normalise = c(), ...)
-}
-\arguments{
-\item{normalise}{if the values should be normalised to certain values - needs vector of length 2 c(0,1)}
-
-\item{...}{}
-}
-\value{
-ggplot
+\method{plot_speed}{navr}(obj, scaling_type = "none", scale = c(), ...)
 }
 \description{
 PLots speed values in time

@@ -73,33 +73,28 @@ plot_add_path <- function(plt, obj, ...){
 #' PLots speed values in time
 #'
 #' @param obj
+#' @param scaling type of scaling to implement, possibilities are "std", "minmax"
+#' @param scale if the values should be scaled to certain values - needs vector of length 2 c(0,1)
 #' @param ...
+#' @return ggplot
 #'
 #' @return
 #' @export
 #'
 #' @examples
-plot_speed <- function(obj, ...){
+plot_speed <- function(obj, scaling = "none", scale = c(), ...){
   UseMethod("plot_speed")
 }
 
 #' PLots speed values in time
-#'
-#' @param obj
-#' @param scale if the values should be scaled to certain values - needs vector of length 2 c(0,1)
-#' @param ...
-#'
-#' @return ggplot
 #' @export
-#'
-#' @examples
-plot_speed.navr <- function(obj, scale = c(), ...){
+plot_speed.navr <- function(obj, scaling = "none", scale = c(), ...){
   #validates
   if(!has_column(obj$data, "speed")){
     stop("Cannot plot speeds. No speed column present. Have you run add_speeds function on your object?")
   }
   #plot value
-  plt <- create_minimal_plot() + geom_navr_timeseries(obj$data$time_since_start, obj$data$speed, scale, ...)
+  plt <- create_minimal_plot() + geom_navr_timeseries(obj$data$time_since_start, obj$data$speed, scaling, scale, ...)
   return(plt)
 }
 

@@ -121,21 +121,27 @@ plot_add_limits <- function(plt, limits){
 
 #' Adds timeseries to the given plot
 #'
-#' @param plt existing ggplot
 #' @param times times on the x axis
 #' @param values values on the y axis to plot
-#' @param scale if the values should be scaled to given values (min, max)
+#' @param scaling type of scaling to implemnent. "none", "std", "minmax"
+#' @param scale if the values should be scaled to given values
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-geom_navr_timeseries <- function(times, values, scale = c(), ...){
-  df <- data.frame(time = times, value=values)
-  if(length(scale == 2)){
+geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), ...){
+  if(scaling == "std"){
+    values <- scale(values)
+  }
+  if(scaling == "minmax"){
 
   }
+  if(length(scale == 2)){
+    #fits within a range
+  }
+  df <- data.frame(time = times, value=values)
   return(geom_line(data=df, aes(time, value), ...))
 }
 
