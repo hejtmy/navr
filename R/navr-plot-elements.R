@@ -131,6 +131,22 @@ plot_add_limits <- function(plt, limits){
 }
 
 
+#' Creates geom of a circle to be inserted into the graph
+#'
+#' @param center circle center as a 2vector c(0,0)
+#' @param radius circle radius
+#' @param precision how many points will make the circle
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_circle <- function(center, radius, precision = 100, ...){
+  df_circle <- make_circle(center, radius, precision)
+  return(geom_path(data = df_circle, aes(x, y), ...))
+}
+
 #' Adds timeseries to the given plot
 #'
 #' @param times times on the x axis
