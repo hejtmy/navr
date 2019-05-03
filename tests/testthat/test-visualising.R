@@ -20,11 +20,12 @@ test_that("tests speed plotting", {
 
 test_that("tests plot elements", {
   plt <- create_minimal_plot()
-  expect_silent(plot_add_background(plt, paste0(DIR, "/megamap5.png")))
 })
 
 test_that("tests custom geoms", {
   plt <- create_minimal_plot()
   expect_silent(plt + geom_navr_backround(paste0(DIR, "/megamap5.png")))
   expect_silent(plt + geom_navr_circle(c(0,1), 2))
+  expect_silent(plt + geom_navr_points(list(start = c(0,0))))
+  expect_silent(plt + geom_navr_direction(c(0,0), 180, 5, color = "red"))
 })

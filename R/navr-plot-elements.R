@@ -26,6 +26,7 @@ geom_navr_path <- function(x, y, ...){
 #'
 #' @examples
 plot_add_background <- function(plt, image_path, xlim = NULL, ylim = NULL){
+  .Deprecated("geom_navr_background")
   plt <- plt + geom_navr_backround(image_path, xlim, ylim)
   return(plt)
 }
@@ -51,25 +52,6 @@ geom_navr_backround <- function(image_path, xlim = NULL, ylim = NULL){
   }
 }
 
-#' Adds shape to the background of the plot
-#'
-#' @param plt existing plot
-#' @param x vector with pologyon X coordinates
-#' @param y vector with pologyon Y coordinates
-#' @param ... polygon aesthetics, such as fill, color, alpha etc.
-#'
-#' @return
-#' @export
-#' @import ggplot2
-#'
-#' @examples
-plot_add_shape <- function(plt, x, y, ...){
-  #VALIDATIONS
-  df_poly <- data.frame(x = x, y = y)
-  plt <- plt + ggplot2::geom_polygon(data = df_poly, aes(x=x, y=y), ...)
-  return(plt)
-}
-
 #' Adds specified points to the given plot
 #'
 #' @param plt previous ggplot
@@ -81,6 +63,21 @@ plot_add_shape <- function(plt, x, y, ...){
 #'
 #' @export
 plot_add_points <- function(plt, ls, ...){
+  .Deprecated("geom_navr_points")
+  plt <- plt + geom_navr_points(ls, ...)
+  return(plt)
+}
+
+#' GGplot geom to add specified points to the given plot
+#'
+#' @param ls list with XY vectors. eg. (list(start = c(0, 0), end = C(10, 5)))
+#' @param ... ggplot additional params
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_points <- function(ls, ...){
   list_names <- names(ls)
   df <- data.frame(point_x = numeric(0), point_y = numeric(0), point_name = character(), stringsAsFactors = F)
   for (i in 1:length(ls)){
@@ -88,9 +85,9 @@ plot_add_points <- function(plt, ls, ...){
     df[i, 2] <- ls[[i]][2]
     df[i, 3] <- list_names[i]
   }
-  plt <- plt + geom_point(data = df, aes(point_x, point_y), ...) +
-    geom_text(data = df, aes(point_x, point_y, label = point_name))
-  return(plt)
+  ls <- list(geom_point(data = df, aes(point_x, point_y), ...),
+              geom_text(data = df, aes(point_x, point_y, label = point_name)))
+  return(ls)
 }
 
 #' Adds arrow pointing from a point in a specified angle
@@ -102,16 +99,32 @@ plot_add_points <- function(plt, ls, ...){
 #' @import ggplot2
 #'
 #' @example
-#' plt <- plot_add_direction(plt,
+#' plt <- plot_add_direction(plt, c(0,0), 180, 5, color = "red")
 #'
 #' @export
 plot_add_direction <- function(plt, position, angle, len = 1, ...){
-  ARROW_DEF <- arrow(length = unit(0.25, "cm"))
-  arrow_line <- create_direction_line(position, angle, len)
-  plt <- plt + geom_segment(data = arrow_line,
-                            aes(x = x, y = y, xend = xend, yend = yend),
-                            arrow = ARROW_DEF, ... )
+  .Deprecated("geom_navr_direction")
+  plt <- plt + geom_navr_direction(position, angle, len)
   return(plt)
+}
+
+#' Adds arrow pointing from a point in a specified angle
+#'
+#' @param position vector 2 X and Y position
+#' @param angle numeric angle in degrees (0-360)
+#' @param length length od the arrow to be drawm
+#' @param ... additional ggplot values
+#'
+#' @return ggplot element
+#' @export
+#'
+#' @examples geom_navr_direction(c(0,0), 180, 5, color = "red"))
+geom_navr_direction <- function(position, angle, length = 1, ...){
+  ARROW_DEF <- arrow(length = unit(0.25, "cm"))
+  arrow_line <- create_direction_line(position, angle, length)
+  return(geom_segment(data = arrow_line,
+                            aes(x = x, y = y, xend = xend, yend = yend),
+                            arrow = ARROW_DEF, ... ))
 }
 
 #' Checks if object has map limits variable and adds plot limits if so
