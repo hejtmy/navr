@@ -25,7 +25,7 @@ geom_navr_path <- function(x, y, ...){
 #' @import ggplot2 png jpeg grid
 #'
 #' @examples
-plot_add_background <- function(plt, image_path, xlim, ylim){
+plot_add_background <- function(plt, image_path, xlim = NULL, ylim = NULL){
   #TODO - check for grid
   #Checks if png or jpg
   img <- png::readPNG(image_path)
@@ -37,6 +37,27 @@ plot_add_background <- function(plt, image_path, xlim, ylim){
     plt <- plt + annotation_custom(rast)
   }
   return(plt)
+}
+
+#' GGplot geom to add custom PNG background to the plot
+#'
+#' @param image_path path the png image
+#' @param xlim background poistions as vector of length 2, c(-100,400)
+#' @param ylim background poistions as vector of length 2, c(-100,400)
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_backround <- function(image_path, xlim = NULL, ylim = NULL){
+  img <- png::readPNG(image_path)
+  rast <- grid::rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = T)
+  if(!(is.null(xlim) | is.null(ylim))){
+    #checks size of xlim and Ylim
+    return(annotation_custom(rast, xmin = xlim[1], xmax = xlim[2], ymin = ylim[1], ymax = ylim[2]))
+  } else {
+    return(annotation_custom(rast))
+  }
 }
 
 #' Adds shape to the background of the plot
@@ -105,7 +126,7 @@ plot_add_direction <- function(plt, position, angle, len = 1, ...){
 #' Checks if object has map limits variable and adds plot limits if so
 #'
 #' @param plt existing plot
-#' @param limits list with , x, y touples
+#' @param limits list with x, y touples
 #'
 #' @return
 #' @export

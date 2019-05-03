@@ -1,4 +1,5 @@
 context("Loading and validating")
+
 test_that("Data can be loaded", {
   navr_log <- navr_object$data
   obj <- NavrObject()
