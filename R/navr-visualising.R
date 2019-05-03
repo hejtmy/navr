@@ -50,7 +50,7 @@ plot_path <- function(obj, ...){
 plot_path.navr <- function(obj, ...){
   plt <- create_void_plot()
   #TODO - removes points that have surreal speeds
-  plt <- plot_add_path(plt, obj, ...)
+  plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
   return(plt)
 }
 
@@ -65,6 +65,7 @@ plot_path.navr <- function(obj, ...){
 #'
 #' @examples
 plot_add_path <- function(plt, obj, ...){
+  .Deprecated("geom_navr_path")
   plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
   return(plt)
 }
