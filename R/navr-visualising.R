@@ -70,7 +70,6 @@ plot_add_path <- function(plt, obj, ...){
   return(plt)
 }
 
-
 #' PLots speed values in time
 #'
 #' @param obj

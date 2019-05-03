@@ -16,8 +16,9 @@ Suggests:
     rmarkdown,
     covr
 Imports:
-  ggplot2,
-  grid,
-  png, 
-  jpeg
+    ggplot2,
+    grid,
+    png,
+    jpeg,
+    gganimate
 VignetteBuilder: knitr
