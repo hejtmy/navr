@@ -9,7 +9,7 @@ plot_add_limits(plt, limits)
 \arguments{
 \item{plt}{existing plot}
 
-\item{limits}{list with , x, y touples}
+\item{limits}{list with x, y touples}
 }
 \description{
 Checks if object has map limits variable and adds plot limits if so

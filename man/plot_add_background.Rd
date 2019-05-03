@@ -4,7 +4,7 @@
 \alias{plot_add_background}
 \title{Adds image to the background of the plot}
 \usage{
-plot_add_background(plt, image_path, xlim, ylim)
+plot_add_background(plt, image_path, xlim = NULL, ylim = NULL)
 }
 \arguments{
 \item{plt}{existing plot}

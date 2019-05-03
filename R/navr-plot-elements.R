@@ -26,16 +26,7 @@ geom_navr_path <- function(x, y, ...){
 #'
 #' @examples
 plot_add_background <- function(plt, image_path, xlim = NULL, ylim = NULL){
-  #TODO - check for grid
-  #Checks if png or jpg
-  img <- png::readPNG(image_path)
-  rast <- grid::rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = T)
-  if(!(is.null(xlim) | is.null(ylim))){
-    #checks size of xlim and Ylim
-    plt <- plt + annotation_custom(rast, xmin = xlim[1], xmax = xlim[2], ymin = ylim[1], ymax = ylim[2])
-  } else {
-    plt <- plt + annotation_custom(rast)
-  }
+  plt <- plt + geom_navr_backround(image_path, xlim, ylim)
   return(plt)
 }
 
