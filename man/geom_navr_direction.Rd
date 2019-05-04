@@ -22,5 +22,5 @@ ggplot element
 Adds arrow pointing from a point in a specified angle
 }
 \examples{
-geom_navr_direction(c(0,0), 180, 5, color = "red"))
+geom_navr_direction(c(0,0), 180, 5, color = "red")
 }

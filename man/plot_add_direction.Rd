@@ -17,6 +17,3 @@ built ggplot2
 \description{
 Adds arrow pointing from a point in a specified angle
 }
-\examples{
-plt <- plot_add_direction(plt, c(0,0), 180, 5, color = "red")
-}

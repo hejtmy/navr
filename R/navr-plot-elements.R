@@ -99,7 +99,6 @@ geom_navr_points <- function(ls, ...){
 #' @import ggplot2
 #' @export
 #' @examples
-#' plt <- plot_add_direction(plt, c(0,0), 180, 5, color = "red")
 plot_add_direction <- function(plt, position, angle, len = 1, ...){
   .Deprecated("geom_navr_direction")
   plt <- plt + geom_navr_direction(position, angle, len)
@@ -116,7 +115,7 @@ plot_add_direction <- function(plt, position, angle, len = 1, ...){
 #' @return ggplot element
 #' @export
 #'
-#' @examples geom_navr_direction(c(0,0), 180, 5, color = "red"))
+#' @examples geom_navr_direction(c(0,0), 180, 5, color = "red")
 geom_navr_direction <- function(position, angle, length = 1, ...){
   ARROW_DEF <- arrow(length = unit(0.25, "cm"))
   arrow_line <- create_direction_line(position, angle, length)
