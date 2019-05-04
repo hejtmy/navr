@@ -4,9 +4,6 @@
 #'
 #' @examples
 create_void_plot <- function(){
-  if(!requireNamespace("ggplot2", quietly = T)){
-    stop("Needs ggplot2 package")
-  }
   plt <- ggplot2::ggplot()
   plt <- plt + theme_void()
   return(plt)
@@ -17,9 +14,6 @@ create_void_plot <- function(){
 #' @return ggplot blank plot
 #' @examples
 create_minimal_plot <- function(){
-  if(!requireNamespace("ggplot2", quietly = T)){
-    stop("Needs ggplot2 package")
-  }
   plt <- ggplot2::ggplot()
   plt <- plt + theme_minimal()
   return(plt)
