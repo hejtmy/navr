@@ -18,6 +18,5 @@ numeric or NA if not valid
 Calculates euclidian distance between two points.
 }
 \examples{
-> print(euclid_distance(c(0,0), c(1,1)))
-[1] 1.414214
+print(euclid_distance(c(0,0), c(1,1)))
 }
