@@ -24,8 +24,7 @@ rolling_sum <- function(vec, n_points){
 #' @export
 #'
 #' @examples
-#' > print(euclid_distance(c(0,0), c(1,1)))
-#' [1] 1.414214
+#' print(euclid_distance(c(0,0), c(1,1)))
 euclid_distance <- function(point1, point2){
   # VALIDATE
   return(sqrt(sum((point2 - point1)^2)))
