@@ -97,11 +97,9 @@ geom_navr_points <- function(ls, ...){
 #' @return built ggplot2
 #'
 #' @import ggplot2
-#'
-#' @example
-#' plt <- plot_add_direction(plt, c(0,0), 180, 5, color = "red")
-#'
 #' @export
+#' @examples
+#' plt <- plot_add_direction(plt, c(0,0), 180, 5, color = "red")
 plot_add_direction <- function(plt, position, angle, len = 1, ...){
   .Deprecated("geom_navr_direction")
   plt <- plt + geom_navr_direction(position, angle, len)
@@ -143,7 +141,6 @@ plot_add_limits <- function(plt, limits){
   return(plt)
 }
 
-
 #' Creates geom of a circle to be inserted into the graph
 #'
 #' @param center circle center as a 2vector c(0,0)
@@ -159,6 +156,11 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
   df_circle <- make_circle(center, radius, precision)
   return(geom_path(data = df_circle, aes(x, y), ...))
 }
+
+anim_path <- function(){
+
+}
+
 
 #' Adds timeseries to the given plot
 #'

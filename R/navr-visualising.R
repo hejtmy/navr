@@ -49,8 +49,25 @@ plot_path <- function(obj, ...){
 #' @examples
 plot_path.navr <- function(obj, ...){
   plt <- create_void_plot()
+  plt$data <- obj$data[, "time_since_start", drop=F]
+  plt <- plt + aes(time_since_start) # allows for animations later
   #TODO - removes points that have surreal speeds
   plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
+  return(plt)
+}
+
+
+#' Plot built with plot_path function
+#'
+#' @param plt Needs to have time_since_start x value
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+animate_path <- function(plt, ...){
+  plt <- plt + transition_reveal(plt$data$time_since_start)
   return(plt)
 }
 
