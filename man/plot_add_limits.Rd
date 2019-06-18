@@ -11,6 +11,9 @@ plot_add_limits(plt, limits)
 
 \item{limits}{list with x, y touples}
 }
+\value{
+ggplot with added limits
+}
 \description{
 Checks if object has map limits variable and adds plot limits if so
 }

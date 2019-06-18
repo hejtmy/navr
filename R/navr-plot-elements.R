@@ -129,15 +129,33 @@ geom_navr_direction <- function(position, angle, length = 1, ...){
 #' @param plt existing plot
 #' @param limits list with x, y touples
 #'
-#' @return
+#' @return ggplot with added limits
 #' @export
 #'
 #' @examples
 plot_add_limits <- function(plt, limits){
-  if(is.null(limits)) return(plt)
+  .Deprecated("use geom_navr_limits")
+  ls <- list()
+  if(is.null(limits)) return(ls)
   if(!is.null(limits$x)) plt <- plt + xlim(limits$x)
   if(!is.null(limits$y)) plt <- plt + ylim(limits$y)
   return(plt)
+}
+
+#' Adds limits to the plot from the area_boundaries list field
+#' @description for better control, just use regular xlim and ylim functions, this is just a shorthand
+#'
+#' @param obj Navr object with area_boundaries field
+#'
+#' @return plot with added limits
+#' @export
+#'
+#' @examples
+geom_navr_limits <- function(obj){
+  if(is.null(obj$area_boundaries)) return(plt)
+  if(!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
+  if(!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
+  return(ls)
 }
 
 #' Creates geom of a circle to be inserted into the graph
@@ -184,14 +202,13 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
     #fits within a range
   }
   df <- data.frame(time = times, value=values)
-  return(geom_line(data=df, aes(time, value), ...))
+  return(geom_line(data = df, aes(time, value), ...))
 }
 
 
 #' geom to add stat_density2d position heatmap
 #'
-#' @param x x positions
-#' @param y y positions
+#' @param obj navr object
 #' @param bins number of bins in each direction (n parameter in statn_density)
 #' @param ...
 #'
@@ -199,6 +216,7 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
 #' @export
 #'
 #' @examples
-geom_position_heatmap <- function(x, y, bins, ...){
+geom_position_heatmap <- function(obj, bins = 25, ...){
+  df <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
   return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
 }

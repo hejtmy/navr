@@ -22,6 +22,7 @@ test_that("tests plot elements", {
   plt <- create_minimal_plot()
 })
 
+
 test_that("tests custom geoms", {
   plt <- create_minimal_plot()
   expect_silent(plt + geom_navr_backround(paste0(DIR, "/megamap5.png")))

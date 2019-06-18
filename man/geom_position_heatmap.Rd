@@ -4,12 +4,10 @@
 \alias{geom_position_heatmap}
 \title{geom to add stat_density2d position heatmap}
 \usage{
-geom_position_heatmap(x, y, bins, ...)
+geom_position_heatmap(obj, bins = 25, ...)
 }
 \arguments{
-\item{x}{x positions}
-
-\item{y}{y positions}
+\item{obj}{navr object}
 
 \item{bins}{number of bins in each direction (n parameter in statn_density)}
 
