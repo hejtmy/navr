@@ -208,6 +208,21 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
 
 #' geom to add stat_density2d position heatmap
 #'
+#' @param bins number of bins in each direction (n parameter in statn_density)
+#' @param x position x
+#' @param y position y
+#' @param ... other ggpolot arguments
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_position_heatmap <- function(x, y, bins = 25, ...){
+  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
+}
+
+#' geom to add stat_density2d position heatmap
+#'
 #' @param obj navr object
 #' @param bins number of bins in each direction (n parameter in statn_density)
 #' @param ...
@@ -216,7 +231,7 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
 #' @export
 #'
 #' @examples
-geom_position_heatmap <- function(obj, bins = 25, ...){
-  df <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
-  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
+geom_navr_heatmap <- function(obj, bins = 25, ...){
+  return(geom_position_heatmap(obj$data$position_x, obj$data$position_y, bins, ...))
 }
+
