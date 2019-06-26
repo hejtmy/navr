@@ -179,7 +179,6 @@ anim_path <- function(){
 
 }
 
-
 #' Adds timeseries to the given plot
 #'
 #' @param times times on the x axis
