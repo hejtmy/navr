@@ -154,6 +154,6 @@ plot_position_heatmap.navr <- function(obj, bins = 25, ...){
 #' @examples
 plot_add_position_heatmap <- function(plt, obj, bins, ...){
   .Deprecated("geom_position_heatmap")
-  plt <- plt + geom_navr_heatmap(obj$data$position_x, obj$data$position_y, bins)
+  plt <- plt + geom_navr_heatmap(obj, bins)
   return(plt)
 }

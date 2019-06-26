@@ -30,4 +30,5 @@ test_that("tests custom geoms", {
   expect_silent(plt + geom_navr_points(list(start = c(0,0))))
   expect_silent(plt + geom_navr_direction(c(0,0), 180, 5, color = "red"))
   expect_silent(plt + geom_navr_heatmap(navr_object, 10))
+  expect_silent(plt + geom_navr_limits(navr_object))
 })

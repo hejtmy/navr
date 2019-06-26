@@ -152,7 +152,8 @@ plot_add_limits <- function(plt, limits){
 #'
 #' @examples
 geom_navr_limits <- function(obj){
-  if(is.null(obj$area_boundaries)) return(plt)
+  ls <- list()
+  if(is.null(obj$area_boundaries)) return(ls)
   if(!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
   if(!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
   return(ls)
@@ -218,6 +219,7 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
 #'
 #' @examples
 geom_position_heatmap <- function(x, y, bins = 25, ...){
+  df <- data.frame(x=x, y=y)
   return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
 }
 
