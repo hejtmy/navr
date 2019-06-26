@@ -46,7 +46,8 @@ plot_path.navr <- function(obj, ...){
   plt$data <- obj$data[, "timestamp", drop=F]
   plt <- plt + aes(timestamp) # allows for animations later
   #TODO - removes points that have surreal speeds
-  plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
+  plt <- plt + geom_navr_path(obj, ...)
+  plt <- plt + geom_navr_limits(obj)
   return(plt)
 }
 
@@ -65,6 +66,7 @@ animate_path <- function(plt, ...){
   plt <- plt + transition_reveal(plt$data$timestamp)
   return(plt)
 }
+
 
 #' Adds path to the plot data
 #'

@@ -28,10 +28,20 @@ obj <- add_speeds(obj)
 ## Plotting
 PLotting path of the subject
 ```{r}
+plot_path(obj)
+plot_position_heatmap(obj)
+```
+
+## complex plotting
+```{r}
 plt <- plot_path(obj)
-plt
+plt + geom_navr_heatmap(obj, 25, alpha=0.3)
 ```
 
 
+## Animations
 ```{r}
+plt <- plot_path(obj)
+#animate_path(plt)
+```
 ```

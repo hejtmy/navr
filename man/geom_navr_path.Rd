@@ -4,14 +4,14 @@
 \alias{geom_navr_path}
 \title{Geom of plotting navr path}
 \usage{
-geom_navr_path(x, y, ...)
+geom_navr_path(obj, ...)
 }
 \arguments{
+\item{...}{}
+
 \item{x}{vector of positions}
 
 \item{y}{vector of y positions}
-
-\item{...}{}
 }
 \description{
 Geom of plotting navr path

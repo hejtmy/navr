@@ -8,9 +8,9 @@
 #' @export
 #'
 #' @examples
-geom_navr_path <- function(x, y, ...){
-  df_position <- data.frame(position_x = x, position_y = y)
-  return(geom_path(data = df_position, aes(position_x, position_y), ...))
+geom_navr_path <- function(obj, ...){
+  df_position <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
+  return(geom_path(data = df_position, aes(x, y), ...))
 }
 
 #' Adds image to the background of the plot
