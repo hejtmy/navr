@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>NA • navr</title>
+<title>Navr • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,7 +30,7 @@
 
 
 
-<meta property="og:title" content="NA" />
+<meta property="og:title" content="Navr" />
 
 
 
@@ -106,10 +106,27 @@
 <div class="row">
   <div class="contents col-md-9">
     <div class="page-header">
-      <h1>NA</h1>
+      <h1>Navr</h1>
     </div>
 
+<div id="navr" class="section level1">
+
+<p>PAckage to work with positioning and navigation data.</p>
 <p><a href="https://travis-ci.org/hejtmy/navr"><img src="https://travis-ci.org/hejtmy/navr.svg?branch=master" alt="Travis build status"></a> <a href="https://codecov.io/github/hejtmy/navr?branch=master"><img src="https://codecov.io/gh/hejtmy/navr/branch/master/graph/badge.svg" alt="Coverage status"></a></p>
+<div id="description" class="section level2">
+<h2 class="hasAnchor">
+<a href="#description" class="anchor"></a>Description</h2>
+<p>Navr uses variety of processing and plotting functions which are useful in cognitive psychology research focusing on human navigation. It has functions to split and smooth paths, plot pointing data, plot speeds, remove “teleportations” or jittery movement. It has functions to work with independent body and head rotations for VR focused research.</p>
+</div>
+<div id="basics" class="section level2">
+<h2 class="hasAnchor">
+<a href="#basics" class="anchor"></a>Basics</h2>
+<p>Navr builds an S3 <code>navr</code> object which is passed into most functions. Navr objech has a specific structure:</p>
+<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">navr_obj<span class="op">$</span>data <span class="op">:</span><span class="st"> </span>data frame with sepcified <span class="kw">columns</span> (timestamp, position_x, position_y, rotation_x, fps, etc.)</a>
+<a class="sourceLine" id="cb1-2" title="2">navr_obj<span class="op">$</span>area_boundaries &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">y=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">50</span>,<span class="dv">50</span>), <span class="dt">z=</span><span class="ot">NULL</span>)</a></code></pre></div>
+<p>This allows graphing and preprocessing to always work on valid data. Many functions are provided with generic footprint, allowing users to pass also vectors as parameters. For example function <code><a href="reference/calculate_distances.html">calculate_distances(mat_xy)</a></code> can also be called on unprocessed navr object as <code><a href="reference/add_distances.html">add_distances(navr_obj)</a></code></p>
+</div>
+</div>
 
   </div>
 
