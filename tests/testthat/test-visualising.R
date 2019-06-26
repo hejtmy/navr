@@ -32,4 +32,3 @@ test_that("tests custom geoms", {
   expect_silent(plt + geom_navr_heatmap(navr_object, 10))
   expect_silent(plt + geom_navr_limits(navr_object))
 })
-plot_path(navr_object)
