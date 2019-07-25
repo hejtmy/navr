@@ -177,8 +177,22 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
   return(geom_path(data = df_circle, aes(x, y), ...))
 }
 
-anim_path <- function(){
-
+#' Adds timeseries to the given plot from navr object based on given column
+#'
+#' @param obj navobject
+#' @param colname name of the column to be plotted
+#' @param scaling type of scaling to implemnent. "none", "std", "minmax"
+#' @param scale if the values should be scaled to given values
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", scale = c(), ...){
+  times <- obj$data$time_since_start
+  values <- obj$data[[colname]]
+  return(geom_navr_timeseries(times, values, scaling, scale, ...))
 }
 
 #' Adds timeseries to the given plot
@@ -206,6 +220,7 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
   df <- data.frame(time = times, value=values)
   return(geom_line(data = df, aes(time, value), ...))
 }
+
 
 
 #' geom to add stat_density2d position heatmap
