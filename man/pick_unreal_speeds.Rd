@@ -4,7 +4,7 @@
 \alias{pick_unreal_speeds}
 \title{Finds indices of impossible speed values}
 \usage{
-pick_unreal_speeds(obj, cutoff, type = "value")
+pick_unreal_speeds(obj, cutoff, type = "value", ...)
 }
 \arguments{
 \item{cutoff}{value after which we should consider speeds as invalid}

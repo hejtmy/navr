@@ -7,7 +7,7 @@
 #' @export
 #'
 #' @examples
-load_position_data <- function(obj, df){
+load_position_data <- function(obj, df, ...){
   UseMethod("load_position_data")
 }
 #' @export

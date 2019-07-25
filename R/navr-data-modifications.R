@@ -123,7 +123,7 @@ add_speeds.navr <- function(obj){
 #' @export
 #'
 #' @examples
-remove_unreal_speeds <- function(obj, indices, total_recalculate = T){
+remove_unreal_speeds <- function(obj, indices, total_recalculate = T, ...){
   UseMethod("remove_unreal_speeds")
 }
 #' @export

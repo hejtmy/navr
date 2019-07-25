@@ -26,7 +26,7 @@ calculate_speeds <- function(distances, timestamps){
 #' @export
 #'
 #' @examples
-pick_unreal_speeds <- function(obj, cutoff, type="value"){
+pick_unreal_speeds <- function(obj, cutoff, type="value", ...){
   UseMethod('pick_unreal_speeds')
 }
 

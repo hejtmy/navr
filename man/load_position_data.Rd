@@ -4,7 +4,7 @@
 \alias{load_position_data}
 \title{Loads and checks position data into navr object}
 \usage{
-load_position_data(obj, df)
+load_position_data(obj, df, ...)
 }
 \arguments{
 \item{df}{dataframe with data to load. Navr expects particular columns to be present, check documentation on Navr object}

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Euclidian distance between two points — euclid_distance • navr</title>
+<title>Adds arrow pointing from a point in a specified angle — geom_navr_direction • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Euclidian distance between two points — euclid_distance" />
+<meta property="og:title" content="Adds arrow pointing from a point in a specified angle — geom_navr_direction" />
 
-<meta property="og:description" content="Calculates euclidian distance between two points." />
+<meta property="og:description" content="Adds arrow pointing from a point in a specified angle" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -109,39 +109,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Euclidian distance between two points</h1>
+    <h1>Adds arrow pointing from a point in a specified angle</h1>
     
-    <div class="hidden name"><code>euclid_distance.Rd</code></div>
+    <div class="hidden name"><code>geom_navr_direction.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Calculates euclidian distance between two points.</p>
+    <p>Adds arrow pointing from a point in a specified angle</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>euclid_distance</span>(<span class='no'>point1</span>, <span class='no'>point2</span>)</pre>
+    <pre class="usage"><span class='fu'>geom_navr_direction</span>(<span class='no'>position</span>, <span class='no'>angle</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>1</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>point1</th>
-      <td><p>2D vector of X and Y position</p></td>
+      <th>position</th>
+      <td><p>vector 2 X and Y position</p></td>
     </tr>
     <tr>
-      <th>point2</th>
-      <td><p>2D vector of X and Y position</p></td>
+      <th>angle</th>
+      <td><p>numeric angle in degrees (0-360)</p></td>
+    </tr>
+    <tr>
+      <th>length</th>
+      <td><p>length od the arrow to be drawm</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td><p>additional ggplot values</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>numeric or NA if not valid</p>
+    <p>ggplot element</p>
     
 
     <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
-    <pre class="examples"><div class='input'><span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/print'>print</a></span>(<span class='fu'>euclid_distance</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>1</span>,<span class='fl'>1</span>)))</div><div class='output co'>#&gt; [1] 1.414214</div></pre>
+    <pre class="examples"><div class='input'><span class='fu'>geom_navr_direction</span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>,<span class='fl'>0</span>), <span class='fl'>180</span>, <span class='fl'>5</span>, <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"red"</span>)</div><div class='output co'>#&gt; mapping: x = ~x, y = ~y, xend = ~xend, yend = ~yend 
+#&gt; geom_segment: arrow = list(angle = 30, length = 0.25, ends = 2, type = 1), arrow.fill = NULL, lineend = butt, linejoin = round, na.rm = FALSE
+#&gt; stat_identity: na.rm = FALSE
+#&gt; position_identity </div></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>

@@ -4,7 +4,7 @@
 \alias{remove_unreal_speeds}
 \title{Inserts NA values to speed and distance}
 \usage{
-remove_unreal_speeds(obj, indices, total_recalculate = T)
+remove_unreal_speeds(obj, indices, total_recalculate = T, ...)
 }
 \arguments{
 \item{indices}{indices of speeds to clean out}
