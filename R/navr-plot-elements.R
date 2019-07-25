@@ -1,16 +1,18 @@
 #' Geom of plotting navr path
 #'
-#' @param x vector of positions
-#' @param y vector of y positions
 #' @param ...
+#' @param obj
+#' @param add_points
 #'
 #' @return
 #' @export
 #'
 #' @examples
-geom_navr_path <- function(obj, ...){
+geom_navr_path <- function(obj, add_points = F, ...){
   df_position <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
-  return(geom_path(data = df_position, aes(x, y), ...))
+  ls <- list(geom_path(data = df_position, aes(x, y), ...))
+  if(add_points) ls <- c(ls, geom_point(data = df_position, aes(x, y)))
+  return(ls)
 }
 
 #' Adds image to the background of the plot

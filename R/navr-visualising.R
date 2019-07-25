@@ -36,12 +36,13 @@ plot_path <- function(obj, ...){
 #'
 #' @param obj valid navr object
 #' @param ... optional ggplot parameters for the path geom
+#' @param add_points if points should be explicitely noted on the path
 #'
 #' @return ggplot
 #' @export
 #'
 #' @examples
-plot_path.navr <- function(obj, ...){
+plot_path.navr <- function(obj, add_points = F, ...){
   plt <- create_void_plot()
   plt$data <- obj$data[, "timestamp", drop=F]
   plt <- plt + aes(timestamp) # allows for animations later
