@@ -1,40 +1,102 @@
-#' Smooths positions in a data frame
+#' Smooths positions of a given boject
 #'
-#' @param df Data frame to modify
-#' @param col_x name of position of the df column with X variable
-#' @param col_y name of position of the df column with Y variable
-#' @param type median, approx, spline
+#' @param obj
 #'
 #' @return
 #' @export
 #'
 #' @examples
-smooth_positions_df <- function(df, col_x, col_y, type, ...){
-  if(type == "median"){
-    ls <- smooth_positions_df_median(df[, (col_x)], df[, (col_y)], ...)
-  }
-  if(type == "spline"){
-    ls <- smooth_positions_df_spline(df[, (col_x)], df[, (col_y)], ...)
-  }
-  df[, (col_x)] <- ls$x
-  df[, (col_y)] <- ls$y
-  return(df)
+smooth_positions <- function(obj, ...){
+  UseMethod("smooth_positions")
 }
 
-smooth_positions_df_median <- function(x, y, points = 11){
+#' Smooth positions in a navr object
+#'
+#' @param obj navr object
+#'
+#' @param type string: median, approx, spline
+#' @param ....
+#'
+#' @return
+#' @export
+#'
+#' @examples
+smooth_positions.navr <- function(obj, type, ....){
+  if(is.null(ls)) return(NULL)
+  obj$data$position_x <- smooth_vector(obj$data$position_x, type, ...)
+  obj$data$position_y <- smooth_vector(obj$data$position_y, type, ...)
+  return(obj)
+}
+
+#' Smooths speed
+#'
+#' @param obj object to perfrom speed smoothing on
+#' @param type what type of smoothing to perform
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+smooth_speed <- function(obj, type, ...){
+  UseMethod("smooth_speed")
+}
+
+#' Smooths speed vector in the navr object
+#'
+#' @param obj navr object
+#' @param type type of smoothing
+#' @param ... optional parameters for given smoothing, see `smooth_vector` function
+#'
+#' @return modified navr object
+#' @export
+#'
+#' @examples
+smooth_speed.navr <- function(obj, type, ...){
+  obj$data$speed <- smooth_vector(obj$data$speed, type, ...)
+  return(obj)
+}
+
+
+#' Smooths positions of given vector
+#'
+#' @param df Data frame to modify
+#' @param x vector to smooth
+#' @param type median, approx, spline
+#' @param ... optional parameters for the smoothing function (see below)
+#'
+#' @details
+#' median takes parameters (points)
+#'
+#'
+#' @return smoothed vector
+#' @export
+#'
+#' @examples
+smooth_vector <- function(x, type, ...){
+  if(type == "median") {
+    return(smooth_median(x, ...))
+  }
+  if(type == "spline") {
+    return(smooth_spline(x, ...))
+  }
+}
+
+smooth_median <- function(x, points = 11){
+  if(any(is.na(x))){
+    warning("There are NAs in the vector, replacing with last known value")
+    x <- replace_na(x, "last.known")
+  }
   x <- runmed(x, points, endrule = "constant")
-  y <- runmed(y, points, endrule = "constant")
-  return(list(x = x, y = y))
+  return(x)
 }
 
-smooth_positions_df_approx <- function(x, y){
+smooth_approx <- function(x){
   x  <- approx(x)
-  y <- approx(y)
-  return(list(x = x, y = y))
+  return(x)
 }
 
-smooth_positions_df_spline <- function(x, y, spar = NULL, nknots = .nknots.smspl){
+smooth_spline <- function(x, spar = NULL, nknots = .nknots.smspl){
   x <- smooth.spline(x, spar = spar, nknots = nknots)$y
-  y <- smooth.spline(y, spar = spar, nknots = nknots)$y
-  return(list(x = x, y = y))
+  return(x)
 }
