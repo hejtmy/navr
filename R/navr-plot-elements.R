@@ -1,8 +1,8 @@
 #' Geom of plotting navr path
 #'
 #' @param ...
-#' @param obj
-#' @param add_points
+#' @param obj Navr object
+#' @param add_points if points should be explicitely noted on the path
 #'
 #' @return
 #' @export

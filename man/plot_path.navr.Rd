@@ -4,10 +4,12 @@
 \alias{plot_path.navr}
 \title{plots the _x and _X coordinates}
 \usage{
-\method{plot_path}{navr}(obj, ...)
+\method{plot_path}{navr}(obj, add_points = F, ...)
 }
 \arguments{
 \item{obj}{valid navr object}
+
+\item{add_points}{if points should be explicitely noted on the path}
 
 \item{...}{optional ggplot parameters for the path geom}
 }

@@ -47,7 +47,7 @@ plot_path.navr <- function(obj, add_points = F, ...){
   plt$data <- obj$data[, "timestamp", drop=F]
   plt <- plt + aes(timestamp) # allows for animations later
   #TODO - removes points that have surreal speeds
-  plt <- plt + geom_navr_path(obj, ...)
+  plt <- plt + geom_navr_path(obj, add_points, ...)
   plt <- plt + geom_navr_limits(obj)
   return(plt)
 }

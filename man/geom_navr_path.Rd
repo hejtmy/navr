@@ -4,14 +4,12 @@
 \alias{geom_navr_path}
 \title{Geom of plotting navr path}
 \usage{
-geom_navr_path(obj, ...)
+geom_navr_path(obj, add_points = F, ...)
 }
 \arguments{
-\item{...}{}
+\item{obj}{Navr object}
 
-\item{x}{vector of positions}
-
-\item{y}{vector of y positions}
+\item{add_points}{if points should be explicitely noted on the path}
 }
 \description{
 Geom of plotting navr path
