@@ -30,8 +30,9 @@ search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_duration = 0){
   speeds <- get_speeds(obj)
   time_diffs <- get_time_diffs(obj)
-  ls <- search_onsets_speeds_times(speeds, time_diffs, speed_threshold, min_duration, still_speed_threshold,
-                                        still_duration, return_duration)
+  ls <- search_onsets_speeds_times(speeds, time_diffs, speed_threshold,
+                                   min_duration, still_speed_threshold,
+                                   still_duration)
   time_since_start <- get_times_since_start(obj)
   return(list(time_since_start = time_since_start[ls$indices], durations = ls$durations))
 }
@@ -85,15 +86,19 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
     groups <- still_groups
   }
   # if there are in_between groups, we consider as a start the in_between start
+  # Some moving groups have "no" moving before them,  so those start when the is_moving is yes
+  # But some have "in_between". We consider those to have started moving at the start of "in_between"
   if(still_speed_threshold != speed_threshold){
     # logical of length groups
     is_in_between <- df_moving$is_moving[groups-1] == "in_between"
-    i_selected <- sort(c((groups-1)[is_in_between], groups[!is_in_between]))
+    i_selected <- c((groups-1)[is_in_between], groups[!is_in_between])
+    #duration is either sum of "in_between" and "yes" or just "yes" for those blocks hwich are preceded with "no"
+    durations <- c(df_moving$duration[(groups-1)[is_in_between]]+df_moving$duration[(groups)[is_in_between]],
+                   df_moving$duration[(groups)[!is_in_between]])
     i_start <- df_moving$index[i_selected]
-    durations <- df_moving$index[i_selected]
   } else {
     i_start <- df_moving$index[groups]
-    durations <-df_moving$duration[groups]
+    durations <- df_moving$duration[groups]
   }
   return(list(indices = i_start, durations = durations))
 }
