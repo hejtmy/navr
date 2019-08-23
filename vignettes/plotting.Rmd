@@ -42,5 +42,5 @@ plt + geom_navr_heatmap(obj, 25, alpha=0.3)
 ## Animations
 ```{r}
 plt <- plot_path(obj)
-animate_path(plt)
+#animate_path(plt)
 ```
