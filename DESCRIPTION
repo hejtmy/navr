@@ -20,6 +20,5 @@ Imports:
     grid,
     png,
     jpeg,
-    gganimate,
-    gifski
+    gganimate
 VignetteBuilder: knitr

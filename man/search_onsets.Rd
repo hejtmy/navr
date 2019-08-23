@@ -10,7 +10,7 @@ search_onsets(obj, speed_threshold, min_duration, ...)
 \item{...}{}
 }
 \value{
-time since start of each event happening
+list with times (time since start) of onset and durations of movement
 }
 \description{
 Searches for times when the movement onset started

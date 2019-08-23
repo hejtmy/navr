@@ -5,8 +5,7 @@
 \title{Searches for movement onsets and returns time since start for each event}
 \usage{
 \method{search_onsets}{navr}(obj, speed_threshold, min_duration = 0,
-  still_speed_threshold = speed_threshold, still_duration = 0,
-  return_duration = F)
+  still_speed_threshold = speed_threshold, still_duration = 0)
 }
 \arguments{
 \item{obj}{navr object with calculated speeds}
@@ -20,7 +19,7 @@
 \item{still_duration}{how long before the onset should hte person be still in seconds. Default 0}
 }
 \value{
-list with times (time since start) and durations of speed
+list with times (time since start) of onset and durations of movement
 }
 \description{
 Searches for movement onsets and returns time since start for each event

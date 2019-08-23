@@ -5,7 +5,7 @@
 #' @param min_duration
 #' @param ...
 #'
-#' @return time since start of each event happening
+#' @return list with times (time since start) of onset and durations of movement
 #' @export
 #'
 #' @examples
@@ -21,23 +21,57 @@ search_onsets <- function(obj, speed_threshold, min_duration, ...){
 #' @param still_speed_threshold what is considered to be the still speed threshold. defualts to `speed_threshold``
 #' @param still_duration how long before the onset should hte person be still in seconds. Default 0
 #'
-#' @return list with times (time since start) and durations of speed
+#' @return list with times (time since start) of onset and durations of movement
 #' @export
 #'
 #' @examples
 search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_speed_threshold = speed_threshold,
-                               still_duration = 0, return_duration = F){
+                               still_duration = 0){
   speeds <- get_speeds(obj)
   time_diffs <- get_time_diffs(obj)
   ls <- search_onsets_speeds_times(speeds, time_diffs, speed_threshold, min_duration, still_speed_threshold,
                                         still_duration, return_duration)
   time_since_start <- get_times_since_start(obj)
-  return(list(time_since_start = time_since_start[ls$indices], durations=ls$durations))
+  return(list(time_since_start = time_since_start[ls$indices], durations = ls$durations))
+}
+
+
+#' Searches for times when there is no movement
+#'
+#' @param obj
+#' @param speed_threshold
+#' @param min_duration
+#' @param ...
+#'
+#' @return  list with times (time since start) and durations of stillness
+#' @export
+#'
+#' @examples
+search_stops <- function(obj, speed_threshold, min_duration, ...){
+  UseMethod("search_stops")
+}
+
+#' Searches for movement stops and returns time since start for each event
+#'
+#' @param obj navr object with calculated speeds
+#' @param speed_threshold what is the speed considered to be the moving speed
+#' @param min_duration in secouds how long should the person be still
+#'
+#' @return list with times (time since start) and durations of stillness
+#' @export
+#'
+#' @examples
+search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
+  speeds <- get_speeds(obj)
+  time_diffs <- get_time_diffs(obj)
+  ls <- search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
+  time_since_start <- get_times_since_start(obj)
+  return(list(time_since_start = time_since_start[ls$indices], durations = ls$durations))
 }
 
 search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration,
-                                 still_speed_threshold, still_duration, return_duration){
+                                 still_speed_threshold, still_duration){
   df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, still_speed_threshold)
   groups <- df_moving[df_moving$duration > min_duration & df_moving$is_moving == "yes", "group"]
   if(still_duration > 0){ #could be dropped, but we don't wanna run the for loop unless we need to
@@ -61,6 +95,14 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
     i_start <- df_moving$index[groups]
     durations <-df_moving$duration[groups]
   }
+  return(list(indices = i_start, durations = durations))
+}
+
+search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration){
+  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, speed_threshold)
+  groups <- df_moving[df_moving$duration > min_duration & df_moving$is_moving == "no", "group"]
+  i_start <- df_moving$index[groups]
+  durations <- df_moving$duration[groups]
   return(list(indices = i_start, durations = durations))
 }
 
