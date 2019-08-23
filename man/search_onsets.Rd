@@ -4,7 +4,7 @@
 \alias{search_onsets}
 \title{Searches for times when the movement onset started}
 \usage{
-search_onsets(obj, speed_threshold, min_duration, return_duration, ...)
+search_onsets(obj, speed_threshold, min_duration, ...)
 }
 \arguments{
 \item{...}{}

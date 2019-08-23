@@ -1,0 +1,35 @@
+---
+title: "onset-search"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{onset-search}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(navr)
+obj <- navr_object_preprocessed
+```
+
+## Speed clearning
+Firstly we clear the speeds of any unreal ones
+```{r}
+obj <- remove_unreal_speeds(obj, type = "std", cutoff = 3, total_recalculate = T)
+plot_speed(obj) + xlim(100,150)
+```
+And then we smooth it
+```{r}
+obj <- smooth_speed(obj, type = "median", points = 11)
+plot_speed(obj) + xlim(100, 150) 
+```
+
+## Onset search
+

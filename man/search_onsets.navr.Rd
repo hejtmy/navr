@@ -5,8 +5,8 @@
 \title{Title}
 \usage{
 \method{search_onsets}{navr}(obj, speed_threshold, min_duration = 0,
-  return_duration = F, still_speed_threshold = speed_threshold,
-  still_duration = 0)
+  still_speed_threshold = speed_threshold, still_duration = 0,
+  return_duration = F)
 }
 \arguments{
 \item{obj}{navr object with calculated speeds}
