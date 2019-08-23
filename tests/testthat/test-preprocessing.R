@@ -51,10 +51,3 @@ test_that("tests removal of unreal speeds", {
   expect_equal(obj_speed, obj_speed_2)
 })
 
-test_that("testing search onset", {
-
-})
-
-test_that("testing search stops", {
-
-})
