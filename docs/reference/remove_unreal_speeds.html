@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Inserts NA values to speed and distance — remove_unreal_speeds • navr</title>
+<title>Shorthand for picking speeds and then recalculating object — remove_unreal_speeds • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Inserts NA values to speed and distance — remove_unreal_speeds" />
+<meta property="og:title" content="Shorthand for picking speeds and then recalculating object — remove_unreal_speeds" />
 
-<meta property="og:description" content="Inserts NA values to speed and distance" />
+<meta property="og:description" content="Shorthand for picking speeds and then recalculating object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -89,6 +89,9 @@
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
     <li>
+      <a href="../articles/onset-search.html">onset-search</a>
+    </li>
+    <li>
       <a href="../articles/plotting.html">Plotting functions</a>
     </li>
   </ul>
@@ -109,35 +112,27 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Inserts NA values to speed and distance</h1>
+    <h1>Shorthand for picking speeds and then recalculating object</h1>
     
     <div class="hidden name"><code>remove_unreal_speeds.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Inserts NA values to speed and distance</p>
+    <p>Shorthand for picking speeds and then recalculating object</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>remove_unreal_speeds</span>(<span class='no'>obj</span>, <span class='no'>indices</span>, <span class='kw'>total_recalculate</span> <span class='kw'>=</span> <span class='no'>T</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>remove_unreal_speeds</span>(<span class='no'>obj</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>indices</th>
-      <td><p>indices of speeds to clean out</p></td>
-    </tr>
-    <tr>
-      <th>total_recalculate</th>
-      <td><p>if true, recalculates total_distance column to reflect removed distances</p></td>
+      <th>...</th>
+      <td></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>navr object with NA values in appropriate places</p>
     
 
   </div>
@@ -145,9 +140,7 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

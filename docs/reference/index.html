@@ -86,6 +86,9 @@
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
     <li>
+      <a href="../articles/onset-search.html">onset-search</a>
+    </li>
+    <li>
       <a href="../articles/plotting.html">Plotting functions</a>
     </li>
   </ul>
@@ -325,6 +328,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="geom_navr_timeseries_events.html">geom_navr_timeseries_events()</a></code> </p>
+        </td>
+        <td><p>Draws vectical lines at times of given events</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="geom_position_heatmap.html">geom_position_heatmap()</a></code> </p>
         </td>
         <td><p>geom to add stat_density2d position heatmap</p></td>
@@ -337,27 +346,33 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="get_speeds.html">get_speeds()</a></code> </p>
+        </td>
+        <td><p>Gets speed column from the object</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="get_times_since_start.navr.html">get_times_since_start(<i>&lt;navr&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Returns time since start column from the navr object if it has one</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_times_since_start.html">get_times_since_start()</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Return time since start form the passed object</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_time_diffs.navr.html">get_time_diffs(<i>&lt;navr&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Returns time_diffs column from the data if it has been caluclated</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="get_time_diffs.html">get_time_diffs()</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Return time diffs column from the object</p></td>
       </tr><tr>
         
         <td>
@@ -481,9 +496,15 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="remove_unreal_speeds.navr.html">remove_unreal_speeds(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="remove_unreal_speeds.html">remove_unreal_speeds()</a></code> </p>
         </td>
-        <td><p>Inserts NA values to speed and distance</p></td>
+        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
       </tr><tr>
         
         <td>
@@ -502,6 +523,18 @@
           <p><code><a href="rolling_sum.html">rolling_sum()</a></code> </p>
         </td>
         <td><p>Calculates rolling sum of a vector across N points</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_onsets.navr.html">search_onsets(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Searches for movement onsets and returns time since start for each event</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_onsets.html">search_onsets()</a></code> </p>
+        </td>
+        <td><p>Searches for times when the movement onset started</p></td>
       </tr><tr>
         
         <td>

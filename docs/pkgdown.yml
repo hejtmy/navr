@@ -3,5 +3,6 @@ pkgdown: 1.3.0
 pkgdown_sha: ~
 articles:
   loading-preprocessing: loading-preprocessing.html
+  onset-search: onset-search.html
   plotting: plotting.html
 

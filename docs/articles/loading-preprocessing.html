@@ -56,6 +56,9 @@
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
     <li>
+      <a href="../articles/onset-search.html">onset-search</a>
+    </li>
+    <li>
       <a href="../articles/plotting.html">Plotting functions</a>
     </li>
   </ul>
@@ -76,7 +79,7 @@
       <h1>Loading and preprocessing</h1>
                         <h4 class="author">Lukáš ‘hejtmy’ Hejtmánek</h4>
             
-            <h4 class="date">2019-07-26</h4>
+            <h4 class="date">2019-08-23</h4>
       
       
       <div class="hidden name"><code>loading-preprocessing.Rmd</code></div>
@@ -104,7 +107,7 @@
 <a class="sourceLine" id="cb3-2" title="2">i_speeds &lt;-<span class="st"> </span><span class="kw"><a href="../reference/pick_unreal_speeds.html">pick_unreal_speeds</a></span>(obj, <span class="dv">3</span>, <span class="st">"std"</span>)</a>
 <a class="sourceLine" id="cb3-3" title="3"></a>
 <a class="sourceLine" id="cb3-4" title="4"><span class="co">#this function removes given speed AND distance measurements and recalculates total distance</span></a>
-<a class="sourceLine" id="cb3-5" title="5">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/remove_unreal_speeds.html">remove_unreal_speeds</a></span>(obj, i_speeds, <span class="dt">total_recalculate =</span> T)</a></code></pre></div>
+<a class="sourceLine" id="cb3-5" title="5">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/remove_unreal_speeds.html">remove_unreal_speeds</a></span>(obj, <span class="dt">indices =</span> i_speeds, <span class="dt">total_recalculate =</span> T)</a></code></pre></div>
 </div>
   </div>
 
