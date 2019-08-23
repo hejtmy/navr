@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-onsets.R
 \name{search_onsets.navr}
 \alias{search_onsets.navr}
-\title{Title}
+\title{Searches for movement onsets and returns time since start for each event}
 \usage{
 \method{search_onsets}{navr}(obj, speed_threshold, min_duration = 0,
   still_speed_threshold = speed_threshold, still_duration = 0,
@@ -11,8 +11,17 @@
 \arguments{
 \item{obj}{navr object with calculated speeds}
 
-\item{still_duration}{}
+\item{speed_threshold}{what is the speed considered to be the moving speed}
+
+\item{min_duration}{in secouds how long should the person be moving}
+
+\item{still_speed_threshold}{what is considered to be the still speed threshold. defualts to `speed_threshold``}
+
+\item{still_duration}{how long before the onset should hte person be still in seconds. Default 0}
+}
+\value{
+list with times (time since start) and durations of speed
 }
 \description{
-Title
+Searches for movement onsets and returns time since start for each event
 }

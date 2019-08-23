@@ -5,7 +5,7 @@
 #' @param min_duration
 #' @param ...
 #'
-#' @return
+#' @return time since start of each event happening
 #' @export
 #'
 #' @examples
@@ -13,16 +13,15 @@ search_onsets <- function(obj, speed_threshold, min_duration, ...){
   UseMethod("search_onsets")
 }
 
-#' Title
+#' Searches for movement onsets and returns time since start for each event
 #'
 #' @param obj navr object with calculated speeds
-#' @param speed_threshold
-#' @param min_duration
-#' @param return_duration
-#' @param still_speed_threshold
-#' @param still_duration
+#' @param speed_threshold what is the speed considered to be the moving speed
+#' @param min_duration in secouds how long should the person be moving
+#' @param still_speed_threshold what is considered to be the still speed threshold. defualts to `speed_threshold``
+#' @param still_duration how long before the onset should hte person be still in seconds. Default 0
 #'
-#' @return
+#' @return list with times (time since start) and durations of speed
 #' @export
 #'
 #' @examples
@@ -31,14 +30,15 @@ search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_duration = 0, return_duration = F){
   speeds <- get_speeds(obj)
   time_diffs <- get_time_diffs(obj)
-  indices <- search_onsets_speeds_times(speeds, times, speed_threshold, min_duration, still_speed_threshold,
+  ls <- search_onsets_speeds_times(speeds, time_diffs, speed_threshold, min_duration, still_speed_threshold,
                                         still_duration, return_duration)
-  return(obj$data$timestamp[indices])
+  time_since_start <- get_times_since_start(obj)
+  return(list(time_since_start = time_since_start[ls$indices], durations=ls$durations))
 }
 
 search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration,
                                  still_speed_threshold, still_duration, return_duration){
-  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshod, still_speed_threshold)
+  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, still_speed_threshold)
   groups <- df_moving[df_moving$duration > min_duration & df_moving$is_moving == "yes", "group"]
   if(still_duration > 0){ #could be dropped, but we don't wanna run the for loop unless we need to
     still_groups <- integer(0)
@@ -51,18 +51,20 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
     groups <- still_groups
   }
   # if there are in_between groups, we consider as a start the in_between start
-  if(still_speed_threshold != speed_threshod){
+  if(still_speed_threshold != speed_threshold){
     # logical of length groups
     is_in_between <- df_moving$is_moving[groups-1] == "in_between"
     i_selected <- sort(c((groups-1)[is_in_between], groups[!is_in_between]))
     i_start <- df_moving$index[i_selected]
+    durations <- df_moving$index[i_selected]
   } else {
     i_start <- df_moving$index[groups]
+    durations <-df_moving$duration[groups]
   }
-  return(i_start)
+  return(list(indices = i_start, durations = durations))
 }
 
-calculate_is_moving_table <- function(speeds, time_diffs, speed_threshod, still_speed_threshold){
+calculate_is_moving_table <- function(speeds, time_diffs, speed_threshold, still_speed_threshold){
   df <- data.frame(speed = speeds, time_diff = time_diffs)
   df$is_moving <- "in_between"
   df$is_moving[df$speed >= speed_threshold] <- "yes"
