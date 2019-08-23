@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-generics-getting.R
 \name{get_time_diffs.navr}
 \alias{get_time_diffs.navr}
-\title{Title}
+\title{Returns time_diffs column from the data if it has been caluclated}
 \usage{
 \method{get_time_diffs}{navr}(obj)
 }
@@ -10,5 +10,5 @@
 \item{obj}{Navr Object}
 }
 \description{
-Title
+Returns time_diffs column from the data if it has been caluclated
 }

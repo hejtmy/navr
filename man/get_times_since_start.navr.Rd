@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-generics-getting.R
 \name{get_times_since_start.navr}
 \alias{get_times_since_start.navr}
-\title{Title}
+\title{Returns time since start column from the navr object if it has one}
 \usage{
 \method{get_times_since_start}{navr}(obj)
 }
@@ -10,5 +10,5 @@
 \item{obj}{Navr Object}
 }
 \description{
-Title
+Returns time since start column from the navr object if it has one
 }

@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-generics-getting.R
 \name{get_time_diffs}
 \alias{get_time_diffs}
-\title{Title}
+\title{Return time diffs column from the object}
 \usage{
 get_time_diffs(obj, ...)
 }
@@ -10,5 +10,5 @@ get_time_diffs(obj, ...)
 \item{obj}{}
 }
 \description{
-Title
+Return time diffs column from the object
 }

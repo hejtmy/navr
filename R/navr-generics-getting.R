@@ -25,7 +25,7 @@ filter_times.navr <- function(obj, times, zero_based = F){
   return(obj)
 }
 
-#' Title
+#' Return time since start form the passed object
 #'
 #' @param obj
 #'
@@ -34,7 +34,7 @@ filter_times.navr <- function(obj, times, zero_based = F){
 get_times_since_start <- function(obj, ...){
   UseMethod('get_times_since_start')
 }
-#' Title
+#' Returns time since start column from the navr object if it has one
 #'
 #' @param obj Navr Object
 #'
@@ -47,7 +47,7 @@ get_times_since_start.navr <- function(obj){
   stop("The object doesn't have time_since_start column. Have you ran *add_times_since_start* on the object?")
 }
 
-#' Title
+#' Return time diffs column from the object
 #'
 #' @param obj
 #'
@@ -57,7 +57,7 @@ get_time_diffs <- function(obj, ...){
   UseMethod('get_time_diffs')
 }
 
-#' Title
+#' Returns time_diffs column from the data if it has been caluclated
 #'
 #' @param obj Navr Object
 #'
@@ -79,9 +79,24 @@ get_time_diffs.navr <- function(obj){
 get_distances <- function(obj, ...){
   UseMethod("get_distances")
 }
-#'
-#' @examples
+#' @export
 get_distances.navr <- function(obj){
   if(!is.null(obj$data$distance)) return(obj$data$distance)
   stop("The object doesn't have distances column. Have you ran *add_distances* on the object?")
+}
+
+#' Gets speed column from the object
+#' @param obj navr object with calculated speeds
+#'
+#' @param ...
+#'
+#' @export
+get_speeds <- function(obj, ...){
+  UseMethod("get_speeds")
+}
+
+#' @export
+get_speeds.navr <- function(obj){
+  if(!is.null(obj$data$speed)) return(obj$data$speed)
+  stop("The object doesn't have speed column. Have you ran *add_speeds* on the object?")
 }

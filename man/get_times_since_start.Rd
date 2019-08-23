@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-generics-getting.R
 \name{get_times_since_start}
 \alias{get_times_since_start}
-\title{Title}
+\title{Return time since start form the passed object}
 \usage{
 get_times_since_start(obj, ...)
 }
@@ -10,5 +10,5 @@ get_times_since_start(obj, ...)
 \item{obj}{}
 }
 \description{
-Title
+Return time since start form the passed object
 }
