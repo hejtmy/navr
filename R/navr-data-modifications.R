@@ -113,22 +113,51 @@ add_speeds.navr <- function(obj){
   return(obj)
 }
 
-#' Inserts NA values to speed and distance
+#' Shorthand for picking speeds and then recalculating object
 #'
 #' @param obj
-#' @param indices indices of speeds to clean out
-#' @param total_recalculate if true, recalculates total_distance column to reflect removed distances
+#' @param ...
 #'
-#' @return navr object with NA values in appropriate places
+#' @return
 #' @export
 #'
 #' @examples
-remove_unreal_speeds <- function(obj, indices, total_recalculate = T, ...){
+remove_unreal_speeds <- function(obj, ...){
   UseMethod("remove_unreal_speeds")
 }
+
+#' Shorthand for picking speeds and then recalculating object
+#'
+#' @description Picks unreal speeds in the same way as `pick_unreal_speed` but then removes
+#' given lines form the data, replaces them as per replacement parameter and returnes cleaned
+#' object
+#' @param cutoff cutoff value. see `pick_unreal_speeds`
+#' @param type what type of cutoof. see `pick_unreal_speeds`
+#' @param remove_distance shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
+#' jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
+#' by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. *Defaults* to TRUE
+#' @param total_recalculate if true, recalculates total_distance column to reflect removed distances, *defaults* to TRUE
+#' @param replacement what to replace  unreal speeds with. *Defaults* to NA
+#' @param indices indices of speeds to clean out in case they were obtained separately.
+#' If empty, `type`, `cutoff` need to be defined and `pick_unreal_speeds` is called
+#'
 #' @export
-remove_unreal_speeds.navr <- function(obj, indices, total_recalculate = T){
-  obj$data[indices, c("distance", "speed")] <- c(NA, NA)
-  obj$data$distance_total <- calculate_total_distance(obj$data$distance)
+remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
+                                      remove_distance = T, total_recalculate = T,
+                                      indices = c(), replacement = NA){
+  if(!("speed" %in% colnames(obj$data))){
+    warning("The object doesn't have speed column. You need to add it first using add_speeds function")
+    return(obj)
+  }
+  if(length(indices) == 0){
+    if(any(is.null(cutoff), is.null(type))){
+      stop("Indices not provided and cutoff and type are not defined. Cannot pick_unreal_speeds.")
+    }
+    indices <- pick_unreal_speeds(obj, cutoff, type)
+    if(is.null(indices)) return(obj)
+  }
+  obj$data[indices, "speed"] <- replacement
+  if(remove_distance) obj$data[indices, "distance"] <- NA
+  if(total_recalculate) obj$data$distance_total <- calculate_total_distance(obj$data$distance)
   return(obj)
 }

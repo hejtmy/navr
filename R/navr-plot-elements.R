@@ -217,11 +217,25 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
   if(length(scale == 2)){
     #fits within a range
   }
-  df <- data.frame(time = times, value=values)
+  df <- data.frame(time = times, value = values)
   return(geom_line(data = df, aes(time, value), ...))
 }
 
-
+#' Draws vectical lines at times of given events
+#'
+#' @param event_times times of events, need to correspond to the X axis
+#'
+#' @return list if geom_vline
+#' @export
+#'
+#' @examples
+geom_navr_timeseries_events <- function(event_times, ...){
+  ls <- list()
+  for(time in event_times){
+    ls <- c(ls, geom_vline(xintercept = time, ...))
+  }
+  return(ls)
+}
 
 #' geom to add stat_density2d position heatmap
 #'
