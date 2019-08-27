@@ -17,7 +17,6 @@ Suggests:
     covr
 Imports:
     ggplot2,
-    grid,
     png,
     jpeg,
     gganimate
