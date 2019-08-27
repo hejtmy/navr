@@ -18,6 +18,7 @@ Suggests:
     rmarkdown,
     covr
 Imports:
+    grid,
     png,
     jpeg,
     gganimate

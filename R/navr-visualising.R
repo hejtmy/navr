@@ -4,7 +4,7 @@
 #'
 #' @examples
 create_void_plot <- function(){
-  plt <- ggplot2::ggplot()
+  plt <- ggplot()
   plt <- plt + theme_void()
   return(plt)
 }
@@ -14,7 +14,7 @@ create_void_plot <- function(){
 #' @return ggplot blank plot
 #' @examples
 create_minimal_plot <- function(){
-  plt <- ggplot2::ggplot()
+  plt <- ggplot()
   plt <- plt + theme_minimal()
   return(plt)
 }

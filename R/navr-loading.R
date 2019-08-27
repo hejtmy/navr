@@ -77,9 +77,6 @@ prepare_column_names <- function(df){
 #' @param new_column new column name
 #'
 #' @return modified dataframe
-#' @export
-#'
-#' @examples
 rename_column <- function(df, old_column, new_column){
   colnames(df)[colnames(df)==old_column] <- new_column
   return(df)
