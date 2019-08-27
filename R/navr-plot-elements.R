@@ -15,24 +15,6 @@ geom_navr_path <- function(obj, add_points = F, ...){
   return(ls)
 }
 
-#' Adds image to the background of the plot
-#'
-#' @param plt existing plot
-#' @param image_path path the png image
-#' @param xlim places the image on the background
-#' @param ylim
-#'
-#' @return
-#' @export
-#' @import ggplot2 png jpeg grid
-#'
-#' @examples
-plot_add_background <- function(plt, image_path, xlim = NULL, ylim = NULL){
-  .Deprecated("geom_navr_background")
-  plt <- plt + geom_navr_backround(image_path, xlim, ylim)
-  return(plt)
-}
-
 #' GGplot geom to add custom PNG background to the plot
 #'
 #' @param image_path path the png image
@@ -52,22 +34,6 @@ geom_navr_backround <- function(image_path, xlim = NULL, ylim = NULL){
   } else {
     return(annotation_custom(rast))
   }
-}
-
-#' Adds specified points to the given plot
-#'
-#' @param plt previous ggplot
-#' @param ... ggplot additional params
-#' @param ls list with XY vectors. eg. (list(start = c(0, 0), end = C(10, 5)))
-#'
-#' @import ggplot2
-#' @return modified plot
-#'
-#' @export
-plot_add_points <- function(plt, ls, ...){
-  .Deprecated("geom_navr_points")
-  plt <- plt + geom_navr_points(ls, ...)
-  return(plt)
 }
 
 #' GGplot geom to add specified points to the given plot
@@ -94,21 +60,6 @@ geom_navr_points <- function(ls, ...){
 
 #' Adds arrow pointing from a point in a specified angle
 #'
-#' @param position data.frame. Needs to have columns x, y, angle, length, type
-#' @param plt PLot to which to add the arrow
-#' @return built ggplot2
-#'
-#' @import ggplot2
-#' @export
-#' @examples
-plot_add_direction <- function(plt, position, angle, len = 1, ...){
-  .Deprecated("geom_navr_direction")
-  plt <- plt + geom_navr_direction(position, angle, len)
-  return(plt)
-}
-
-#' Adds arrow pointing from a point in a specified angle
-#'
 #' @param position vector 2 X and Y position
 #' @param angle numeric angle in degrees (0-360)
 #' @param length length od the arrow to be drawm
@@ -124,24 +75,6 @@ geom_navr_direction <- function(position, angle, length = 1, ...){
   return(geom_segment(data = arrow_line,
                             aes(x = x, y = y, xend = xend, yend = yend),
                             arrow = ARROW_DEF, ... ))
-}
-
-#' Checks if object has map limits variable and adds plot limits if so
-#'
-#' @param plt existing plot
-#' @param limits list with x, y touples
-#'
-#' @return ggplot with added limits
-#' @export
-#'
-#' @examples
-plot_add_limits <- function(plt, limits){
-  .Deprecated("use geom_navr_limits")
-  ls <- list()
-  if(is.null(limits)) return(ls)
-  if(!is.null(limits$x)) plt <- plt + xlim(limits$x)
-  if(!is.null(limits$y)) plt <- plt + ylim(limits$y)
-  return(plt)
 }
 
 #' Adds limits to the plot from the area_boundaries list field

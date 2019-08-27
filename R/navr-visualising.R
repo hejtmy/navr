@@ -68,23 +68,6 @@ animate_path <- function(plt, ...){
   return(plt)
 }
 
-
-#' Adds path to the plot data
-#'
-#' @param obj navr object to which
-#' @param plt
-#'
-#' @return
-#' @import ggplot2
-#' @export
-#'
-#' @examples
-plot_add_path <- function(plt, obj, ...){
-  .Deprecated("geom_navr_path")
-  plt <- plt + geom_navr_path(obj$data$position_x, obj$data$position_y, ...)
-  return(plt)
-}
-
 #' PLots speed values in time
 #'
 #' @param obj
@@ -143,20 +126,3 @@ plot_position_heatmap.navr <- function(obj, bins = 25, ...){
   return(plt)
 }
 
-# https://stackoverflow.com/questions/48282989/show-only-high-density-areas-with-ggplot2s-stat-density-2d
-#' PLots heatmap using stat_density2d
-#'
-#' @param plt plot to which to add
-#' @param bins number of bins in each direction (n parameter in statn_density)
-#' @param ...
-#' @param obj navr object which to plot
-#'
-#' @return
-#' @export
-#'
-#' @examples
-plot_add_position_heatmap <- function(plt, obj, bins, ...){
-  .Deprecated("geom_position_heatmap")
-  plt <- plt + geom_navr_heatmap(obj, bins)
-  return(plt)
-}
