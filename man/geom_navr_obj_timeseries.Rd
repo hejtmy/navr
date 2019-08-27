@@ -8,7 +8,7 @@ geom_navr_obj_timeseries(obj, colname, scaling = "none", scale = c(),
   ...)
 }
 \arguments{
-\item{obj}{navobject}
+\item{obj}{NavrObject}
 
 \item{colname}{name of the column to be plotted}
 

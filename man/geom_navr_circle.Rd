@@ -7,7 +7,7 @@
 geom_navr_circle(center, radius, precision = 100, ...)
 }
 \arguments{
-\item{center}{circle center as a 2vector c(0,0)}
+\item{center}{circle center as a numeric(2) *default*: c(0,0)}
 
 \item{radius}{circle radius}
 

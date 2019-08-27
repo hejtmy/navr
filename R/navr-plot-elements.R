@@ -1,7 +1,7 @@
 #' Geom of plotting navr path
 #'
 #' @param ...
-#' @param obj Navr object
+#' @param obj NavrObject
 #' @param add_points if points should be explicitely noted on the path
 #'
 #' @return
@@ -96,7 +96,7 @@ geom_navr_limits <- function(obj){
 
 #' Creates geom of a circle to be inserted into the graph
 #'
-#' @param center circle center as a 2vector c(0,0)
+#' @param center circle center as a numeric(2) *default*: c(0,0)
 #' @param radius circle radius
 #' @param precision how many points will make the circle
 #' @param ...
@@ -112,7 +112,7 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 
 #' Adds timeseries to the given plot from navr object based on given column
 #'
-#' @param obj navobject
+#' @param obj NavrObject
 #' @param colname name of the column to be plotted
 #' @param scaling type of scaling to implemnent. "none", "std", "minmax"
 #' @param scale if the values should be scaled to given values

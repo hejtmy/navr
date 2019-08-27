@@ -55,10 +55,7 @@ euclid_distance_between_rows <- function(points){
 #' @param replacement: "last.known", "number"
 #' @param ...
 #'
-#' @return
-#' @export
-#'
-#' @examples
+#' @noRd
 replace_na <- function(vec, replacement = "last.known", ...){
   # neat hack from https://stackoverflow.com/questions/7735647/replacing-nas-with-latest-non-na-value
   if(replacement == "last.known"){
@@ -69,7 +66,6 @@ replace_na <- function(vec, replacement = "last.known", ...){
     return(vec)
   }
 }
-
 
 has_column <- function(df, column_name){
   return(column_name %in% colnames(df))

@@ -60,9 +60,7 @@ is_navr_data <- function(df){
 #' @param df dataframe
 #'
 #' @return modified dataframe
-#' @export
-#'
-#' @examples
+#' @noRd
 prepare_column_names <- function(df){
   df <- rename_column(df, "Time", "timestamp")
   new_names <- tolower(gsub("[.]", "_", colnames(df))) #replaces . with _

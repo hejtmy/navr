@@ -7,7 +7,7 @@
 geom_navr_path(obj, add_points = F, ...)
 }
 \arguments{
-\item{obj}{Navr object}
+\item{obj}{NavrObject}
 
 \item{add_points}{if points should be explicitely noted on the path}
 }
