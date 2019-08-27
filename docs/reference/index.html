@@ -123,8 +123,34 @@
     <tbody>
       <tr>
         <th colspan="2">
-          <h2 id="section-all-functions" class="hasAnchor"><a href="#section-all-functions" class="anchor"></a>All functions</h2>
-          <p class="section-desc"></p>
+          <h2 id="section-objects" class="hasAnchor"><a href="#section-objects" class="anchor"></a>Objects</h2>
+          <p class="section-desc"><p>Definitions of objects</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="NavrObject.html">NavrObject()</a></code> </p>
+        </td>
+        <td><p>Navr Object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="load_position_data.html">load_position_data()</a></code> </p>
+        </td>
+        <td><p>Loads and checks position data into navr object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="is_navr_data.html">is_navr_data()</a></code> </p>
+        </td>
+        <td><p>Checks if the data are valid</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-preprocessing" class="hasAnchor"><a href="#section-preprocessing" class="anchor"></a>Preprocessing</h2>
+          <p class="section-desc"><p>Function to preprocess navr object. Adding time and angle columns, smoothing speeds etc.</p></p>
         </th>
       </tr>
       <tr>
@@ -133,12 +159,6 @@
           <p><code><a href="add_angle_differences.html">add_angle_differences()</a></code> </p>
         </td>
         <td><p>Adds extra diff column to each column that has "rotation" in its name</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_area_boundaries.html">add_area_boundaries()</a></code> </p>
-        </td>
-        <td><p>Validates and adds area boudaries</p></td>
       </tr><tr>
         
         <td>
@@ -178,69 +198,191 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="angle_from_positions.html">angle_from_positions()</a></code> </p>
+          <p><code><a href="add_area_boundaries.html">add_area_boundaries()</a></code> </p>
         </td>
-        <td><p>Calculates angle from two 2d positions</p></td>
+        <td><p>Validates and adds area boudaries</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="angle_to_180.html">angle_to_180()</a></code> </p>
+          <p><code><a href="pick_unreal_speeds.html">pick_unreal_speeds()</a></code> </p>
         </td>
-        <td><p>Converts angle to -180 to 180 difference</p></td>
+        <td><p>Finds indices of impossible speed values</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="angle_to_360.html">angle_to_360()</a></code> </p>
+          <p><code><a href="remove_unreal_speeds.navr.html">remove_unreal_speeds(<i>&lt;navr&gt;</i>)</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
       </tr><tr>
         
         <td>
-          <p><code><a href="angle_to_radian.html">angle_to_radian()</a></code> </p>
+          <p><code><a href="remove_unreal_speeds.html">remove_unreal_speeds()</a></code> </p>
         </td>
-        <td><p>Converts angle to radian</p></td>
+        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
       </tr><tr>
+        
+        <td>
+          <p><code><a href="smooth_positions.navr.html">smooth_positions(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Smooth positions in a navr object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="smooth_positions.html">smooth_positions()</a></code> </p>
+        </td>
+        <td><p>Smooths positions of a given boject</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="smooth_speed.navr.html">smooth_speed(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Smooths speed vector in the navr object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="smooth_speed.html">smooth_speed()</a></code> </p>
+        </td>
+        <td><p>Smooths speed</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-getters" class="hasAnchor"><a href="#section-getters" class="anchor"></a>Getters</h2>
+          <p class="section-desc"><p>Function to access navr object</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="filter_times.html">filter_times()</a></code> </p>
+        </td>
+        <td><p>Filters navr object to only include times in between</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_distances.html">get_distances()</a></code> </p>
+        </td>
+        <td><p>Gets distance column from the object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_speeds.html">get_speeds()</a></code> </p>
+        </td>
+        <td><p>Gets speed column from the object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_times_since_start.navr.html">get_times_since_start(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Returns time since start column from the navr object if it has one</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_times_since_start.html">get_times_since_start()</a></code> </p>
+        </td>
+        <td><p>Return time since start form the passed object</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_time_diffs.navr.html">get_time_diffs(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Returns time_diffs column from the data if it has been caluclated</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="get_time_diffs.html">get_time_diffs()</a></code> </p>
+        </td>
+        <td><p>Return time diffs column from the object</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-analysis" class="hasAnchor"><a href="#section-analysis" class="anchor"></a>Analysis</h2>
+          <p class="section-desc"><p>Function to closer investigate the navigation behaviour</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="search_onsets.navr.html">search_onsets(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Searches for movement onsets and returns time since start for each event</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_onsets.html">search_onsets()</a></code> </p>
+        </td>
+        <td><p>Searches for times when the movement onset started</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_stops.navr.html">search_stops(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Searches for movement stops and returns time since start for each event</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_stops.html">search_stops()</a></code> </p>
+        </td>
+        <td><p>Searches for times when there is no movement</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-visualising-navr" class="hasAnchor"><a href="#section-visualising-navr" class="anchor"></a>Visualising Navr</h2>
+          <p class="section-desc"><p>Wrappers around general visualising fuctions which take navr object as an input</p></p>
+        </th>
+      </tr>
+      <tr>
+        
+        <td>
+          <p><code><a href="plot_path.navr.html">plot_path(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>plots the _x and _X coordinates</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_path.html">plot_path()</a></code> </p>
+        </td>
+        <td><p>Plots path of dataset</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_position_heatmap.navr.html">plot_position_heatmap(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>Plots position heatmap with given granularity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_position_heatmap.html">plot_position_heatmap()</a></code> </p>
+        </td>
+        <td><p>Plots position heatmap with given granularity</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_speed.navr.html">plot_speed(<i>&lt;navr&gt;</i>)</a></code> </p>
+        </td>
+        <td><p>PLots speed values in time</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="plot_speed.html">plot_speed()</a></code> </p>
+        </td>
+        <td><p>PLots speed values in time</p></td>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-plot-elements" class="hasAnchor"><a href="#section-plot-elements" class="anchor"></a>Plot elements</h2>
+          <p class="section-desc"><p>Custom ggplot elemtns to build entire navigation charts</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
           <p><code><a href="animate_path.html">animate_path()</a></code> </p>
         </td>
         <td><p>Plot built with plot_path function</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_angle_differences.html">calculate_angle_differences()</a></code> </p>
-        </td>
-        <td><p>Adds new colum angle_diff_axis where it calculates angle difference between rows</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_distances.html">calculate_distances()</a></code> </p>
-        </td>
-        <td><p>Calculates distances froma x and y vectors</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_speeds.html">calculate_speeds()</a></code> </p>
-        </td>
-        <td><p>Calcualtes vector of doubles with speeds</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_times_since_start.html">calculate_times_since_start()</a></code> </p>
-        </td>
-        <td><p>Calculates times since start</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_time_diffs.html">calculate_time_diffs()</a></code> </p>
-        </td>
-        <td><p>Calculates time differences between timestamps</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="create_direction_line.html">create_direction_line()</a></code> </p>
-        </td>
-        <td><p>Creates arrow pointing from a certain position and angle</p></td>
       </tr><tr>
         
         <td>
@@ -253,24 +395,6 @@
           <p><code><a href="create_void_plot.html">create_void_plot()</a></code> </p>
         </td>
         <td><p>Creates empty plot with invisible theme to clearly plot paths and points</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="euclid_distance.html">euclid_distance()</a></code> </p>
-        </td>
-        <td><p>Euclidian distance between two points</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="euclid_distance_between_rows.html">euclid_distance_between_rows()</a></code> </p>
-        </td>
-        <td><p>Eucilidan distance covered between each row</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="filter_times.html">filter_times()</a></code> </p>
-        </td>
-        <td><p>Filters navr object to only include times in between</p></td>
       </tr><tr>
         
         <td>
@@ -337,228 +461,20 @@
           <p><code><a href="geom_position_heatmap.html">geom_position_heatmap()</a></code> </p>
         </td>
         <td><p>geom to add stat_density2d position heatmap</p></td>
-      </tr><tr>
+      </tr>
+    </tbody><tbody>
+      <tr>
+        <th colspan="2">
+          <h2 id="section-helper-functions" class="hasAnchor"><a href="#section-helper-functions" class="anchor"></a>Helper functions</h2>
+          <p class="section-desc"><p>Helper function, such as <code>rolling_sum</code>, <code>euclid_distnace</code> etc.</p></p>
+        </th>
+      </tr>
+      <tr>
         
         <td>
-          <p><code><a href="get_distances.html">get_distances()</a></code> </p>
+          <p><code><a href="vector_from_angle.html">vector_from_angle()</a></code> </p>
         </td>
-        <td><p>Gets distance column from the object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_speeds.html">get_speeds()</a></code> </p>
-        </td>
-        <td><p>Gets speed column from the object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_times_since_start.navr.html">get_times_since_start(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Returns time since start column from the navr object if it has one</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_times_since_start.html">get_times_since_start()</a></code> </p>
-        </td>
-        <td><p>Return time since start form the passed object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_time_diffs.navr.html">get_time_diffs(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Returns time_diffs column from the data if it has been caluclated</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_time_diffs.html">get_time_diffs()</a></code> </p>
-        </td>
-        <td><p>Return time diffs column from the object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="is_navr_data.html">is_navr_data()</a></code> </p>
-        </td>
-        <td><p>Checks if the data are valid</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="load_position_data.html">load_position_data()</a></code> </p>
-        </td>
-        <td><p>Loads and checks position data into navr object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="make_circle.html">make_circle()</a></code> </p>
-        </td>
-        <td><p>Creates data frame to be used to draw a circle</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="multiplot.html">multiplot()</a></code> </p>
-        </td>
-        <td><p>Multiplot requiring Grd package</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="NavrObject.html">NavrObject()</a></code> </p>
-        </td>
-        <td><p>Navr Object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="pick_unreal_speeds.html">pick_unreal_speeds()</a></code> </p>
-        </td>
-        <td><p>Finds indices of impossible speed values</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_background.html">plot_add_background()</a></code> </p>
-        </td>
-        <td><p>Adds image to the background of the plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_direction.html">plot_add_direction()</a></code> </p>
-        </td>
-        <td><p>Adds arrow pointing from a point in a specified angle</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_limits.html">plot_add_limits()</a></code> </p>
-        </td>
-        <td><p>Checks if object has map limits variable and adds plot limits if so</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_path.html">plot_add_path()</a></code> </p>
-        </td>
-        <td><p>Adds path to the plot data</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_points.html">plot_add_points()</a></code> </p>
-        </td>
-        <td><p>Adds specified points to the given plot</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_add_position_heatmap.html">plot_add_position_heatmap()</a></code> </p>
-        </td>
-        <td><p>PLots heatmap using stat_density2d</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_path.navr.html">plot_path(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>plots the _x and _X coordinates</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_path.html">plot_path()</a></code> </p>
-        </td>
-        <td><p>Plots path of dataset</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_position_heatmap.navr.html">plot_position_heatmap(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Plots position heatmap with given granularity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_position_heatmap.html">plot_position_heatmap()</a></code> </p>
-        </td>
-        <td><p>Plots position heatmap with given granularity</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_speed.navr.html">plot_speed(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>PLots speed values in time</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="plot_speed.html">plot_speed()</a></code> </p>
-        </td>
-        <td><p>PLots speed values in time</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="prepare_column_names.html">prepare_column_names()</a></code> </p>
-        </td>
-        <td><p>Tries to rename columns so they correspond to proper naming conventions</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="radian_to_angle.html">radian_to_angle()</a></code> </p>
-        </td>
-        <td><p>Converts Pi radian angle to degrees</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_unreal_speeds.navr.html">remove_unreal_speeds(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="remove_unreal_speeds.html">remove_unreal_speeds()</a></code> </p>
-        </td>
-        <td><p>Shorthand for picking speeds and then recalculating object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rename_column.html">rename_column()</a></code> </p>
-        </td>
-        <td><p>Helper to rename column</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="replace_na.html">replace_na()</a></code> </p>
-        </td>
-        <td><p>Replaces na values with given type</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="rolling_sum.html">rolling_sum()</a></code> </p>
-        </td>
-        <td><p>Calculates rolling sum of a vector across N points</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="search_onsets.navr.html">search_onsets(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Searches for movement onsets and returns time since start for each event</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="search_onsets.html">search_onsets()</a></code> </p>
-        </td>
-        <td><p>Searches for times when the movement onset started</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smooth_positions.navr.html">smooth_positions(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Smooth positions in a navr object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smooth_positions.html">smooth_positions()</a></code> </p>
-        </td>
-        <td><p>Smooths positions of a given boject</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smooth_speed.navr.html">smooth_speed(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Smooths speed vector in the navr object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="smooth_speed.html">smooth_speed()</a></code> </p>
-        </td>
-        <td><p>Smooths speed</p></td>
+        <td><p>Creates x y coordinate of point position given angle X</p></td>
       </tr><tr>
         
         <td>
@@ -568,9 +484,81 @@
       </tr><tr>
         
         <td>
-          <p><code><a href="vector_from_angle.html">vector_from_angle()</a></code> </p>
+          <p><code><a href="angle_from_positions.html">angle_from_positions()</a></code> </p>
         </td>
-        <td><p>Creates x y coordinate of point position given angle X</p></td>
+        <td><p>Calculates angle from two 2d positions</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="angle_to_180.html">angle_to_180()</a></code> </p>
+        </td>
+        <td><p>Converts angle to -180 to 180 difference</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="angle_to_360.html">angle_to_360()</a></code> </p>
+        </td>
+        <td><p>Title</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="angle_to_radian.html">angle_to_radian()</a></code> </p>
+        </td>
+        <td><p>Converts angle to radian</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculate_angle_differences.html">calculate_angle_differences()</a></code> </p>
+        </td>
+        <td><p>Adds new colum angle_diff_axis where it calculates angle difference between rows</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculate_distances.html">calculate_distances()</a></code> </p>
+        </td>
+        <td><p>Calculates distances froma x and y vectors</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculate_speeds.html">calculate_speeds()</a></code> </p>
+        </td>
+        <td><p>Calcualtes vector of doubles with speeds</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculate_times_since_start.html">calculate_times_since_start()</a></code> </p>
+        </td>
+        <td><p>Calculates times since start</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="calculate_time_diffs.html">calculate_time_diffs()</a></code> </p>
+        </td>
+        <td><p>Calculates time differences between timestamps</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="euclid_distance.html">euclid_distance()</a></code> </p>
+        </td>
+        <td><p>Euclidian distance between two points</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="euclid_distance_between_rows.html">euclid_distance_between_rows()</a></code> </p>
+        </td>
+        <td><p>Eucilidan distance covered between each row</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="rolling_sum.html">rolling_sum()</a></code> </p>
+        </td>
+        <td><p>Calculates rolling sum of a vector across N points</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="radian_to_angle.html">radian_to_angle()</a></code> </p>
+        </td>
+        <td><p>Converts Pi radian angle to degrees</p></td>
       </tr>
     </tbody>
     </table>
@@ -579,7 +567,13 @@
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
-      <li><a href="#section-all-functions">All functions</a></li>
+      <li><a href="#section-objects">Objects</a></li>
+      <li><a href="#section-preprocessing">Preprocessing</a></li>
+      <li><a href="#section-getters">Getters</a></li>
+      <li><a href="#section-analysis">Analysis</a></li>
+      <li><a href="#section-visualising-navr">Visualising Navr</a></li>
+      <li><a href="#section-plot-elements">Plot elements</a></li>
+      <li><a href="#section-helper-functions">Helper functions</a></li>
     </ul>
   </div>
 </div>

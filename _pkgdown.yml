@@ -1,0 +1,91 @@
+reference:
+- title: Objects
+  desc: Definitions of objects
+  contents:
+  - '`NavrObject`'
+  - '`load_position_data`'
+  - '`is_navr_data`'
+- title: Preprocessing
+  desc: Function to preprocess navr object. Adding time and angle columns, smoothing speeds etc.
+  contents:
+  - '`add_angle_differences`'
+  - '`add_distances`'
+  - '`add_speeds`'
+  - '`add_times_since_start`'
+  - '`add_time_columns.navr`'
+  - '`add_time_columns`'
+  - '`add_time_diffs`'
+  - '`add_area_boundaries`'
+  - '`pick_unreal_speeds`'
+  - '`remove_unreal_speeds.navr`'
+  - '`remove_unreal_speeds`'
+  - '`smooth_positions.navr`'
+  - '`smooth_positions`'
+  - '`smooth_speed.navr`'
+  - '`smooth_speed`'
+- title: Getters
+  desc: Function to access navr object
+  contents:
+  - '`filter_times`'
+  - '`get_distances`'
+  - '`get_speeds`'
+  - '`get_times_since_start.navr`'
+  - '`get_times_since_start`'
+  - '`get_time_diffs.navr`'
+  - '`get_time_diffs`'
+- title: Analysis
+  desc: Function to closer investigate the navigation behaviour
+  contents:
+  - '`search_onsets.navr`'
+  - '`search_onsets`'
+  - '`search_stops.navr`'
+  - '`search_stops`'
+- title: Visualising Navr
+  desc: Wrappers around general visualising fuctions which take navr object as an input
+  contents:
+  - '`plot_path.navr`'
+  - '`plot_path`'
+  - '`plot_position_heatmap.navr`'
+  - '`plot_position_heatmap`'
+  - '`plot_speed.navr`'
+  - '`plot_speed`'
+- title: Plot elements
+  desc: Custom ggplot elemtns to build entire navigation charts
+  contents:
+  - '`animate_path`'
+  - '`create_minimal_plot`'
+  - '`create_void_plot`'
+  - '`geom_navr_backround`'
+  - '`geom_navr_circle`'
+  - '`geom_navr_direction`'
+  - '`geom_navr_heatmap`'
+  - '`geom_navr_limits`'
+  - '`geom_navr_obj_timeseries`'
+  - '`geom_navr_path`'
+  - '`geom_navr_points`'
+  - '`geom_navr_timeseries`'
+  - '`geom_navr_timeseries_events`'
+  - '`geom_position_heatmap`'
+- title: Helper functions
+  desc: Helper function, such as `rolling_sum`, `euclid_distnace` etc.
+  contents:
+  - '`vector_from_angle`'
+  - '`smooth_vector`'
+  - '`angle_from_positions`'
+  - '`angle_to_180`'
+  - '`angle_to_360`'
+  - '`angle_to_radian`'
+  - '`calculate_angle_differences`'
+  - '`calculate_distances`'
+  - '`calculate_speeds`'
+  - '`calculate_times_since_start`'
+  - '`calculate_time_diffs`'
+  - '`euclid_distance`'
+  - '`euclid_distance_between_rows`'
+  - '`rolling_sum`'
+  - '`radian_to_angle`'
+
+
+
+
+
