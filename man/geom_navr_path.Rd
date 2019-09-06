@@ -10,6 +10,8 @@ geom_navr_path(obj, add_points = F, ...)
 \item{obj}{NavrObject}
 
 \item{add_points}{if points should be explicitely noted on the path}
+
+\item{...}{additional geom_path arguments}
 }
 \description{
 Geom of plotting navr path

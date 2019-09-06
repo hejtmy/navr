@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plot built with plot_path function — animate_path • navr</title>
+<title>Animates plot built with plot_path function — animate_path • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,11 @@
 
 
 
-<meta property="og:title" content="Plot built with plot_path function — animate_path" />
+<meta property="og:title" content="Animates plot built with plot_path function — animate_path" />
 
-<meta property="og:description" content="Plot built with plot_path function" />
+<meta property="og:description" content="The timing of the plot animation is built arount the plot$data$timestamp field,
+which is added in the plot_path function. If you didn't create your plot in this way, you can either
+add the field to the ggplot list data, or you can animate the path in a different way" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -63,7 +65,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">navr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -112,14 +114,16 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plot built with plot_path function</h1>
+    <h1>Animates plot built with plot_path function</h1>
     
     <div class="hidden name"><code>animate_path.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plot built with plot_path function</p>
+    <p>The timing of the plot animation is built arount the plot$data$timestamp field,
+which is added in the <code>plot_path</code> function. If you didn't create your plot in this way, you can either
+add the field to the ggplot list data, or you can animate the path in a different way</p>
     
     </div>
 
@@ -138,13 +142,19 @@
     </tr>
     </table>
     
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Calls <code>transition_reveal</code> from the gganimate package to plot the path, but</p>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

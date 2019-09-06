@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-visualising.R
 \name{animate_path}
 \alias{animate_path}
-\title{Plot built with plot_path function}
+\title{Animates plot built with plot_path function}
 \usage{
 animate_path(plt, ...)
 }
@@ -12,5 +12,10 @@ animate_path(plt, ...)
 \item{...}{}
 }
 \description{
-Plot built with plot_path function
+The timing of the plot animation is built arount the plot$data$timestamp field,
+which is added in the \code{plot_path} function. If you didn't create your plot in this way, you can either
+add the field to the ggplot list data, or you can animate the path in a different way
+}
+\details{
+Calls \code{transition_reveal} from the gganimate package to plot the path, but
 }

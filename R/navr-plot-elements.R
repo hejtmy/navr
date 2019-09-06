@@ -1,8 +1,8 @@
 #' Geom of plotting navr path
 #'
-#' @param ...
 #' @param obj NavrObject
 #' @param add_points if points should be explicitely noted on the path
+#' @param ... additional geom_path arguments
 #'
 #' @return
 #' @export
@@ -92,6 +92,33 @@ geom_navr_limits <- function(obj){
   if(!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
   if(!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
   return(ls)
+}
+
+#' Plots positions of given events on a path
+#' @details Searches the timestamps for the closes time (more then event time)
+#' @description
+#'
+#' @param obj navr objects
+#' @param event_times numeric vector of event times. Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' @param size point size **default** 2
+#' @param shape point shape **default** is 4
+#' @param color point color **default** is "blue"
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color = "blue", ...){
+  indices <- c()
+  timestamps <- obj$data$timestamp
+  for(t in event_times){
+    i <- which(timestamps > t)[1]
+    if(!is.na(i)) indices <- c(indices, i)
+  }
+  if(length(indices) == 0) return(list())
+  df <- data.frame(x = obj$data$position_x[indices], y = obj$data$position_y[indices])
+  return(geom_point(data=df, aes(x, y), size = size, shape=shape, color=color, ...))
 }
 
 #' Creates geom of a circle to be inserted into the graph

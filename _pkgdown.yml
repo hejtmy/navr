@@ -62,6 +62,7 @@ reference:
   - '`geom_navr_limits`'
   - '`geom_navr_obj_timeseries`'
   - '`geom_navr_path`'
+  - '`geom_navr_path_events`'
   - '`geom_navr_points`'
   - '`geom_navr_timeseries`'
   - '`geom_navr_timeseries_events`'

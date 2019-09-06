@@ -44,7 +44,7 @@ plot_path <- function(obj, ...){
 #' @examples
 plot_path.navr <- function(obj, add_points = F, ...){
   plt <- create_void_plot()
-  plt$data <- obj$data[, "timestamp", drop=F]
+  plt$data <- obj$data[, "timestamp", drop = F]
   plt <- plt + aes(timestamp) # allows for animations later
   #TODO - removes points that have surreal speeds
   plt <- plt + geom_navr_path(obj, add_points, ...)
@@ -52,8 +52,12 @@ plot_path.navr <- function(obj, add_points = F, ...){
   return(plt)
 }
 
-
-#' Plot built with plot_path function
+#' Animates plot built with plot_path function
+#' @details Calls `transition_reveal` from the gganimate package to plot the path, but
+#'
+#' @description The timing of the plot animation is built arount the plot$data$timestamp field,
+#' which is added in the `plot_path` function. If you didn't create your plot in this way, you can either
+#' add the field to the ggplot list data, or you can animate the path in a different way
 #'
 #' @param plt Needs to have timestamp x value
 #' @param ...
@@ -64,7 +68,7 @@ plot_path.navr <- function(obj, add_points = F, ...){
 #'
 #' @examples
 animate_path <- function(plt, ...){
-  plt <- plt + transition_reveal(plt$data$timestamp)
+  plt <- plt + gganimate::transition_reveal(plt$data$timestamp)
   return(plt)
 }
 

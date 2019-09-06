@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Shorthand for picking speeds and then recalculating object — remove_unreal_speeds.navr" />
 
-<meta property="og:description" content="Picks unreal speeds in the same way as `pick_unreal_speed` but then removes
+<meta property="og:description" content="Picks unreal speeds in the same way as pick_unreal_speed but then removes
 given lines form the data, replaces them as per replacement parameter and returnes cleaned
 object" />
 <meta name="twitter:card" content="summary" />
@@ -65,7 +65,7 @@ object" />
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">navr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.0</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.2</span>
       </span>
     </div>
 
@@ -121,7 +121,7 @@ object" />
 
     <div class="ref-description">
     
-    <p>Picks unreal speeds in the same way as `pick_unreal_speed` but then removes
+    <p>Picks unreal speeds in the same way as <code>pick_unreal_speed</code> but then removes
 given lines form the data, replaces them as per replacement parameter and returnes cleaned
 object</p>
     
@@ -137,30 +137,30 @@ object</p>
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>cutoff</th>
-      <td><p>cutoff value. see `pick_unreal_speeds`</p></td>
+      <td><p>cutoff value. see <code>pick_unreal_speeds</code></p></td>
     </tr>
     <tr>
       <th>type</th>
-      <td><p>what type of cutoof. see `pick_unreal_speeds`</p></td>
+      <td><p>what type of cutoof. see <code>pick_unreal_speeds</code></p></td>
     </tr>
     <tr>
       <th>remove_distance</th>
       <td><p>shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
 jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
-by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. *Defaults* to TRUE</p></td>
+by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. <em>Defaults</em> to TRUE</p></td>
     </tr>
     <tr>
       <th>total_recalculate</th>
-      <td><p>if true, recalculates total_distance column to reflect removed distances, *defaults* to TRUE</p></td>
+      <td><p>if true, recalculates total_distance column to reflect removed distances, <em>defaults</em> to TRUE</p></td>
     </tr>
     <tr>
       <th>indices</th>
       <td><p>indices of speeds to clean out in case they were obtained separately.
-If empty, `type`, `cutoff` need to be defined and `pick_unreal_speeds` is called</p></td>
+If empty, <code>type</code>, <code>cutoff</code> need to be defined and <code>pick_unreal_speeds</code> is called</p></td>
     </tr>
     <tr>
       <th>replacement</th>
-      <td><p>what to replace  unreal speeds with. *Defaults* to NA</p></td>
+      <td><p>what to replace  unreal speeds with. <em>Defaults</em> to NA</p></td>
     </tr>
     </table>
     
