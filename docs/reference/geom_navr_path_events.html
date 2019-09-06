@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Return time diffs column from the object — get_time_diffs • navr</title>
+<title>Plots positions of given events on a path — geom_navr_path_events • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Return time diffs column from the object — get_time_diffs" />
+<meta property="og:title" content="Plots positions of given events on a path — geom_navr_path_events" />
 
-<meta property="og:description" content="Return time diffs column from the object" />
+<meta property="og:description" content="Plots positions of given events on a path" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -112,27 +112,52 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Return time diffs column from the object</h1>
+    <h1>Plots positions of given events on a path</h1>
     
-    <div class="hidden name"><code>get_time_diffs.Rd</code></div>
+    <div class="hidden name"><code>geom_navr_path_events.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Return time diffs column from the object</p>
+    <p>Plots positions of given events on a path</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>get_time_diffs</span>(<span class='no'>obj</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>geom_navr_path_events</span>(<span class='no'>obj</span>, <span class='no'>event_times</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>2</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>18</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
+      <td><p>navr objects</p></td>
+    </tr>
+    <tr>
+      <th>event_times</th>
+      <td><p>numeric vector of event times. Times need to be on the same scale as the timestamps in <code>obj$data$timestamp</code></p></td>
+    </tr>
+    <tr>
+      <th>size</th>
+      <td><p>point size <strong>default</strong> 2</p></td>
+    </tr>
+    <tr>
+      <th>shape</th>
+      <td><p>point shape <strong>default</strong> is 4</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>point color <strong>default</strong> is "blue"</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
       <td></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>Searches the timestamps for the closes time (more then event time)</p>
     
 
   </div>
@@ -140,7 +165,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
   </div>
 </div>

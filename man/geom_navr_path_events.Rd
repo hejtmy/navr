@@ -10,18 +10,18 @@ geom_navr_path_events(obj, event_times, size = 2, shape = 18,
 \arguments{
 \item{obj}{navr objects}
 
-\item{event_times}{numeric vector of event times. Times need to be on the same scale as the timestamps in `obj$data$timestamp`}
+\item{event_times}{numeric vector of event times. Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
 
-\item{size}{point size **default** 2}
+\item{size}{point size \strong{default} 2}
 
-\item{shape}{point shape **default** is 4}
+\item{shape}{point shape \strong{default} is 4}
 
-\item{color}{point color **default** is "blue"}
+\item{color}{point color \strong{default} is "blue"}
 
 \item{...}{}
 }
 \description{
-
+Plots positions of given events on a path
 }
 \details{
 Searches the timestamps for the closes time (more then event time)

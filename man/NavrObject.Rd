@@ -10,5 +10,43 @@ NavrObject()
 navr object
 }
 \description{
-Navr Object
+NavrObject is a list of class \code{navr} which contains two main fields
+\itemize{
+\item \strong{area_aboundaries}: list with (x, y, z) fields, each containinng numeric(2) definition of limits (or NULL if empty).
+Used mainly for plotting and removal of outlier points
+\item \strong{data}: data.frame with few mandatory and some optional fields
+
+\emph{Mandatory columns}:
+\itemize{
+\item timestamp
+\item position_x
+\item position_y
+}
+
+\emph{Optional columns}: Columns which can be automatically preprocessed if need be
+\itemize{
+\item position_z: For 3D positional data
+\item position_(name)_(axis): Position columns can be automatically preprocessed and have distances etc. calculated if they
+follow given naming structure e.g. positions_vrhead_x
+\item rotation_(name)_(axis): Rotation columns can be automatically preprocessed if then follow given naming structure
+}
+
+\emph{Computed columns}: These columns are computed automatically and ovewrite any existing columns of given names. Please don't namme
+your custom columns with these names
+\itemize{
+\item time_since_start
+\item time_diff
+\item distance
+\item distance_total
+\item speed
+\item rotation_(name)_(axis)_diff
+}
+
+\emph{Additional columns}: the data fame can have unlimited number of additional columns, if they don't interfere
+with naming of the mandatory and optional (e.g. you shouldn't have a column named rotation_controller if you don't want
+it preprocessed by the package). Typical examples of additional columns can be "fps", "input" etc.
+}
+}
+\details{
+Creates empty navr object with prefilled fields
 }

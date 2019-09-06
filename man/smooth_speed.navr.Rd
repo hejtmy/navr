@@ -11,7 +11,7 @@
 
 \item{type}{type of smoothing}
 
-\item{...}{optional parameters for given smoothing, see `smooth_vector` function}
+\item{...}{optional parameters for given smoothing, see \code{smooth_vector} function}
 }
 \value{
 modified navr object
