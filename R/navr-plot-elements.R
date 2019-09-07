@@ -2,6 +2,7 @@
 #'
 #' @param obj NavrObject
 #' @param add_points if points should be explicitely noted on the path
+#' @param add_rotation if each point should also have a directional arrow attached
 #' @param ... additional geom_path arguments
 #'
 #' @return
@@ -12,6 +13,35 @@ geom_navr_path <- function(obj, add_points = F, ...){
   df_position <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
   ls <- list(geom_path(data = df_position, aes(x, y), ...))
   if(add_points) ls <- c(ls, geom_point(data = df_position, aes(x, y)))
+  return(ls)
+}
+
+#' Adds rotational information to the path data
+#'
+#' @details plots arrows pointint in ditational direction. Uses `geom_navr_direction` function to plot each rotation
+#'
+#' @param obj navr object
+#' @param axis character designating which rotation axis to plot. Needs to follow the navr specifications.
+#' e.g. if "z", the obj needs to have "rotation_z" column
+#' @param sample For very frequent data, this function would return several thousands
+#' geoms. Therefore it is recommended to only sample each nth observation.
+#' @param length arrow length
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+geom_navr_path_rotation <- function(obj, axis = "x", sample = 10, length = 1, ...){
+  rot_name <- paste0("rotation_", axis)
+  df <- data.frame(x = obj$data$position_x, y = obj$data$position_y, angle=obj$data[[rot_name]])
+  df <- df[seq(1, nrow(df), 10), ]
+  ls <- c()
+  for(i in 1:nrow(df)){
+    position <- c(df$x[i], df$y[i])
+    angle <- df$angle[i]
+    ls <- c(ls, geom_navr_direction(position, angle, length = length, ...))
+  }
   return(ls)
 }
 
@@ -60,7 +90,7 @@ geom_navr_points <- function(ls, ...){
 
 #' Adds arrow pointing from a point in a specified angle
 #'
-#' @param position vector 2 X and Y position
+#' @param position numeric(2) of X and Y position
 #' @param angle numeric angle in degrees (0-360)
 #' @param length length od the arrow to be drawm
 #' @param ... additional ggplot values
@@ -138,6 +168,8 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 }
 
 #' Adds timeseries to the given plot from navr object based on given column
+#'
+#' @details wrapper around `geom_navr_timeseries` for easier acces to the object
 #'
 #' @param obj NavrObject
 #' @param colname name of the column to be plotted

@@ -12,6 +12,8 @@ geom_navr_path(obj, add_points = F, ...)
 \item{add_points}{if points should be explicitely noted on the path}
 
 \item{...}{additional geom_path arguments}
+
+\item{add_rotation}{if each point should also have a directional arrow attached}
 }
 \description{
 Geom of plotting navr path

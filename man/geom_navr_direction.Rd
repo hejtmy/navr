@@ -7,7 +7,7 @@
 geom_navr_direction(position, angle, length = 1, ...)
 }
 \arguments{
-\item{position}{vector 2 X and Y position}
+\item{position}{numeric(2) of X and Y position}
 
 \item{angle}{numeric angle in degrees (0-360)}
 

@@ -21,3 +21,6 @@ geom_navr_obj_timeseries(obj, colname, scaling = "none", scale = c(),
 \description{
 Adds timeseries to the given plot from navr object based on given column
 }
+\details{
+wrapper around \code{geom_navr_timeseries} for easier acces to the object
+}
