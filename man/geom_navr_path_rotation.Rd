@@ -4,7 +4,7 @@
 \alias{geom_navr_path_rotation}
 \title{Adds rotational information to the path data}
 \usage{
-geom_navr_path_rotation(obj, axis = "x", sample = 10, length = 1,
+geom_navr_path_rotation(obj, axis = "x", downsample = 10, length = 1,
   ...)
 }
 \arguments{
@@ -13,7 +13,7 @@ geom_navr_path_rotation(obj, axis = "x", sample = 10, length = 1,
 \item{axis}{character designating which rotation axis to plot. Needs to follow the navr specifications.
 e.g. if "z", the obj needs to have "rotation_z" column}
 
-\item{sample}{For very frequent data, this function would return several thousands
+\item{downsample}{For very frequent data, this function would return several thousands
 geoms. Therefore it is recommended to only sample each nth observation.}
 
 \item{length}{arrow length}

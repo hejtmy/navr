@@ -7,11 +7,14 @@
 is_navr_data(df)
 }
 \arguments{
-\item{df}{}
+\item{df}{dataframe to be checked}
 }
 \value{
 bool
 }
 \description{
 Checks if the data are valid
+}
+\details{
+checks if the dataframe has correct columns
 }

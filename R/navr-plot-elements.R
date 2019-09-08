@@ -23,7 +23,7 @@ geom_navr_path <- function(obj, add_points = F, ...){
 #' @param obj navr object
 #' @param axis character designating which rotation axis to plot. Needs to follow the navr specifications.
 #' e.g. if "z", the obj needs to have "rotation_z" column
-#' @param sample For very frequent data, this function would return several thousands
+#' @param downsample For very frequent data, this function would return several thousands
 #' geoms. Therefore it is recommended to only sample each nth observation.
 #' @param length arrow length
 #' @param ...
@@ -32,10 +32,10 @@ geom_navr_path <- function(obj, add_points = F, ...){
 #' @export
 #'
 #' @examples
-geom_navr_path_rotation <- function(obj, axis = "x", sample = 10, length = 1, ...){
+geom_navr_path_rotation <- function(obj, axis = "x", downsample = 10, length = 1, ...){
   rot_name <- paste0("rotation_", axis)
   df <- data.frame(x = obj$data$position_x, y = obj$data$position_y, angle=obj$data[[rot_name]])
-  df <- df[seq(1, nrow(df), 10), ]
+  df <- df[seq(1, nrow(df), downsample), ]
   ls <- c()
   for(i in 1:nrow(df)){
     position <- c(df$x[i], df$y[i])

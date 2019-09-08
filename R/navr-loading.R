@@ -37,7 +37,9 @@ add_area_boundaries <- function(obj, ls){
 
 #' Checks if the data are valid
 #'
-#' @param df
+#' @details checks if the dataframe has correct columns
+#'
+#' @param df dataframe to be checked
 #'
 #' @return bool
 #' @export
@@ -46,26 +48,11 @@ add_area_boundaries <- function(obj, ls){
 is_navr_data <- function(df){
   REQUIRED_COLUMNS <- c('timestamp', 'position_x', 'position_y')
   if(!all(REQUIRED_COLUMNS %in% colnames(df))){
-    print(paste0("Provided dataframe doesn\'t have all required columns."))
+    warning("Provided dataframe doesn\'t have all required columns.")
     return(FALSE)
   }
   #tests for data types
   return(TRUE)
-}
-
-#' Tries to rename columns so they correspond to proper naming conventions
-#' @description changes "." to "_" to correspond with python conventions,
-#' makes everything lowecase, renames Time column if present to "timestamp"
-#'
-#' @param df dataframe
-#'
-#' @return modified dataframe
-#' @noRd
-prepare_column_names <- function(df){
-  df <- rename_column(df, "Time", "timestamp")
-  new_names <- tolower(gsub("[.]", "_", colnames(df))) #replaces . with _
-  colnames(df) <- new_names
-  return(df)
 }
 
 #' Helper to rename column
