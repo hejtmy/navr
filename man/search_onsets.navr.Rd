@@ -19,7 +19,7 @@
 \item{still_duration}{how long before the onset should hte person be still in seconds. Default 0}
 }
 \value{
-list with times (time since start) of onset and durations of movement
+list with times (time since start) of onset and duration of movement
 }
 \description{
 Searches for movement onsets and returns time since start for each event

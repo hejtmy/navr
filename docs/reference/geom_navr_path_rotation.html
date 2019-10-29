@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Navr • navr</title>
+<title>Adds rotational information to the path data — geom_navr_path_rotation • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -25,12 +25,15 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script>
 
 <!-- pkgdown -->
-<link href="pkgdown.css" rel="stylesheet">
-<script src="pkgdown.js"></script>
+<link href="../pkgdown.css" rel="stylesheet">
+<script src="../pkgdown.js"></script>
 
 
 
-<meta property="og:title" content="Navr" />
+<meta property="og:title" content="Adds rotational information to the path data — geom_navr_path_rotation" />
+
+<meta property="og:description" content="Adds rotational information to the path data" />
+<meta name="twitter:card" content="summary" />
 
 
 
@@ -47,7 +50,7 @@
   </head>
 
   <body>
-    <div class="container template-title-body">
+    <div class="container template-reference-topic">
       <header>
       <div class="navbar navbar-default navbar-fixed-top" role="navigation">
   <div class="container">
@@ -59,7 +62,7 @@
         <span class="icon-bar"></span>
       </button>
       <span class="navbar-brand">
-        <a class="navbar-link" href="index.html">navr</a>
+        <a class="navbar-link" href="../index.html">navr</a>
         <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
       </span>
     </div>
@@ -67,13 +70,13 @@
     <div id="navbar" class="navbar-collapse collapse">
       <ul class="nav navbar-nav">
         <li>
-  <a href="index.html">
+  <a href="../index.html">
     <span class="fa fa-home fa-lg"></span>
      
   </a>
 </li>
 <li>
-  <a href="reference/index.html">Reference</a>
+  <a href="../reference/index.html">Reference</a>
 </li>
 <li class="dropdown">
   <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
@@ -83,13 +86,13 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
-      <a href="articles/loading-preprocessing.html">Loading and preprocessing</a>
+      <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
     <li>
-      <a href="articles/onset-search.html">onset-search</a>
+      <a href="../articles/onset-search.html">onset-search</a>
     </li>
     <li>
-      <a href="articles/plotting.html">Plotting functions</a>
+      <a href="../articles/plotting.html">Plotting functions</a>
     </li>
   </ul>
 </li>
@@ -107,34 +110,65 @@
       </header>
 
 <div class="row">
-  <div class="contents col-md-9">
+  <div class="col-md-9 contents">
     <div class="page-header">
-      <h1>Navr</h1>
+    <h1>Adds rotational information to the path data</h1>
+    
+    <div class="hidden name"><code>geom_navr_path_rotation.Rd</code></div>
     </div>
 
-<div id="navr" class="section level1">
+    <div class="ref-description">
+    
+    <p>Adds rotational information to the path data</p>
+    
+    </div>
 
-<p>PAckage to work with positioning and navigation data.</p>
-<p><a href="https://travis-ci.org/hejtmy/navr"><img src="https://travis-ci.org/hejtmy/navr.svg?branch=master" alt="Travis build status"></a> <a href="https://codecov.io/github/hejtmy/navr?branch=master"><img src="https://codecov.io/gh/hejtmy/navr/branch/master/graph/badge.svg" alt="Coverage status"></a></p>
-<div id="description" class="section level2">
-<h2 class="hasAnchor">
-<a href="#description" class="anchor"></a>Description</h2>
-<p>Navr uses variety of processing and plotting functions which are useful in cognitive psychology research focusing on human navigation. It has functions to split and smooth paths, plot pointing data, plot speeds, remove “teleportations” or jittery movement. It has functions to work with independent body and head rotations for VR focused research.</p>
-</div>
-<div id="basics" class="section level2">
-<h2 class="hasAnchor">
-<a href="#basics" class="anchor"></a>Basics</h2>
-<p>Navr builds an S3 <code>navr</code> object which is passed into most functions. Navr objech has a specific structure:</p>
-<div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1">navr_obj<span class="op">$</span>data <span class="op">:</span><span class="st"> </span>data frame with sepcified <span class="kw">columns</span> (timestamp, position_x, position_y, rotation_x, fps, etc.)</a>
-<a class="sourceLine" id="cb1-2" title="2">navr_obj<span class="op">$</span>area_boundaries &lt;-<span class="st"> </span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/list">list</a></span>(<span class="dt">x=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">100</span>), <span class="dt">y=</span><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="op">-</span><span class="dv">50</span>,<span class="dv">50</span>), <span class="dt">z=</span><span class="ot">NULL</span>)</a></code></pre></div>
-<p>This allows graphing and preprocessing to always work on valid data. Many functions are provided with generic footprint, allowing users to pass also vectors as parameters. For example function <code><a href="reference/calculate_distances.html">calculate_distances(mat_xy)</a></code> can also be called on unprocessed navr object as <code><a href="reference/add_distances.html">add_distances(navr_obj)</a></code></p>
-</div>
-</div>
+    <pre class="usage"><span class='fu'>geom_navr_path_rotation</span>(<span class='no'>obj</span>, <span class='kw'>axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='kw'>downsample</span> <span class='kw'>=</span> <span class='fl'>10</span>, <span class='kw'>length</span> <span class='kw'>=</span> <span class='fl'>1</span>,
+  <span class='no'>...</span>)</pre>
+    
+    <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
+    <table class="ref-arguments">
+    <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>obj</th>
+      <td><p>navr object</p></td>
+    </tr>
+    <tr>
+      <th>axis</th>
+      <td><p>character designating which rotation axis to plot. Needs to follow the navr specifications.
+e.g. if "z", the obj needs to have "rotation_z" column</p></td>
+    </tr>
+    <tr>
+      <th>downsample</th>
+      <td><p>For very frequent data, this function would return several thousands
+geoms. Therefore it is recommended to only sample each nth observation.</p></td>
+    </tr>
+    <tr>
+      <th>length</th>
+      <td><p>arrow length</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td></td>
+    </tr>
+    </table>
+    
+    <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
+
+    <p>plots arrows pointint in ditational direction. Uses <code>geom_navr_direction</code> function to plot each rotation</p>
+    
 
   </div>
+  <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
+    <h2>Contents</h2>
+    <ul class="nav nav-pills nav-stacked">
+      <li><a href="#arguments">Arguments</a></li>
+      
+      <li><a href="#details">Details</a></li>
+          </ul>
 
+  </div>
 </div>
-
 
       <footer>
       <div class="copyright">

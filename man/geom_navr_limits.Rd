@@ -10,7 +10,7 @@ geom_navr_limits(obj)
 \item{obj}{Navr object with area_boundaries field}
 }
 \value{
-plot with added limits
+list with xlim and ylim based on object area boundaries
 }
 \description{
 for better control, just use regular xlim and ylim functions, this is just a shorthand

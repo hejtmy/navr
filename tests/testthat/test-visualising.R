@@ -35,6 +35,7 @@ test_that("tests custom geoms", {
   expect_silent(plt + geom_navr_heatmap(obj, 10))
   expect_silent(plt + geom_navr_limits(obj))
   expect_silent(plt + geom_navr_obj_timeseries(obj_prep, "position_x"))
+  expect_silent(plt + geom_navr_path_limits(obj, 500))
   times <- obj_prep$data$timestamp[c(1000, 5500, 18000)]
   expect_silent(plt + geom_navr_path_events(obj_prep, times))
 })

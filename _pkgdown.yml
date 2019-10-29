@@ -40,6 +40,8 @@ reference:
   - '`search_onsets`'
   - '`search_stops.navr`'
   - '`search_stops`'
+  - '`search_deliberation_stops`'
+  - '`search_deliberation_stops.navr`'
 - title: Visualising Navr
   desc: Wrappers around general visualising fuctions which take navr object as an input
   contents:
@@ -64,6 +66,7 @@ reference:
   - '`geom_navr_path`'
   - '`geom_navr_path_events`'
   - '`geom_navr_path_rotation`'
+  - '`geom_navr_path_limits`'
   - '`geom_navr_points`'
   - '`geom_navr_timeseries`'
   - '`geom_navr_timeseries_events`'
