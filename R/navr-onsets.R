@@ -21,7 +21,7 @@ search_onsets <- function(obj, speed_threshold, min_duration, ...){
 #' @param still_speed_threshold what is considered to be the still speed threshold. defualts to `speed_threshold``
 #' @param still_duration how long before the onset should hte person be still in seconds. Default 0
 #'
-#' @return list with times (time since start) of onset and durations of movement
+#' @return list with times (time since start) of onset and duration of movement
 #' @export
 #'
 #' @examples
@@ -29,12 +29,13 @@ search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_speed_threshold = speed_threshold,
                                still_duration = 0){
   speeds <- get_speeds(obj)
+  # some form of validation in case speeds have not been calculated
   time_diffs <- get_time_diffs(obj)
   ls <- search_onsets_speeds_times(speeds, time_diffs, speed_threshold,
                                    min_duration, still_speed_threshold,
                                    still_duration)
   time_since_start <- get_times_since_start(obj)
-  return(list(time_since_start = time_since_start[ls$indices], durations = ls$durations))
+  return(list(time_since_start = time_since_start[ls$indices], duration = ls$durations))
 }
 
 
@@ -68,7 +69,7 @@ search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
   time_diffs <- get_time_diffs(obj)
   ls <- search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
   time_since_start <- get_times_since_start(obj)
-  return(list(time_since_start = time_since_start[ls$indices], durations = ls$durations))
+  return(list(time_since_start = time_since_start[ls$indices], duration = ls$durations))
 }
 
 search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration,
