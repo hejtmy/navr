@@ -26,3 +26,11 @@ test_that("testing search stops", {
   expect_silent(ls <- search_stops(obj, speed_threshold = 1, min_duration = 1000))
   expect_length(ls$time_since_start, 0)
 })
+
+test_that("testing searching for deliberation stops", {
+  expect_silent(ls <- search_deliberation_stops(obj, speed_threshold = 5, min_duration = 2, min_rotation = 0))
+  expect_silent(ls_stop <- search_stops(obj, speed_threshold = 5, min_duration = 2))
+  expect_equal(sum(ls_stop$time_since_start - ls$time_since_start), 0)
+  expect_silent(ls <- search_deliberation_stops(obj, speed_threshold = 5, min_duration = 2, min_rotation = 10))
+  expect_gt(length(ls_stop$time_since_start), length(ls$time_since_start))
+})
