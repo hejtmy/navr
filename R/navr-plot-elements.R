@@ -112,7 +112,7 @@ geom_navr_direction <- function(position, angle, length = 1, ...){
 #'
 #' @param obj Navr object with area_boundaries field
 #'
-#' @return plot with added limits
+#' @return list with xlim and ylim based on object area boundaries
 #' @export
 #'
 #' @examples
@@ -122,6 +122,23 @@ geom_navr_limits <- function(obj){
   if(!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
   if(!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
   return(ls)
+}
+
+#' Adds limits based on the range of path plus and minus padding
+#'
+#' @param obj navr object
+#' @param padding padding around the minmax of path
+#'
+#' @return list with xlim and ylim based on passed obj position limits and padding
+#' @export
+#'
+#' @examples
+geom_navr_path_limits <- function(obj, padding){
+  padding <- c(-padding, padding)
+  x <- range(obj$data$position_x) + padding
+  y <- range(obj$data$position_y) + padding
+  limits <- list(xlim(x), ylim(y))
+  return(limits)
 }
 
 #' Plots positions of given events on a path
