@@ -1,3 +1,22 @@
+#' Adds all necessary columns to the navr object
+#'
+#' @description runs add_time_columns, add_distances, add_angle_differences and add_speeds
+#'
+#' @param obj object of type navr
+#'
+#' @return returns navr object with modified columns
+#' @export
+#'
+#' @examples
+add_columns_navr <- function(obj){
+  # Validate navr object
+  obj <- add_time_columns(obj)
+  obj <- add_distances(obj)
+  obj <- add_speeds(obj)
+  obj <- add_angle_differences(obj)
+  return(obj)
+}
+
 #' Add time_since_start and time_diff columns
 #'
 #' @param obj Navr Object
@@ -6,14 +25,7 @@
 add_time_columns <- function(obj, ...){
   UseMethod('add_time_columns')
 }
-#' Title
-#'
-#' @param obj
-#'
-#' @return
 #' @export
-#'
-#' @examples
 add_time_columns.navr <- function(obj){
   obj <- add_times_since_start(obj)
   obj <- add_time_diffs(obj)

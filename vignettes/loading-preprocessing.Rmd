@@ -23,13 +23,25 @@ obj <- navr_object
 ```
 
 ## Preprocessing
+We can add desired columns one by one
 ```{r}
+colnames(obj$data)
 obj <- add_time_columns(obj)
+colnames(obj$data)
 obj <- add_distances(obj)
+colnames(obj$data)
 obj <- add_speeds(obj)
+colnames(obj$data)
 ```
 
-Removing too large speeds/teleports
+Or we can use a shorthand and add all of them together
+```{r}
+obj <- navr_object
+obj <- add_columns_navr(obj)
+colnames(obj$data)
+```
+
+## Removing too large speeds/teleports
 ```{r}
 #this function picks unreal speeds
 i_speeds <- pick_unreal_speeds(obj, 3, "std")
