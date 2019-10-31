@@ -1,8 +1,8 @@
 #' Filters navr object to only include times in between
 #'
-#' @param obj
-#' @param times a vector of length 2, start time and end time in seconds
-#' @param zero_based signifying if you passed seconds from start or reaů time. defualts to False
+#' @param obj object to filter
+#' @param times a vector of length 2, or a matrix with two columns, start time and end time in seconds
+#' @param zero_based signifying if you passed seconds from start or real time. defualts to FALSE (real time passed)
 #' @param ... aditional arguments
 #'
 #' @return
@@ -15,13 +15,17 @@ filter_times <- function(obj, times, zero_based, ...){
 
 #' @export
 filter_times.navr <- function(obj, times, zero_based = F){
-  if (zero_based){
-    timesincestart <- get_times_since_start(obj) #allows stopping the function in case it hasn't been preprocessed
-    i <- (timesincestart >= times[1]) & (timesincestart <= times[2])
-    obj$data <- obj$data[i, ]
-  } else {
-    obj$data <- obj$data[obj$data$timestamp >= times[1] & obj$data$timestamp <= times[2], ]
+  # Do some validations of the passed times
+  times <- matrix(times, ncol = 2) #tehcnically leaves times unchanged for the vector
+  search_times <- obj$data$timestamp
+  if (zero_based) search_times <- get_times_since_start(obj) #allows stopping the function in case it hasn't been preprocessed
+  mat_filt <- matrix(FALSE, ncol = nrow(times), nrow=length(search_times))
+  for(i in 1:nrow(times)){
+    i_fit <- (search_times >= times[i,1]) & (search_times <= times[i,2])
+    mat_filt[,i] <- i_fit
   }
+  i_fit <- apply(mat_filt, 1, any) #is there any TRUE in the mat_filt
+  obj$data <- obj$data[i_fit, ]
   return(obj)
 }
 

@@ -7,9 +7,11 @@
 filter_times(obj, times, zero_based, ...)
 }
 \arguments{
-\item{times}{a vector of length 2, start time and end time in seconds}
+\item{obj}{object to filter}
 
-\item{zero_based}{signifying if you passed seconds from start or reaů time. defualts to False}
+\item{times}{a vector of length 2, or a matrix with two columns, start time and end time in seconds}
+
+\item{zero_based}{signifying if you passed seconds from start or real time. defualts to FALSE (real time passed)}
 
 \item{...}{aditional arguments}
 }
