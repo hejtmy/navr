@@ -1,0 +1,40 @@
+---
+title: "Basic use"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{basic-use}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup, warning=FALSE, message=FALSE}
+library(navr)
+obj <- navr_object
+```
+
+## Getters
+
+### Filtering time
+Navr object can be filtered by time with `filter_times` function. The function takes either real time as is in the `$timestamp` column or can take `time_since_start` times if `zero_based = TRUE`. For that your object needs to be preprocessed with either `add_time_since_start`, `add_time_columns` or `add_columns_navr`. See loading and preprocessing vignette.
+
+So if you say for example only the first 10 seconds of your obj, you can do the following
+
+```{r}
+obj_prep <- add_columns_navr(obj)
+obj_first10 <- filter_times(obj_prep, c(0,10), zero_based=TRUE)
+```
+
+If you on the other hand want to filter as per real timestamps, you can simply do so with
+
+```{r}
+head(obj_prep$data[,1:5])
+obj_filtered <- filter_times(obj_prep, c(58250,58255))
+head(obj_filtered$data[,1:5])
+```
