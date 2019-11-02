@@ -23,21 +23,10 @@ obj <- navr_object
 ```
 
 ## Preprocessing
-We can add desired columns one by one
+We can prepare necessary columns (time diffs, speeds, distances) with a single function.
 ```{r}
 colnames(obj$data)
-obj <- add_time_columns(obj)
-colnames(obj$data)
-obj <- add_distances(obj)
-colnames(obj$data)
-obj <- add_speeds(obj)
-colnames(obj$data)
-```
-
-Or we can use a shorthand and add all of them together
-```{r}
-obj <- navr_object
-obj <- add_columns_navr(obj)
+obj <- prepare_navr(obj)
 colnames(obj$data)
 ```
 

@@ -31,6 +31,6 @@ test_that("testing searching for deliberation stops", {
   expect_silent(ls <- search_deliberation_stops(obj, speed_threshold = 5, min_duration = 2, min_rotation = 0))
   expect_silent(ls_stop <- search_stops(obj, speed_threshold = 5, min_duration = 2))
   expect_equal(sum(ls_stop$time_since_start - ls$time_since_start), 0)
-  expect_silent(ls <- search_deliberation_stops(obj, speed_threshold = 5, min_duration = 2, min_rotation = 10))
+  expect_warning(ls <- search_deliberation_stops(obj, speed_threshold = 5, min_duration = 2, min_rotation = 10)) #waring because of deprecated add_angle_difference
   expect_gt(length(ls_stop$time_since_start), length(ls$time_since_start))
 })

@@ -1,5 +1,21 @@
 #' Adds all necessary columns to the navr object
 #'
+#' @param obj object of type navr
+#'
+#' @return returns navr object with modified columns
+#' @export
+#'
+#' @examples
+prepare_navr <- function(obj) {
+  obj <- add_time_columns(obj)
+  obj <- add_distances(obj)
+  obj <- add_speeds(obj)
+  obj <- add_angle_differences(obj)
+  return(obj)
+}
+
+#' Adds all necessary columns to the navr object
+#'
 #' @description runs add_time_columns, add_distances, add_angle_differences and add_speeds
 #'
 #' @param obj object of type navr
@@ -9,12 +25,8 @@
 #'
 #' @examples
 add_columns_navr <- function(obj){
-  # Validate navr object
-  obj <- add_time_columns(obj)
-  obj <- add_distances(obj)
-  obj <- add_speeds(obj)
-  obj <- add_angle_differences(obj)
-  return(obj)
+  .Deprecated("prepare_navr")
+  return(prepare_navr(obj))
 }
 
 #' Add time_since_start and time_diff columns
@@ -23,6 +35,7 @@ add_columns_navr <- function(obj){
 #' @param ...
 #' @export
 add_time_columns <- function(obj, ...){
+  .Deprecated("prepare_navr")
   UseMethod('add_time_columns')
 }
 #' @export
@@ -42,11 +55,12 @@ add_time_columns.navr <- function(obj){
 #'
 #' @examples
 add_times_since_start <- function(obj, ...){
+  .Deprecated("prepare_navr")
   UseMethod("add_times_since_start")
 }
 #' @export
 add_times_since_start.navr <- function(obj){
-  obj$data$time_since_start <- navr::calculate_times_since_start(obj$data$timestamp)
+  obj$data$time_since_start <- calculate_times_since_start(obj$data$timestamp)
   return(obj)
 }
 
@@ -60,11 +74,12 @@ add_times_since_start.navr <- function(obj){
 #'
 #' @examples
 add_time_diffs <- function(obj, ...){
+  .Deprecated("prepare_navr")
   UseMethod("add_time_diffs")
 }
 #' @export
 add_time_diffs.navr <- function(obj){
-  obj$data$time_diff <- navr::calculate_time_diffs(obj$data$timestamp, first_value = 0)
+  obj$data$time_diff <- calculate_time_diffs(obj$data$timestamp, first_value = 0)
   return(obj)
 }
 
@@ -78,6 +93,7 @@ add_time_diffs.navr <- function(obj){
 #'
 #' @examples
 add_distances <- function(obj, ...){
+  .Deprecated("prepare_navr")
   UseMethod("add_distances")
 }
 #' @export
@@ -97,6 +113,7 @@ add_distances.navr <- function(obj){
 #'
 #' @examples
 add_angle_differences <- function(obj){
+  .Deprecated("prepare_navr")
   cols <- colnames(obj$data)
   for(i in grep("rotation", cols)){
     colname <- cols[i]
@@ -116,6 +133,7 @@ add_angle_differences <- function(obj){
 #'
 #' @examples
 add_speeds <- function(obj, ...){
+  .Deprecated("prepare_navr")
   UseMethod("add_speeds")
 }
 #' @export

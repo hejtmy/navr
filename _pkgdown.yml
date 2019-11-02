@@ -83,8 +83,6 @@ reference:
   - '`calculate_angle_differences`'
   - '`calculate_distances`'
   - '`calculate_speeds`'
-  - '`calculate_times_since_start`'
-  - '`calculate_time_diffs`'
   - '`euclid_distance`'
   - '`euclid_distance_between_rows`'
   - '`rolling_sum`'
