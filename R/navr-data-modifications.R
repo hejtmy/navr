@@ -7,10 +7,10 @@
 #'
 #' @examples
 prepare_navr <- function(obj) {
-  obj <- add_time_columns(obj)
-  obj <- add_distances(obj)
-  obj <- add_speeds(obj)
-  obj <- add_angle_differences(obj)
+  obj <- add_time_columns.navr(obj)
+  obj <- add_distances.navr(obj)
+  obj <- add_speeds.navr(obj)
+  obj <- add_angle_differences.navr(obj)
   return(obj)
 }
 
