@@ -4,7 +4,7 @@
 \alias{get_time_diffs.navr}
 \title{Returns time_diffs column from the data if it has been caluclated}
 \usage{
-\method{get_time_diffs}{navr}(obj)
+get_time_diffs.navr(obj)
 }
 \arguments{
 \item{obj}{Navr Object}

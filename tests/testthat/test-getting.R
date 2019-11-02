@@ -14,7 +14,7 @@ test_that("Data can filtered with time", {
 })
 
 test_that("Can select time_diff", {
-  expect_error(get_time_diffs(obj))
+  expect_error(get_time_diffs.navr(obj))
   obj_prepped <- add_time_columns(obj)
   expect_type(obj_prepped$data$time_diff, "double")
 })

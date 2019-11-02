@@ -21,12 +21,6 @@ reference:
   desc: Function to access navr object
   contents:
   - '`filter_times`'
-  - '`get_distances`'
-  - '`get_speeds`'
-  - '`get_times_since_start.navr`'
-  - '`get_times_since_start`'
-  - '`get_time_diffs.navr`'
-  - '`get_time_diffs`'
 - title: Analysis
   desc: Function to closer investigate the navigation behaviour
   contents:

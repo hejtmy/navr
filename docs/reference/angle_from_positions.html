@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">navr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/basic-use.html">Basic use</a>
+    </li>
     <li>
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
@@ -128,6 +131,14 @@
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>pos_from</th>
+      <td><p>numeric(2) vector of original position</p></td>
+    </tr>
+    <tr>
+      <th>pos_to</th>
+      <td><p>numeric(2) vector of position towards the target</p></td>
+    </tr>
     <tr>
       <th>zero_vec</th>
       <td><p>defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)</p></td>

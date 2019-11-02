@@ -63,7 +63,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">navr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -85,6 +85,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/basic-use.html">Basic use</a>
+    </li>
     <li>
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
@@ -129,12 +132,16 @@
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>obj</th>
+      <td><p>object to filter</p></td>
+    </tr>
+    <tr>
       <th>times</th>
-      <td><p>a vector of length 2, start time and end time in seconds</p></td>
+      <td><p>a vector of length 2, or a matrix with two columns, start time and end time in seconds</p></td>
     </tr>
     <tr>
       <th>zero_based</th>
-      <td><p>signifying if you passed seconds from start or reaů time. defualts to False</p></td>
+      <td><p>signifying if you passed seconds from start or real time. defualts to FALSE (real time passed)</p></td>
     </tr>
     <tr>
       <th>...</th>

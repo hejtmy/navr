@@ -1,7 +1,7 @@
 Package: navr
 Type: Package
 Title: Collection of functions that find typical use in human navigation cognitive paradigms
-Version: 0.1.4
+Version: 0.1.5
 Author: Lukáš "hejtmy" Hejtmánek
 Maintainer: Lukáš Hejtmánek <hejtmy@gmail.com>
 Description: More about what it does (maybe more than one line)

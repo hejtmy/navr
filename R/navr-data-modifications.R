@@ -118,7 +118,7 @@ add_angle_differences <- function(obj){
   for(i in grep("rotation", cols)){
     colname <- cols[i]
     new_name <- paste0(colname, "_diff") #appends
-    obj$data[[new_name]] <- navr::calculate_angle_differences(obj$data[[colname]])
+    obj$data[[new_name]] <- calculate_angle_differences(obj$data[[colname]])
   }
   return(obj)
 }
@@ -138,7 +138,7 @@ add_speeds <- function(obj, ...){
 }
 #' @export
 add_speeds.navr <- function(obj){
-  distances <- get_distances(obj)
+  distances <- get_distances.navr(obj)
   obj$data$speed <- navr::calculate_speeds(distances, obj$data$timestamp)
   return(obj)
 }

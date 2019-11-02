@@ -60,7 +60,7 @@
       </button>
       <span class="navbar-brand">
         <a class="navbar-link" href="../index.html">navr</a>
-        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.4</span>
+        <span class="version label label-default" data-toggle="tooltip" data-placement="bottom" title="Released version">0.1.5</span>
       </span>
     </div>
 
@@ -82,6 +82,9 @@
     <span class="caret"></span>
   </a>
   <ul class="dropdown-menu" role="menu">
+    <li>
+      <a href="../articles/basic-use.html">Basic use</a>
+    </li>
     <li>
       <a href="../articles/loading-preprocessing.html">Loading and preprocessing</a>
     </li>
@@ -156,45 +159,9 @@
       <tr>
         
         <td>
-          <p><code><a href="add_angle_differences.html">add_angle_differences()</a></code> </p>
+          <p><code><a href="prepare_navr.html">prepare_navr()</a></code> </p>
         </td>
-        <td><p>Adds extra diff column to each column that has "rotation" in its name</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_distances.html">add_distances()</a></code> </p>
-        </td>
-        <td><p>Adds distance and cumulative distances (distance_total) columns</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_speeds.html">add_speeds()</a></code> </p>
-        </td>
-        <td><p>Adds speed column</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_times_since_start.html">add_times_since_start()</a></code> </p>
-        </td>
-        <td><p>Adds tiems since start column to the navr object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_time_columns.navr.html">add_time_columns(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Title</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_time_columns.html">add_time_columns()</a></code> </p>
-        </td>
-        <td><p>Add time_since_start and time_diff columns</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="add_time_diffs.html">add_time_diffs()</a></code> </p>
-        </td>
-        <td><p>Adds tiems since start column to the navr object</p></td>
+        <td><p>Adds all necessary columns to the navr object</p></td>
       </tr><tr>
         
         <td>
@@ -257,42 +224,6 @@
           <p><code><a href="filter_times.html">filter_times()</a></code> </p>
         </td>
         <td><p>Filters navr object to only include times in between</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_distances.html">get_distances()</a></code> </p>
-        </td>
-        <td><p>Gets distance column from the object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_speeds.html">get_speeds()</a></code> </p>
-        </td>
-        <td><p>Gets speed column from the object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_times_since_start.navr.html">get_times_since_start(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Returns time since start column from the navr object if it has one</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_times_since_start.html">get_times_since_start()</a></code> </p>
-        </td>
-        <td><p>Return time since start form the passed object</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_time_diffs.navr.html">get_time_diffs(<i>&lt;navr&gt;</i>)</a></code> </p>
-        </td>
-        <td><p>Returns time_diffs column from the data if it has been caluclated</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="get_time_diffs.html">get_time_diffs()</a></code> </p>
-        </td>
-        <td><p>Return time diffs column from the object</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -325,6 +256,12 @@
           <p><code><a href="search_stops.html">search_stops()</a></code> </p>
         </td>
         <td><p>Searches for times when there is no movement</p></td>
+      </tr><tr>
+        
+        <td>
+          <p><code><a href="search_deliberation_stops.html">search_deliberation_stops()</a></code> </p>
+        </td>
+        <td><p>Searches for deliberation stop times and durations (time of no movement and increased rotation)</p></td>
       </tr>
     </tbody><tbody>
       <tr>
@@ -452,6 +389,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="geom_navr_path_limits.html">geom_navr_path_limits()</a></code> </p>
+        </td>
+        <td><p>Adds limits based on the range of path plus and minus padding</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="geom_navr_points.html">geom_navr_points()</a></code> </p>
         </td>
         <td><p>GGplot geom to add specified points to the given plot</p></td>
@@ -502,6 +445,12 @@
       </tr><tr>
         
         <td>
+          <p><code><a href="angle_diff.html">angle_diff()</a></code> </p>
+        </td>
+        <td><p>Calculates angular difference between passed angle matrices</p></td>
+      </tr><tr>
+        
+        <td>
           <p><code><a href="angle_to_180.html">angle_to_180()</a></code> </p>
         </td>
         <td><p>Converts angle to -180 to 180 difference</p></td>
@@ -510,19 +459,13 @@
         <td>
           <p><code><a href="angle_to_360.html">angle_to_360()</a></code> </p>
         </td>
-        <td><p>Title</p></td>
+        <td><p>converts positive and negative angles to 0-360</p></td>
       </tr><tr>
         
         <td>
           <p><code><a href="angle_to_radian.html">angle_to_radian()</a></code> </p>
         </td>
         <td><p>Converts angle to radian</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_angle_differences.html">calculate_angle_differences()</a></code> </p>
-        </td>
-        <td><p>Adds new colum angle_diff_axis where it calculates angle difference between rows</p></td>
       </tr><tr>
         
         <td>
@@ -535,18 +478,6 @@
           <p><code><a href="calculate_speeds.html">calculate_speeds()</a></code> </p>
         </td>
         <td><p>Calcualtes vector of doubles with speeds</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_times_since_start.html">calculate_times_since_start()</a></code> </p>
-        </td>
-        <td><p>Calculates times since start</p></td>
-      </tr><tr>
-        
-        <td>
-          <p><code><a href="calculate_time_diffs.html">calculate_time_diffs()</a></code> </p>
-        </td>
-        <td><p>Calculates time differences between timestamps</p></td>
       </tr><tr>
         
         <td>

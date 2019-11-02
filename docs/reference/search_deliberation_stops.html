@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validates and adds area boudaries — add_area_boundaries • navr</title>
+<title>Searches for deliberation stop times and durations (time of no movement and increased rotation) — search_deliberation_stops • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Validates and adds area boudaries — add_area_boundaries" />
+<meta property="og:title" content="Searches for deliberation stop times and durations (time of no movement and increased rotation) — search_deliberation_stops" />
 
-<meta property="og:description" content="Validates and adds area boudaries" />
+<meta property="og:description" content="if min_rotation is 0, then it can be replaced by search stops." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,36 +115,36 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validates and adds area boudaries</h1>
+    <h1>Searches for deliberation stop times and durations (time of no movement and increased rotation)</h1>
     
-    <div class="hidden name"><code>add_area_boundaries.Rd</code></div>
+    <div class="hidden name"><code>search_deliberation_stops.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Validates and adds area boudaries</p>
+    <p>if min_rotation is 0, then it can be replaced by search stops.</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_area_boundaries</span>(<span class='no'>obj</span>, <span class='no'>ls</span>)</pre>
+    <pre class="usage"><span class='fu'>search_deliberation_stops</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='no'>min_duration</span>, <span class='no'>min_rotation</span>,
+  <span class='kw'>rotation_axis</span> <span class='kw'>=</span> <span class='st'>"x"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>obj</th>
-      <td><p>navr object</p></td>
+      <th>speed_threshold</th>
+      <td><p>what is considered as a stopping speed. Same as the speed threshold in search_stops</p></td>
     </tr>
     <tr>
-      <th>ls</th>
-      <td><p>list of list(x = c(0, 100), y=c(0,100)) type. Needs to have
-x and y boundaries for the graphs to work properly</p></td>
+      <th>min_duration</th>
+      <td><p>minimal duration of the stop</p></td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td></td>
     </tr>
     </table>
-    
-    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
-
-    <p>modified object</p>
     
 
   </div>
@@ -152,9 +152,7 @@ x and y boundaries for the graphs to work properly</p></td>
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-      
-      <li><a href="#value">Value</a></li>
-          </ul>
+                </ul>
 
   </div>
 </div>

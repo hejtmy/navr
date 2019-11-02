@@ -4,7 +4,7 @@
 \alias{get_times_since_start.navr}
 \title{Returns time since start column from the navr object if it has one}
 \usage{
-\method{get_times_since_start}{navr}(obj)
+get_times_since_start.navr(obj)
 }
 \arguments{
 \item{obj}{Navr Object}

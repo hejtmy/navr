@@ -27,7 +27,7 @@ Navr object can be filtered by time with `filter_times` function. The function t
 So if you say for example only the first 10 seconds of your obj, you can do the following
 
 ```{r}
-obj_prep <- add_columns_navr(obj)
+obj_prep <- prepare_navr(obj)
 obj_first10 <- filter_times(obj_prep, c(0,10), zero_based=TRUE)
 ```
 

@@ -199,7 +199,7 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 #'
 #' @examples
 geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", scale = c(), ...){
-  times <- get_times_since_start(obj)
+  times <- get_times_since_start.navr(obj)
   values <- obj$data[[colname]]
   return(geom_navr_timeseries(times, values, scaling, scale, ...))
 }

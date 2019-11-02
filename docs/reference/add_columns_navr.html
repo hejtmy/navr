@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Validates and adds area boudaries — add_area_boundaries • navr</title>
+<title>Adds all necessary columns to the navr object — add_columns_navr • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Validates and adds area boudaries — add_area_boundaries" />
+<meta property="og:title" content="Adds all necessary columns to the navr object — add_columns_navr" />
 
-<meta property="og:description" content="Validates and adds area boudaries" />
+<meta property="og:description" content="runs add_time_columns, add_distances, add_angle_differences and add_speeds" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -115,36 +115,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Validates and adds area boudaries</h1>
+    <h1>Adds all necessary columns to the navr object</h1>
     
-    <div class="hidden name"><code>add_area_boundaries.Rd</code></div>
+    <div class="hidden name"><code>add_columns_navr.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Validates and adds area boudaries</p>
+    <p>runs add_time_columns, add_distances, add_angle_differences and add_speeds</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>add_area_boundaries</span>(<span class='no'>obj</span>, <span class='no'>ls</span>)</pre>
+    <pre class="usage"><span class='fu'>add_columns_navr</span>(<span class='no'>obj</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>navr object</p></td>
-    </tr>
-    <tr>
-      <th>ls</th>
-      <td><p>list of list(x = c(0, 100), y=c(0,100)) type. Needs to have
-x and y boundaries for the graphs to work properly</p></td>
+      <td><p>object of type navr</p></td>
     </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>modified object</p>
+    <p>returns navr object with modified columns</p>
     
 
   </div>
