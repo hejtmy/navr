@@ -8,13 +8,7 @@ reference:
 - title: Preprocessing
   desc: Function to preprocess navr object. Adding time and angle columns, smoothing speeds etc.
   contents:
-  - '`add_angle_differences`'
-  - '`add_distances`'
-  - '`add_speeds`'
-  - '`add_times_since_start`'
-  - '`add_time_columns.navr`'
-  - '`add_time_columns`'
-  - '`add_time_diffs`'
+  - '`prepare_navr`'
   - '`add_area_boundaries`'
   - '`pick_unreal_speeds`'
   - '`remove_unreal_speeds.navr`'
@@ -77,10 +71,10 @@ reference:
   - '`vector_from_angle`'
   - '`smooth_vector`'
   - '`angle_from_positions`'
+  - '`angle_diff`'
   - '`angle_to_180`'
   - '`angle_to_360`'
   - '`angle_to_radian`'
-  - '`calculate_angle_differences`'
   - '`calculate_distances`'
   - '`calculate_speeds`'
   - '`euclid_distance`'

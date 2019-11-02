@@ -7,6 +7,10 @@
 angle_from_positions(pos_from, pos_to, zero_vec = c(0, 1))
 }
 \arguments{
+\item{pos_from}{numeric(2) vector of original position}
+
+\item{pos_to}{numeric(2) vector of position towards the target}
+
 \item{zero_vec}{defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)}
 }
 \description{

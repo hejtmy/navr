@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-angle-calculations.R
 \name{calculate_angle_differences}
 \alias{calculate_angle_differences}
-\title{Adds new colum angle_diff_axis where it calculates angle difference between rows}
+\title{Creates a series of angle_diffs conversted to degrees of angukar difference where it calculates angle difference between rows}
 \usage{
 calculate_angle_differences(rotations)
 }
@@ -10,5 +10,5 @@ calculate_angle_differences(rotations)
 \item{rotations}{vector of angles in 360}
 }
 \description{
-Adds new colum angle_diff_axis where it calculates angle difference between rows
+Creates a series of angle_diffs conversted to degrees of angukar difference where it calculates angle difference between rows
 }

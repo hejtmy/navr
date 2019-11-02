@@ -2,7 +2,7 @@
 % Please edit documentation in R/navr-angle-calculations.R
 \name{angle_to_360}
 \alias{angle_to_360}
-\title{Title}
+\title{converts positive and negative angles to 0-360}
 \usage{
 angle_to_360(angle)
 }
@@ -10,7 +10,8 @@ angle_to_360(angle)
 \item{angle}{}
 }
 \description{
-Title
+asumes it is not below -360
+390 is converted to 30, -40 to 320 etc
 }
 \examples{
 

@@ -1,20 +1,32 @@
-#' Adds new colum angle_diff_axis where it calculates angle difference between rows
+#' Creates a series of angle_diffs conversted to degrees of angukar difference where it calculates angle difference between rows
 #'
 #' @param rotations vector of angles in 360
-#'
-#' @export
-#'
-#' @example
 calculate_angle_differences <- function(rotations){
   angle_diffs <- round(c(0, diff(rotations)), 4)
   angle_diffs <- angle_to_180(angle_diffs)
   return(angle_diffs)
 }
 
-# converts positive and negative angles to 0-360
-# asumes it is not below -360
-# 390 is converted to 30, -40 to 320 etc
-#' Title
+#' Calculates angular difference between passed angle matrices
+#'
+#' @param angle1 vector of angles (in degrees)
+#' @param angle2
+#'
+#' @return
+#' @export
+#'
+#' @examples
+angle_diff <- function(angle1, angle2) {
+  if(length(angle1)!=length(angle2)){
+    warning("lengths of the matrices don't match")
+    return(NULL)
+  }
+  return(navr::angle_to_180(angle2-angle1))
+}
+
+#' converts positive and negative angles to 0-360
+#' @description asumes it is not below -360
+#' 390 is converted to 30, -40 to 320 etc
 #'
 #' @param angle
 #'
@@ -69,8 +81,8 @@ angle_to_radian <- function(angle){
 
 #' Calculates angle from two 2d positions
 #'
-#' @param pos_from
-#' @param pos_to
+#' @param pos_from numeric(2) vector of original position
+#' @param pos_to numeric(2) vector of position towards the target
 #' @param zero_vec defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)
 #'
 #' @return
