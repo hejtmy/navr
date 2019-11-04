@@ -4,7 +4,7 @@
 \alias{add_angle_differences}
 \title{Adds extra diff column to each column that has "rotation" in its name}
 \usage{
-add_angle_differences(obj)
+add_angle_differences(variables)
 }
 \arguments{
 \item{obj}{}

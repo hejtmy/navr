@@ -40,8 +40,8 @@ add_time_columns <- function(obj, ...){
 }
 #' @export
 add_time_columns.navr <- function(obj){
-  obj <- add_times_since_start(obj)
-  obj <- add_time_diffs(obj)
+  obj <- add_times_since_start.navr(obj)
+  obj <- add_time_diffs.navr(obj)
   return(obj)
 }
 
@@ -109,11 +109,12 @@ add_distances.navr <- function(obj){
 #' @param obj
 #'
 #' @return
-#' @export
-#'
-#' @examples
-add_angle_differences <- function(obj){
+add_angle_differences <- function(variables) {
   .Deprecated("prepare_navr")
+  UseMethod("add_angle_differences")
+}
+#' @export
+add_angle_differences.navr <- function(obj){
   cols <- colnames(obj$data)
   for(i in grep("rotation", cols)){
     colname <- cols[i]
