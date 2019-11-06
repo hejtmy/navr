@@ -55,7 +55,7 @@ geom_navr_path_rotation <- function(obj, axis = "x", downsample = 10, length = 1
 #' @export
 #'
 #' @examples
-geom_navr_backround <- function(image_path, xlim = NULL, ylim = NULL){
+geom_navr_background <- function(image_path, xlim = NULL, ylim = NULL){
   img <- png::readPNG(image_path)
   rast <- grid::rasterGrob(img, width = unit(1, "npc"), height = unit(1, "npc"), interpolate = T)
   if(!(is.null(xlim) | is.null(ylim))){

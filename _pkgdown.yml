@@ -45,7 +45,7 @@ reference:
   - '`animate_path`'
   - '`create_minimal_plot`'
   - '`create_void_plot`'
-  - '`geom_navr_backround`'
+  - '`geom_navr_background`'
   - '`geom_navr_circle`'
   - '`geom_navr_direction`'
   - '`geom_navr_heatmap`'
