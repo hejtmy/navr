@@ -193,19 +193,3 @@ remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
   return(obj)
 }
 
-
-#' Adds information about what area does the current position belong to
-#'
-#' @description The column contains information about in which area the
-#'
-#' @param obj
-#' @param areas
-#' @param ...
-#'
-#' @return
-#' @export
-#'
-#' @examples
-add_area_column <- function(obj, areas, ...){
-  UseMethod("add_area_column")
-}

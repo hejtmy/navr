@@ -23,18 +23,19 @@ AreaObject <- function(name, type = "rectangle", points = c()){
 #' @description The column contains information about in which area the
 #'
 #' @param obj
-#' @param areas list of \coode{\link{AreaObject}}
+#' @param areas list of \coode{\link{AreaObject}}. Needs to be a list of length(areas), even if you are passing
+#' a single area, you should pass it as a list(your_area)
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-add_area_column <- function(obj, areas, ...){
-  UseMethod("add_area_column")
+add_areas <- function(obj, areas, ...){
+  UseMethod("add_areas")
 }
 #' @export
-add_area_column.navr <- function(obj, areas, ...){
+add_areas.navr <- function(obj, areas, ...){
   obj$data[[AREA_COLNAME]] <- NA_character_
   for(area in areas){
     iPresent <- is_in_area(obj$data$position_x, obj$data$position_y, area)
@@ -72,7 +73,7 @@ has_areas.navr <- function(obj){
 #'
 #' @examples
 is_in_area <- function(x, y, area){
-  if(area$type == "rectangle") return(is_in_area.rectangle(x, y, points))
+  if(area$type == "rectangle") return(is_in_area.rectangle(x, y, area$points))
   warning("area's type ", area$type, " is not valid")
   return(FALSE)
 }
