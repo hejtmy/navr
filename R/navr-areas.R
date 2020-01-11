@@ -61,7 +61,6 @@ has_areas.navr <- function(obj){
   return(AREA_COLNAME %in% colnames(obj$data))
 }
 
-
 #' Returns if given position is within area or not
 #'
 #' @param x numeric vector of x positions. Same dimensions as y
@@ -84,6 +83,40 @@ is_in_area.rectangle <- function(x, y, points){
   ymin <- min(points[, 2])
   ymax <- max(points[, 2])
   return((x >= xmin & x <= xmax) & (y >= ymin & y <= ymax))
+}
+
+## Analysis -----
+#' Calculates time spent in each of encoded areas
+#'
+#' @param obj preprocessed navr object with added areas (see \code{\link{add_areas}})
+#'
+#' @return dataframe with results
+#' @export
+#'
+#' @examples
+calculate_areas_time <- function(obj){
+  if(!has_areas(obj)){
+    warning("Areas have not been added yet. Have you run add_areas?")
+    return(NULL)
+  }
+  dat <- obj$data
+  total_time <- tail(dat$timestamp, 1) - dat$timestamp[1]
+  df <- data.frame(area = "anywhere",
+                   n = nrow(dat),
+                   duration = total_time,
+                   ratio = 1,
+                   stringsAsFactors = FALSE)
+  areas <- unique(dat[[AREA_COLNAME]])
+  areas <- areas[!is.na(areas)]
+  for(area in areas){
+    ls <- list(area = area)
+    area_presence <- dat[dat$area == area & !is.na(dat$area), ]
+    ls$n <- nrow(area_presence)
+    ls$duration <- sum(area_presence$time_diff, na.rm = TRUE)
+    ls$ratio <- ls$duration/total_time
+    df <- rbind(df, ls)
+  }
+  return(df)
 }
 
 ## Visualisatons ------
