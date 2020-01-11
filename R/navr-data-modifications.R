@@ -106,7 +106,7 @@ add_distances.navr <- function(obj){
 
 #' Adds extra diff column to each column that has "rotation" in its name
 #'
-#' @param obj
+#' @param obj navr object
 #'
 #' @return
 add_angle_differences <- function(variables) {
@@ -191,4 +191,21 @@ remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
   if(remove_distance) obj$data[indices, "distance"] <- NA
   if(total_recalculate) obj$data$distance_total <- calculate_total_distance(obj$data$distance)
   return(obj)
+}
+
+
+#' Adds information about what area does the current position belong to
+#'
+#' @description The column contains information about in which area the
+#'
+#' @param obj
+#' @param areas
+#' @param ...
+#'
+#' @return
+#' @export
+#'
+#' @examples
+add_area_column <- function(obj, areas, ...){
+  UseMethod("add_area_column")
 }
