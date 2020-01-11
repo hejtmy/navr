@@ -109,8 +109,9 @@ calculate_areas_time <- function(obj){
   areas <- unique(dat[[AREA_COLNAME]])
   areas <- areas[!is.na(areas)]
   for(area in areas){
+    area_presence <- get_area_position(obj, area)
+    area_presence <- area_presence$data
     ls <- list(area = area)
-    area_presence <- dat[dat$area == area & !is.na(dat$area), ]
     ls$n <- nrow(area_presence)
     ls$duration <- sum(area_presence$time_diff, na.rm = TRUE)
     ls$ratio <- ls$duration/total_time
@@ -119,6 +120,51 @@ calculate_areas_time <- function(obj){
   return(df)
 }
 
+## Getters ----
+
+#' Returns only data with area
+#'
+#' @param obj
+#' @param area
+#'
+#' @return
+#' @export
+#'
+#' @examples
+get_area_position <- function(obj, area){
+  if(!has_areas(obj)){
+    warning("Areas have not been added yet. Have you run add_areas?")
+    return(NULL)
+  }
+  obj$data <- obj$data[obj$data[[AREA_COLNAME]] == area & !is.na(obj$data[[AREA_COLNAME]]), ]
+  return(obj)
+}
+
+
+#' Returns indices of when an area was entered for the first time
+#'
+#' @param obj navr object with areas.
+#' @param to name of the area to which count entrances
+#' @param from optional parameter defining from whih area the entrance should be
+#' @param between_allowed number of allowed areas to be entered between the `from` and `to`.
+#' only aplicable if `from` is set. Designates if  the entrance
+#' should be counted only if it is N "stops from the `from` area or if any
+#' This is primarily for the reason of defining "no" enter zones or if you have some "buffer" between.
+#' e.g. if you want to count how many time supermarket is entered from
+#' the "street", but the person has to pass through a "parking lot" area first, you need to
+#' set the `between_allowed` to 1 or higher.
+#'
+#' @return indices of data where the area was entered given argument conditions
+#' @export
+#'
+#' @examples
+get_area_entrances <- function(obj, to, from = NULL, between_allowed = 0){
+  if(!has_areas(obj)){
+    warning("Areas have not been added yet. Have you run add_areas?")
+    return(NULL)
+  }
+
+}
 ## Visualisatons ------
 
 #' Returns area ploygon to be plotted
