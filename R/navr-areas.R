@@ -85,3 +85,21 @@ is_in_area.rectangle <- function(x, y, points){
   ymax <- max(points[, 2])
   return((x >= xmin & x <= xmax) & (y >= ymin & y <= ymax))
 }
+
+## Visualisatons ------
+
+#' Returns area ploygon to be plotted
+#'
+#' @param area AreaObject
+#' @param ... other ggplot arguments for geom_polygon
+#'
+#' @return ggplot geom_polygon object
+#' @export
+#'
+#' @examples
+geom_navr_area <- function(area, fill = NA, color = "red", size = 1.25, ...){
+  df <- as.data.frame(area$points)
+  colnames(df) <- c("x", "y")
+  return(geom_polygon(data = df, aes(x, y), fill = fill,
+                      color = color, size = size, ...))
+}
