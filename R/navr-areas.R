@@ -158,12 +158,37 @@ get_area_position <- function(obj, area){
 #' @export
 #'
 #' @examples
-get_area_entrances <- function(obj, to, from = NULL, between_allowed = 0){
+get_area_visits <- function(obj, to, from = NULL, between_allowed = 0){
   if(!has_areas(obj)){
     warning("Areas have not been added yet. Have you run add_areas?")
     return(NULL)
   }
-
+  areas <- obj$data[[AREA_COLNAME]]
+  areas[is.na(areas)] <- "_nowhere_"
+  areas_visited <- rle(areas)
+  iVisits <- which(areas_visited$values == to)
+  # if the test starts there, we don¨t consider it as a visit
+  iVisits <- iVisits[iVisits != 0]
+  ## Dealing witht he from argument
+  if (!is.null(from)){
+    iKeep <- c()
+    iBeforeStarts <- iVisits - (between_allowed + 1) #always at least one back
+    iBeforeStarts[iBeforeStarts < 1] <- 1
+    for(i in 1:length(iVisits)){
+      # all the areas/indices of locations visited before this particular visit
+      iBetween <- iBeforeStarts[i]:(iVisits[i] - 1)
+      # if the area vas visited within the iBetwen we have to start calculating from the last visit
+      if(to %in% areas_visited$values[iBetween]){
+        iBeforeStart <- max(iBetween[areas_visited$values[iBetween] == to])
+        iBetween <- iBeforeStart:(iVisits[i] - 1)
+      }
+      if(from %in% areas_visited$values[iBetween]) iKeep <- c(iKeep, i)
+    }
+    iVisits <- iVisits[iKeep]
+  }
+  indices <- sapply(iVisits, function(x){sum(areas_visited$lengths[1:(x - 1)])})
+  if(length(indices) == 0) indices <- c()
+  return(indices)
 }
 ## Visualisatons ------
 
