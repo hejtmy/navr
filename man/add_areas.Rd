@@ -7,11 +7,14 @@
 add_areas(obj, areas, ...)
 }
 \arguments{
-\item{areas}{list of \coode{\link{AreaObject}}. Needs to be a list of length(areas), even if you are passing
+\item{areas}{list of \code{\link{AreaObject}}. Needs to be a list of length(areas), even if you are passing
 a single area, you should pass it as a list(your_area)}
 
 \item{...}{}
 }
 \description{
-The column contains information about in which area the
+adds a column which contains name of an area the current positions belongs to.
+beware that the areas can NOT overlap each other. Each point can only belong to a single area,
+otherwise newly added area might overrite the previous one. See more information about areas
+in the area vignette
 }

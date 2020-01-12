@@ -18,5 +18,7 @@ columns representing X and Y positions}
 Definition of an area object used in designating area presence
 }
 \examples{
-AreaObject("main square", "rectangle", matrix(c(0, 0, 1, 0, 1, 1, 0, 1), ncol=2, byrow=T))
+\dontrun{
+AreaObject("main square", "rectangle", matrix(c(0, 0, 1, 0, 1, 1, 0, 1), ncol=2, byrow=TRUE))
+}
 }

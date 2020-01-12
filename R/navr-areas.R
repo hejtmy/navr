@@ -10,7 +10,9 @@ AREA_COLNAME <- "area"
 #' @export
 #'
 #' @examples
-#' AreaObject("main square", "rectangle", matrix(c(0, 0, 1, 0, 1, 1, 0, 1), ncol=2, byrow=T))
+#' \dontrun{
+#' AreaObject("main square", "rectangle", matrix(c(0, 0, 1, 0, 1, 1, 0, 1), ncol=2, byrow=TRUE))
+#' }
 AreaObject <- function(name, type = "rectangle", points = c()){
   res <- list(name = name, type = type, points = points)
   # add validations
@@ -20,10 +22,13 @@ AreaObject <- function(name, type = "rectangle", points = c()){
 
 #' Adds information about what area does the current position belong to
 #'
-#' @description The column contains information about in which area the
+#' @description adds a column which contains name of an area the current positions belongs to.
+#' beware that the areas can NOT overlap each other. Each point can only belong to a single area,
+#' otherwise newly added area might overrite the previous one. See more information about areas
+#' in the area vignette
 #'
 #' @param obj
-#' @param areas list of \coode{\link{AreaObject}}. Needs to be a list of length(areas), even if you are passing
+#' @param areas list of \code{\link{AreaObject}}. Needs to be a list of length(areas), even if you are passing
 #' a single area, you should pass it as a list(your_area)
 #' @param ...
 #'
@@ -140,7 +145,6 @@ get_area_position <- function(obj, area){
   return(obj)
 }
 
-
 #' Returns indices of when an area was entered for the first time
 #'
 #' @param obj navr object with areas.
@@ -190,6 +194,7 @@ get_area_visits <- function(obj, to, from = NULL, between_allowed = 0){
   if(length(indices) == 0) indices <- c()
   return(indices)
 }
+
 ## Visualisatons ------
 
 #' Returns area ploygon to be plotted
