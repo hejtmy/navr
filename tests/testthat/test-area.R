@@ -17,3 +17,8 @@ test_that("working with multiple areas work", {
   rectangle_area2$points <- rectangle_area2$points + 5
   expect_silent(res <- add_areas(obj_prep, list(rectangle_area, rectangle_area2)))
 })
+
+
+test_that("calculating visitations work", {
+  # Test that if no such cross exists it returns NULL
+})

@@ -158,7 +158,8 @@ get_area_position <- function(obj, area){
 #' the "street", but the person has to pass through a "parking lot" area first, you need to
 #' set the `between_allowed` to 1 or higher.
 #'
-#' @return indices of data where the area was entered given argument conditions
+#' @return indices of data where the area was entered given argument conditions or
+#' NULL if no such visit exists
 #' @export
 #'
 #' @examples
@@ -173,8 +174,8 @@ get_area_visits <- function(obj, to, from = NULL, between_allowed = 0){
   iVisits <- which(areas_visited$values == to)
   # if the test starts there, we don¨t consider it as a visit
   iVisits <- iVisits[iVisits != 0]
-  ## Dealing witht he from argument
-  if (!is.null(from)){
+  ## Dealing witht the from argument
+  if (length(iVisits) > 0 & !is.null(from)){
     iKeep <- c()
     iBeforeStarts <- iVisits - (between_allowed + 1) #always at least one back
     iBeforeStarts[iBeforeStarts < 1] <- 1
