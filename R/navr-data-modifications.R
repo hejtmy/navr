@@ -174,7 +174,7 @@ remove_unreal_speeds <- function(obj, ...){
 #'
 #' @export
 remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
-                                      remove_distance = T, total_recalculate = T,
+                                      remove_distance = TRUE, total_recalculate = TRUE,
                                       indices = c(), replacement = NA){
   if(!("speed" %in% colnames(obj$data))){
     warning("The object doesn't have speed column. You need to add it first using add_speeds function")

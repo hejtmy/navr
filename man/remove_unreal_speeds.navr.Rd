@@ -5,7 +5,7 @@
 \title{Shorthand for picking speeds and then recalculating object}
 \usage{
 \method{remove_unreal_speeds}{navr}(obj, cutoff = NULL, type = NULL,
-  remove_distance = T, total_recalculate = T, indices = c(),
+  remove_distance = TRUE, total_recalculate = TRUE, indices = c(),
   replacement = NA)
 }
 \arguments{
