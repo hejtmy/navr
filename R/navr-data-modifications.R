@@ -106,7 +106,7 @@ add_distances.navr <- function(obj){
 
 #' Adds extra diff column to each column that has "rotation" in its name
 #'
-#' @param obj
+#' @param obj navr object
 #'
 #' @return
 add_angle_differences <- function(variables) {
@@ -192,3 +192,4 @@ remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
   if(total_recalculate) obj$data$distance_total <- calculate_total_distance(obj$data$distance)
   return(obj)
 }
+

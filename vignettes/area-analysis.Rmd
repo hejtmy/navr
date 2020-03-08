@@ -1,0 +1,37 @@
+---
+title: "Area analysis"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{areas-analysis}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(navr)
+```
+
+# Area analysis
+
+Areas define places within the space in which the subject can be at any point. It allows us to segment the environemnt to predefined spaces (e.g. starting zone, target zone) and analyse thte time spent at each of those spaces or number of visits during the experiment.
+
+## Area Objects
+
+Areas are defined by `AreaObject` object, which has name, type and other values. 
+
+```{r}
+
+```
+
+## Adding areas
+
+## Calculating time spent in an area
+
+## Calculating number of visits
