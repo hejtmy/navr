@@ -233,17 +233,24 @@ geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), .
 #' Draws vectical lines at times of given events
 #'
 #' @param event_times times of events, need to correspond to the X axis
+#' @param durations durations of event times. if not empty, plots grey behind the events.
 #'
 #' @return list if geom_vline
 #' @export
 #'
 #' @examples
-geom_navr_timeseries_events <- function(event_times, ...){
-  ls <- list()
-  for(time in event_times){
-    ls <- c(ls, geom_vline(xintercept = time, ...))
+geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
+  df <- data.frame(time = event_times)
+  geoms <- geom_vline(data = df, aes(xintercept = time), ...)
+  if(length(durations) > 0){
+    if(length(durations) != length(event_times)){
+      warning("Durations have different length than event times")
+    } else {
+      df$duration <- durations
+      geoms <- c(geoms, geom_rect(data = df, aes(ymin = -Inf, ymax = Inf, xmin = time, xmax = time + duration), color=NA, alpha = 0.2))
+    }
   }
-  return(ls)
+  return(geoms)
 }
 
 #' geom to add stat_density2d position heatmap

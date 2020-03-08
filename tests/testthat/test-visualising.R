@@ -20,11 +20,9 @@ test_that("tests speed plotting", {
   expect_silent(plot_speed(obj_prep)) #speed present
 })
 
-
 test_that("tests plot elements", {
   plt <- create_minimal_plot()
 })
-
 
 test_that("tests custom geoms", {
   plt <- create_minimal_plot()
@@ -40,9 +38,10 @@ test_that("tests custom geoms", {
   expect_silent(plt + geom_navr_path_events(obj_prep, times))
 })
 
-
 test_that("tests timeseries", {
   expect_silent(plt <- create_minimal_plot() + geom_navr_obj_timeseries(obj_prep, "position_x"))
   times <- obj_prep$data$timestamp[c(1000, 5500, 18000)]
   expect_silent(plt + geom_navr_timeseries_events(times))
+  expect_silent(plt + geom_navr_timeseries_events(times, durations = rep(5, length(times))))
+  expect_warning(plt + geom_navr_timeseries_events(times, durations = rep(5, length(times)-1)))
 })

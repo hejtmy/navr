@@ -22,7 +22,8 @@ the "street", but the person has to pass through a "parking lot" area first, you
 set the \code{between_allowed} to 1 or higher.}
 }
 \value{
-indices of data where the area was entered given argument conditions
+indices of data where the area was entered given argument conditions or
+NULL if no such visit exists
 }
 \description{
 Returns indices of when an area was entered for the first time

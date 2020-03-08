@@ -39,26 +39,27 @@ plot_speed(obj) + xlim(100, 150)
 There are several options to onset searching. Let's start with the simple every time it is above certain threshold and for at least 1 s
 
 ```{r}
-ls <- search_onsets(obj, speed_threshold = 5, min_duration = 2)
-plot_speed(obj) + geom_navr_timeseries_events(ls$time_since_start, color="green", size=1.5)  + xlim(100,300)
+onsets <- search_onsets(obj, speed_threshold = 5, min_duration = 2)
+plot_speed(obj) +
+  geom_navr_timeseries_events(onsets$time_since_start, durations = onsets$duration, color=NA, size=1.5) +
+  xlim(200,500)
 ```
  
 Seems to be working well. Now we can modify the onset search to only capture onsets which are preceded by stillness
 
 ```{r}
-ls <- search_onsets(obj, speed_threshold = 5, min_duration = 2, still_duration = 2)
-plot_speed(obj) + geom_navr_timeseries_events(ls$time_since_start, color="green", size=1.5)  + xlim(100,300)
-```
-
-And we can also plot the stops with the durations value
-```{r}
-plot_speed(obj) + geom_navr_timeseries_events(ls$time_since_start, color="green", size=1.5) + 
-   geom_navr_timeseries_events(ls$time_since_start+ls$duration, color="red", size=1.5) + xlim(100,300)
+onsets <- search_onsets(obj, speed_threshold = 5, min_duration = 2, still_duration = 3)
+plot_speed(obj) +
+  geom_navr_timeseries_events(onsets$time_since_start, durations = onsets$duration, 
+                              color=NA, size=1.5) +
+  xlim(200,500)
 ```
 
 And next we can also designate slightly different speeds for still and moving speeds
 
 ```{r}
-times <- search_onsets(obj, speed_threshold = 5, min_duration = 1, still_duration = 2, still_speed_threshold = 2)
-plot_speed(obj) + geom_navr_timeseries_events(ls$time_since_start, color="green", size=1.5)  + xlim(100,300)
+onsets <- search_onsets(obj, speed_threshold = 5, min_duration = 1, still_duration = 2, still_speed_threshold = 2)
+plot_speed(obj) + 
+  geom_navr_timeseries_events(onsets$time_since_start, color="green", size=1.5) + 
+  xlim(100,300)
 ```

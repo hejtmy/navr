@@ -4,10 +4,12 @@
 \alias{geom_navr_timeseries_events}
 \title{Draws vectical lines at times of given events}
 \usage{
-geom_navr_timeseries_events(event_times, ...)
+geom_navr_timeseries_events(event_times, durations = c(), ...)
 }
 \arguments{
 \item{event_times}{times of events, need to correspond to the X axis}
+
+\item{durations}{durations of event times. if not empty, plots grey behind the events.}
 }
 \value{
 list if geom_vline
