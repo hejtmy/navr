@@ -25,13 +25,17 @@ search_deliberation_stops.navr <- function(obj, speed_threshold, min_duration, m
   if(min_rotation > 0) obj <- add_angle_differences(obj)
   rotation_column <- paste0("rotation_", rotation_axis, "_diff")
   times <- c()
+  times_since_start <- c()
   durations <- c()
   for(i in 1:length(stops$time_since_start)){
     small <- filter_times.navr(obj, c(stops$time_since_start[i], stops$time_since_start[i]+stops$duration[i]), zero_based = TRUE)
     if(sum(small$data[[rotation_column]]) < min_rotation) next
-    times <- c(times, stops$time_since_start[i])
+    times <- c(times, stops$time[i])
+    times_since_start <- c(times_since_start, stops$time_since_start[i])
     durations <- c(durations, stops$duration[i])
   }
-  result <- list(time_since_start = times, duration = durations)
+  result <- list(time = times,
+                 time_since_start = times_since_start,
+                 duration = durations)
   return(result)
 }
