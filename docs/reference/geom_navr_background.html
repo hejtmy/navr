@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plots position heatmap with given granularity — plot_position_heatmap • navr</title>
+<title>GGplot geom to add custom PNG background to the plot — geom_navr_background • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Plots position heatmap with given granularity — plot_position_heatmap" />
+<meta property="og:title" content="GGplot geom to add custom PNG background to the plot — geom_navr_background" />
 
-<meta property="og:description" content="Plots position heatmap with given granularity" />
+<meta property="og:description" content="GGplot geom to add custom PNG background to the plot" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,33 +118,33 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plots position heatmap with given granularity</h1>
+    <h1>GGplot geom to add custom PNG background to the plot</h1>
     
-    <div class="hidden name"><code>plot_position_heatmap.Rd</code></div>
+    <div class="hidden name"><code>geom_navr_background.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plots position heatmap with given granularity</p>
+    <p>GGplot geom to add custom PNG background to the plot</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_position_heatmap</span>(<span class='no'>obj</span>, <span class='no'>bins</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>geom_navr_background</span>(<span class='no'>image_path</span>, <span class='kw'>xlim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>ylim</span> <span class='kw'>=</span> <span class='kw'>NULL</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>obj</th>
-      <td><p>object</p></td>
+      <th>image_path</th>
+      <td><p>path the png image</p></td>
     </tr>
     <tr>
-      <th>bins</th>
-      <td><p>number of bins to segment the area</p></td>
+      <th>xlim</th>
+      <td><p>background poistions as vector of length 2, c(-100,400)</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>optional ggplot parameters</p></td>
+      <th>ylim</th>
+      <td><p>background poistions as vector of length 2, c(-100,400)</p></td>
     </tr>
     </table>
     

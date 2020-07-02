@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Searches for times when there is no movement — search_stops • navr</title>
+<title>Searches for movement stops and returns time since start for each event — search_stops • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Searches for times when there is no movement — search_stops" />
+<meta property="og:title" content="Searches for movement stops and returns time since start for each event — search_stops" />
 
-<meta property="og:description" content="Searches for times when there is no movement" />
+<meta property="og:description" content="Searches for movement stops and returns time since start for each event" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,6 +86,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -115,22 +118,37 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Searches for times when there is no movement</h1>
+    <h1>Searches for movement stops and returns time since start for each event</h1>
     
     <div class="hidden name"><code>search_stops.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Searches for times when there is no movement</p>
+    <p>Searches for movement stops and returns time since start for each event</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>search_stops</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='no'>min_duration</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>search_stops</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='no'>min_duration</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for navr</span>
+<span class='fu'>search_stops</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='kw'>min_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
+    <tr>
+      <th>obj</th>
+      <td><p>navr object with calculated speeds</p></td>
+    </tr>
+    <tr>
+      <th>speed_threshold</th>
+      <td><p>what is the speed considered to be the moving speed</p></td>
+    </tr>
+    <tr>
+      <th>min_duration</th>
+      <td><p>in secouds how long should the person be still</p></td>
+    </tr>
     <tr>
       <th>...</th>
       <td></td>
@@ -141,6 +159,13 @@
 
     <p>list with times (time since start) and durations of stillness</p>
     
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    <ul>
+<li><p><code>navr</code>: Searches stops in navr object. THe navr object has to have
+calculated speeds, times etc.</p></li>
+</ul>
+    
 
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
@@ -149,6 +174,8 @@
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
+
+      <li><a href="#methods-by-class-">Methods (by class)</a></li>
           </ul>
 
   </div>

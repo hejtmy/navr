@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plots position heatmap with given granularity — plot_position_heatmap • navr</title>
+<title>Definition of an area object used in designating area presence — AreaObject • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Plots position heatmap with given granularity — plot_position_heatmap" />
+<meta property="og:title" content="Definition of an area object used in designating area presence — AreaObject" />
 
-<meta property="og:description" content="Plots position heatmap with given granularity" />
+<meta property="og:description" content="Definition of an area object used in designating area presence" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,43 +118,50 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plots position heatmap with given granularity</h1>
+    <h1>Definition of an area object used in designating area presence</h1>
     
-    <div class="hidden name"><code>plot_position_heatmap.Rd</code></div>
+    <div class="hidden name"><code>AreaObject.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plots position heatmap with given granularity</p>
+    <p>Definition of an area object used in designating area presence</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_position_heatmap</span>(<span class='no'>obj</span>, <span class='no'>bins</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>AreaObject</span>(<span class='no'>name</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='st'>"rectangle"</span>, <span class='kw'>points</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>())</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
-      <th>obj</th>
-      <td><p>object</p></td>
+      <th>name</th>
+      <td><p>character. Name of the area</p></td>
     </tr>
     <tr>
-      <th>bins</th>
-      <td><p>number of bins to segment the area</p></td>
+      <th>type</th>
+      <td><p>character. defining what type of area. Currently supported is: "rectangle"</p></td>
     </tr>
     <tr>
-      <th>...</th>
-      <td><p>optional ggplot parameters</p></td>
+      <th>points</th>
+      <td><p>numeric matrix (npoints, 2) with each row representing a single point and
+columns representing X and Y positions</p></td>
     </tr>
     </table>
     
 
+    <h2 class="hasAnchor" id="examples"><a class="anchor" href="#examples"></a>Examples</h2>
+    <pre class="examples"><span class='co'># NOT RUN {</span>
+<span class='fu'>AreaObject</span>(<span class='st'>"main square"</span>, <span class='st'>"rectangle"</span>, <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/matrix'>matrix</a></span>(<span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(<span class='fl'>0</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>, <span class='fl'>1</span>, <span class='fl'>0</span>, <span class='fl'>1</span>), <span class='kw'>ncol</span><span class='kw'>=</span><span class='fl'>2</span>, <span class='kw'>byrow</span><span class='kw'>=</span><span class='fl'>TRUE</span>))
+<span class='co'># }</span></pre>
   </div>
   <div class="col-md-3 hidden-xs hidden-sm" id="sidebar">
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+            
+      <li><a href="#examples">Examples</a></li>
+    </ul>
 
   </div>
 </div>

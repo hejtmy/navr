@@ -86,6 +86,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -133,7 +136,7 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>x</th>
-      <td><p>vector to smooth</p></td>
+      <td><p>numeric vector to smooth</p></td>
     </tr>
     <tr>
       <th>type</th>
@@ -143,19 +146,16 @@
       <th>...</th>
       <td><p>optional parameters for the smoothing function (see below)</p></td>
     </tr>
-    <tr>
-      <th>df</th>
-      <td><p>Data frame to modify</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>smoothed vector</p>
+    <p>smoothed numeric vector</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
-    <p>median takes parameters (points)</p>
+    <p><em>median</em> takes parameters points (default is 11). See <code><a href='https://www.rdocumentation.org/packages/stats/topics/runmed'>runmed</a></code>
+<em>spline</em> takes parameters and spar, nknots. See <code><a href='https://www.rdocumentation.org/packages/stats/topics/smooth.spline'>smooth.spline</a></code></p>
     
 
   </div>

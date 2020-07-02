@@ -53,6 +53,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
 <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -82,7 +85,7 @@
       <h1>Plotting functions</h1>
                         <h4 class="author">Lukáš ’hejtmy’Hejtmánek</h4>
             
-            <h4 class="date">2019-11-02</h4>
+            <h4 class="date">2020-07-02</h4>
       
       
       <div class="hidden name"><code>plotting.Rmd</code></div>
@@ -93,31 +96,21 @@
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(navr)</a>
 <a class="sourceLine" id="cb1-2" title="2"><span class="co">#&gt; Loading required package: ggplot2</span></a>
-<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; Registered S3 methods overwritten by 'ggplot2':</span></a>
-<a class="sourceLine" id="cb1-4" title="4"><span class="co">#&gt;   method         from </span></a>
-<a class="sourceLine" id="cb1-5" title="5"><span class="co">#&gt;   [.quosures     rlang</span></a>
-<a class="sourceLine" id="cb1-6" title="6"><span class="co">#&gt;   c.quosures     rlang</span></a>
-<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt;   print.quosures rlang</span></a>
-<a class="sourceLine" id="cb1-8" title="8"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
-<a class="sourceLine" id="cb1-9" title="9">obj &lt;-<span class="st"> </span>navr_object</a>
-<a class="sourceLine" id="cb1-10" title="10">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_time_columns.html">add_time_columns</a></span>(obj)</a>
-<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; Warning: 'add_time_columns' is deprecated.</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 3.6.3</span></a>
+<a class="sourceLine" id="cb1-4" title="4"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(ggplot2)</a>
+<a class="sourceLine" id="cb1-5" title="5">obj &lt;-<span class="st"> </span>navr_object</a>
+<a class="sourceLine" id="cb1-6" title="6">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_time_columns.html">add_time_columns</a></span>(obj)</a>
+<a class="sourceLine" id="cb1-7" title="7"><span class="co">#&gt; Warning: 'add_time_columns' is deprecated.</span></a>
+<a class="sourceLine" id="cb1-8" title="8"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
+<a class="sourceLine" id="cb1-9" title="9"><span class="co">#&gt; See help("Deprecated")</span></a>
+<a class="sourceLine" id="cb1-10" title="10">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_distances.html">add_distances</a></span>(obj)</a>
+<a class="sourceLine" id="cb1-11" title="11"><span class="co">#&gt; Warning: 'add_distances' is deprecated.</span></a>
 <a class="sourceLine" id="cb1-12" title="12"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
 <a class="sourceLine" id="cb1-13" title="13"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb1-14" title="14"><span class="co">#&gt; Warning: 'add_times_since_start' is deprecated.</span></a>
-<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
-<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; Warning: 'add_time_diffs' is deprecated.</span></a>
-<a class="sourceLine" id="cb1-18" title="18"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
-<a class="sourceLine" id="cb1-19" title="19"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb1-20" title="20">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_distances.html">add_distances</a></span>(obj)</a>
-<a class="sourceLine" id="cb1-21" title="21"><span class="co">#&gt; Warning: 'add_distances' is deprecated.</span></a>
-<a class="sourceLine" id="cb1-22" title="22"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
-<a class="sourceLine" id="cb1-23" title="23"><span class="co">#&gt; See help("Deprecated")</span></a>
-<a class="sourceLine" id="cb1-24" title="24">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_speeds.html">add_speeds</a></span>(obj)</a>
-<a class="sourceLine" id="cb1-25" title="25"><span class="co">#&gt; Warning: 'add_speeds' is deprecated.</span></a>
-<a class="sourceLine" id="cb1-26" title="26"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
-<a class="sourceLine" id="cb1-27" title="27"><span class="co">#&gt; See help("Deprecated")</span></a></code></pre></div>
+<a class="sourceLine" id="cb1-14" title="14">obj &lt;-<span class="st"> </span><span class="kw"><a href="../reference/add_speeds.html">add_speeds</a></span>(obj)</a>
+<a class="sourceLine" id="cb1-15" title="15"><span class="co">#&gt; Warning: 'add_speeds' is deprecated.</span></a>
+<a class="sourceLine" id="cb1-16" title="16"><span class="co">#&gt; Use 'prepare_navr' instead.</span></a>
+<a class="sourceLine" id="cb1-17" title="17"><span class="co">#&gt; See help("Deprecated")</span></a></code></pre></div>
 <div id="plotting" class="section level2">
 <h2 class="hasAnchor">
 <a href="#plotting" class="anchor"></a>Plotting</h2>

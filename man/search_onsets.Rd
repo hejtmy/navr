@@ -2,16 +2,42 @@
 % Please edit documentation in R/navr-onsets.R
 \name{search_onsets}
 \alias{search_onsets}
-\title{Searches for times when the movement onset started}
+\alias{search_onsets.navr}
+\title{Searches for movement onsets and returns time since start for each event}
 \usage{
 search_onsets(obj, speed_threshold, min_duration, ...)
+
+\method{search_onsets}{navr}(obj, speed_threshold, min_duration = 0,
+  still_speed_threshold = speed_threshold, still_duration = 0,
+  pause_duration = 0)
 }
 \arguments{
+\item{obj}{Valid object}
+
+\item{speed_threshold}{what is the speed considered to be the moving speed}
+
+\item{min_duration}{in secouds how long should the person be moving}
+
 \item{...}{}
+
+\item{still_speed_threshold}{what is considered to be the still speed threshold.
+\emph{Defualts} to `speed_threshold``}
+
+\item{still_duration}{how long before the onset should hte person be still in seconds.
+\emph{Defaults} to 0}
+
+\item{pause_duration}{how long "non" moving can the person be to allow still counting as an onset?
+In seconds. \emph{Defaults} to 0}
 }
 \value{
 list with times (time since start) of onset and durations of movement
 }
 \description{
-Searches for times when the movement onset started
+Searches for movement onsets and returns time since start for each event
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Searches onsets in navr object. THe navr object has to have
+calculated speeds, times etc.
+}}
+

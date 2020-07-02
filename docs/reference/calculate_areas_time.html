@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Plots position heatmap with given granularity — plot_position_heatmap • navr</title>
+<title>Calculates time spent in each of encoded areas — calculate_areas_time • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Plots position heatmap with given granularity — plot_position_heatmap" />
+<meta property="og:title" content="Calculates time spent in each of encoded areas — calculate_areas_time" />
 
-<meta property="og:description" content="Plots position heatmap with given granularity" />
+<meta property="og:description" content="Calculates time spent in each of encoded areas" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,35 +118,31 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Plots position heatmap with given granularity</h1>
+    <h1>Calculates time spent in each of encoded areas</h1>
     
-    <div class="hidden name"><code>plot_position_heatmap.Rd</code></div>
+    <div class="hidden name"><code>calculate_areas_time.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Plots position heatmap with given granularity</p>
+    <p>Calculates time spent in each of encoded areas</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>plot_position_heatmap</span>(<span class='no'>obj</span>, <span class='no'>bins</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>calculate_areas_time</span>(<span class='no'>obj</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>object</p></td>
-    </tr>
-    <tr>
-      <th>bins</th>
-      <td><p>number of bins to segment the area</p></td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td><p>optional ggplot parameters</p></td>
+      <td><p>preprocessed navr object with added areas (see <code><a href='add_areas.html'>add_areas</a></code>)</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>dataframe with results</p>
     
 
   </div>
@@ -154,7 +150,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#value">Value</a></li>
+          </ul>
 
   </div>
 </div>

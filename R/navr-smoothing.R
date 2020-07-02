@@ -47,16 +47,15 @@ smooth_speed.navr <- function(obj, type, ...){
 
 #' Smooths positions of given vector
 #'
-#' @param df Data frame to modify
-#' @param x vector to smooth
+#' @param x numeric vector to smooth
 #' @param type median, approx, spline
 #' @param ... optional parameters for the smoothing function (see below)
 #'
 #' @details
-#' median takes parameters (points)
+#' *median* takes parameters points (default is 11). See \code{\link{runmed}}
+#' *spline* takes parameters and spar, nknots. See \code{\link{smooth.spline}}
 #'
-#'
-#' @return smoothed vector
+#' @return smoothed numeric vector
 #' @export
 #'
 #' @examples

@@ -17,6 +17,7 @@ search_deliberation_stops <- function(obj, speed_threshold, min_duration, min_ro
   UseMethod("search_deliberation_stops")
 }
 
+#' @describeIn search_deliberation_stops Searches for deliberation stops in navr object
 #' @export
 search_deliberation_stops.navr <- function(obj, speed_threshold, min_duration, min_rotation, rotation_axis = "x", ...) {
   # checks if columns are present

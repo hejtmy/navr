@@ -2,16 +2,31 @@
 % Please edit documentation in R/navr-onsets.R
 \name{search_stops}
 \alias{search_stops}
-\title{Searches for times when there is no movement}
+\alias{search_stops.navr}
+\title{Searches for movement stops and returns time since start for each event}
 \usage{
 search_stops(obj, speed_threshold, min_duration, ...)
+
+\method{search_stops}{navr}(obj, speed_threshold, min_duration = 0)
 }
 \arguments{
+\item{obj}{navr object with calculated speeds}
+
+\item{speed_threshold}{what is the speed considered to be the moving speed}
+
+\item{min_duration}{in secouds how long should the person be still}
+
 \item{...}{}
 }
 \value{
 list with times (time since start) and durations of stillness
 }
 \description{
-Searches for times when there is no movement
+Searches for movement stops and returns time since start for each event
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Searches stops in navr object. THe navr object has to have
+calculated speeds, times etc.
+}}
+

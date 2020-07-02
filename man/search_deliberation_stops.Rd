@@ -2,10 +2,14 @@
 % Please edit documentation in R/navr-deliberation.R
 \name{search_deliberation_stops}
 \alias{search_deliberation_stops}
+\alias{search_deliberation_stops.navr}
 \title{Searches for deliberation stop times and durations (time of no movement and increased rotation)}
 \usage{
 search_deliberation_stops(obj, speed_threshold, min_duration, min_rotation,
   rotation_axis = "x", ...)
+
+\method{search_deliberation_stops}{navr}(obj, speed_threshold,
+  min_duration, min_rotation, rotation_axis = "x", ...)
 }
 \arguments{
 \item{speed_threshold}{what is considered as a stopping speed. Same as the speed threshold in search_stops}
@@ -17,3 +21,8 @@ search_deliberation_stops(obj, speed_threshold, min_duration, min_rotation,
 \description{
 if min_rotation is 0, then it can be replaced by search stops.
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Searches for deliberation stops in navr object
+}}
+

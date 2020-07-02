@@ -7,20 +7,19 @@
 smooth_vector(x, type, ...)
 }
 \arguments{
-\item{x}{vector to smooth}
+\item{x}{numeric vector to smooth}
 
 \item{type}{median, approx, spline}
 
 \item{...}{optional parameters for the smoothing function (see below)}
-
-\item{df}{Data frame to modify}
 }
 \value{
-smoothed vector
+smoothed numeric vector
 }
 \description{
 Smooths positions of given vector
 }
 \details{
-median takes parameters (points)
+\emph{median} takes parameters points (default is 11). See \code{\link{runmed}}
+\emph{spline} takes parameters and spar, nknots. See \code{\link{smooth.spline}}
 }

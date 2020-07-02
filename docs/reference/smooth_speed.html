@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="Smooths speed — smooth_speed" />
 
-<meta property="og:description" content="Smooths speed" />
+<meta property="og:description" content="Smooths speed values with given type of smoothing. IMPORTANT! Does not change
+any positioning or other data, only smooths the speed values.
+Speed smothing is generally important for clear onset search" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,6 +88,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -122,11 +127,16 @@
 
     <div class="ref-description">
     
-    <p>Smooths speed</p>
+    <p>Smooths speed values with given type of smoothing. IMPORTANT! Does not change
+any positioning or other data, only smooths the speed values.
+Speed smothing is generally important for clear onset search</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>smooth_speed</span>(<span class='no'>obj</span>, <span class='no'>type</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>smooth_speed</span>(<span class='no'>obj</span>, <span class='no'>type</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for navr</span>
+<span class='fu'>smooth_speed</span>(<span class='no'>obj</span>, <span class='no'>type</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -137,13 +147,19 @@
     </tr>
     <tr>
       <th>type</th>
-      <td><p>what type of smoothing to perform</p></td>
+      <td><p>type of smoothing. See <code><a href='smooth_vector.html'>smooth_vector</a></code> vector for full description</p></td>
     </tr>
     <tr>
       <th>...</th>
-      <td></td>
+      <td><p>optional parameters for given smoothing, see  <code><a href='smooth_vector.html'>smooth_vector</a></code> function</p></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    <ul>
+<li><p><code>navr</code>: Smooths navr object speeds</p></li>
+</ul>
     
 
   </div>
@@ -151,7 +167,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#methods-by-class-">Methods (by class)</a></li>
+          </ul>
 
   </div>
 </div>

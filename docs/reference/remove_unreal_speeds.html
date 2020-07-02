@@ -32,7 +32,9 @@
 
 <meta property="og:title" content="Shorthand for picking speeds and then recalculating object — remove_unreal_speeds" />
 
-<meta property="og:description" content="Shorthand for picking speeds and then recalculating object" />
+<meta property="og:description" content="Picks unreal speeds in the same way as pick_unreal_speed` but then removes
+given lines form the data, replaces them as per replacement parameter and returnes cleaned
+object" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -86,6 +88,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -122,20 +127,64 @@
 
     <div class="ref-description">
     
-    <p>Shorthand for picking speeds and then recalculating object</p>
+    <p>Picks unreal speeds in the same way as <code>pick_unreal_speed</code>` but then removes
+given lines form the data, replaces them as per replacement parameter and returnes cleaned
+object</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>remove_unreal_speeds</span>(<span class='no'>obj</span>, <span class='no'>...</span>)</pre>
+    <pre class="usage"><span class='fu'>remove_unreal_speeds</span>(<span class='no'>obj</span>, <span class='no'>...</span>)
+
+<span class='co'># S3 method for navr</span>
+<span class='fu'>remove_unreal_speeds</span>(<span class='no'>obj</span>, <span class='kw'>cutoff</span> <span class='kw'>=</span> <span class='kw'>NULL</span>, <span class='kw'>type</span> <span class='kw'>=</span> <span class='kw'>NULL</span>,
+  <span class='kw'>remove_distance</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>total_recalculate</span> <span class='kw'>=</span> <span class='fl'>TRUE</span>, <span class='kw'>indices</span> <span class='kw'>=</span> <span class='fu'><a href='https://www.rdocumentation.org/packages/base/topics/c'>c</a></span>(),
+  <span class='kw'>replacement</span> <span class='kw'>=</span> <span class='fl'>NA</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
+      <th>obj</th>
+      <td><p>valid navr object. See <code>remvoe_unreal_speeds.navr</code></p></td>
+    </tr>
+    <tr>
       <th>...</th>
       <td></td>
     </tr>
+    <tr>
+      <th>cutoff</th>
+      <td><p>cutoff value. see <code><a href='pick_unreal_speeds.html'>pick_unreal_speeds</a></code></p></td>
+    </tr>
+    <tr>
+      <th>type</th>
+      <td><p>what type of cutoof. see <code><a href='pick_unreal_speeds.html'>pick_unreal_speeds</a></code></p></td>
+    </tr>
+    <tr>
+      <th>remove_distance</th>
+      <td><p>shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
+jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
+by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. <em>Defaults</em> to TRUE</p></td>
+    </tr>
+    <tr>
+      <th>total_recalculate</th>
+      <td><p>if true, recalculates total_distance column to reflect removed distances, <em>Defaults</em> to TRUE</p></td>
+    </tr>
+    <tr>
+      <th>indices</th>
+      <td><p>indices of speeds to clean out in case they were obtained separately.
+If empty, <code>type</code>, <code>cutoff</code> need to be defined and <code>pick_unreal_speeds</code> is called</p></td>
+    </tr>
+    <tr>
+      <th>replacement</th>
+      <td><p>what to replace  unreal speeds with. <em>Defaults</em> to NA</p></td>
+    </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
+
+    <ul>
+<li><p><code>navr</code>: clears out navr object</p></li>
+</ul>
     
 
   </div>
@@ -143,7 +192,9 @@
     <h2>Contents</h2>
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
-                </ul>
+      
+      <li><a href="#methods-by-class-">Methods (by class)</a></li>
+          </ul>
 
   </div>
 </div>

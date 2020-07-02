@@ -1,8 +1,14 @@
-#' Searches for times when the movement onset started
+#' Searches for movement onsets and returns time since start for each event
 #'
-#' @param obj
-#' @param speed_threshold
-#' @param min_duration
+#' @param obj Valid object
+#' @param speed_threshold what is the speed considered to be the moving speed
+#' @param min_duration in secouds how long should the person be moving
+#' @param still_speed_threshold what is considered to be the still speed threshold.
+#' *Defualts* to `speed_threshold``
+#' @param still_duration how long before the onset should hte person be still in seconds.
+#' *Defaults* to 0
+#' @param pause_duration how long "non" moving can the person be to allow still counting as an onset?
+#' In seconds. *Defaults* to 0
 #' @param ...
 #'
 #' @return list with times (time since start) of onset and durations of movement
@@ -12,20 +18,9 @@
 search_onsets <- function(obj, speed_threshold, min_duration, ...){
   UseMethod("search_onsets")
 }
-
-#' Searches for movement onsets and returns time since start for each event
-#'
-#' @param obj navr object with calculated speeds
-#' @param speed_threshold what is the speed considered to be the moving speed
-#' @param min_duration in secouds how long should the person be moving
-#' @param still_speed_threshold what is considered to be the still speed threshold. defualts to `speed_threshold``
-#' @param still_duration how long before the onset should hte person be still in seconds. Default 0
-#' @param pause_duration how long "non" moving can the person be to allow still counting as an onset? In seconds. Default is 0s
-#'
-#' @return list with times (time since start) of onset and duration of movement
+#' @describeIn search_onsets Searches onsets in navr object. THe navr object has to have
+#' calculated speeds, times etc.
 #' @export
-#'
-#' @examples
 search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_speed_threshold = speed_threshold,
                                still_duration = 0, pause_duration = 0){
@@ -43,11 +38,11 @@ search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
 }
 
 
-#' Searches for times when there is no movement
+#' Searches for movement stops and returns time since start for each event
 #'
-#' @param obj
-#' @param speed_threshold
-#' @param min_duration
+#' @param obj navr object with calculated speeds
+#' @param speed_threshold what is the speed considered to be the moving speed
+#' @param min_duration in secouds how long should the person be still
 #' @param ...
 #'
 #' @return  list with times (time since start) and durations of stillness
@@ -58,16 +53,9 @@ search_stops <- function(obj, speed_threshold, min_duration, ...){
   UseMethod("search_stops")
 }
 
-#' Searches for movement stops and returns time since start for each event
-#'
-#' @param obj navr object with calculated speeds
-#' @param speed_threshold what is the speed considered to be the moving speed
-#' @param min_duration in secouds how long should the person be still
-#'
-#' @return list with times (time since start) and durations of stillness
+#' @describeIn search_stops Searches stops in navr object. THe navr object has to have
+#' calculated speeds, times etc.
 #' @export
-#'
-#' @examples
 search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
   speeds <- get_speeds.navr(obj)
   time_diffs <- get_time_diffs.navr(obj)

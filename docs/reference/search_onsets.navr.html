@@ -86,6 +86,9 @@
   </a>
   <ul class="dropdown-menu" role="menu">
     <li>
+      <a href="../articles/area-analysis.html">Area analysis</a>
+    </li>
+    <li>
       <a href="../articles/basic-use.html">Basic use</a>
     </li>
     <li>
@@ -128,7 +131,8 @@
 
     <pre class="usage"><span class='co'># S3 method for navr</span>
 <span class='fu'><a href='search_onsets.html'>search_onsets</a></span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='kw'>min_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>still_speed_threshold</span> <span class='kw'>=</span> <span class='no'>speed_threshold</span>, <span class='kw'>still_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+  <span class='kw'>still_speed_threshold</span> <span class='kw'>=</span> <span class='no'>speed_threshold</span>, <span class='kw'>still_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>,
+  <span class='kw'>pause_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
@@ -152,6 +156,10 @@
     <tr>
       <th>still_duration</th>
       <td><p>how long before the onset should hte person be still in seconds. Default 0</p></td>
+    </tr>
+    <tr>
+      <th>pause_duration</th>
+      <td><p>how long "non" moving can the person be to allow still counting as an onset? In seconds. Default is 0s</p></td>
     </tr>
     </table>
     

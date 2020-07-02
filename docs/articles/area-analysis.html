@@ -5,11 +5,11 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Basic use • navr</title>
+<title>Area analysis • navr</title>
 <!-- jquery --><script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script><!-- Bootstrap --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha256-916EbMg70RQy9LHiGkXzG8hSg9EdNy97GazNG/aiY1w=" crossorigin="anonymous">
 <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha256-U5ZEeKfGNOja007MMD3YBI0A3OSZOQbeG6z2f2Y0hu8=" crossorigin="anonymous"></script><!-- Font Awesome icons --><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css" integrity="sha256-eZrrJcwDc/3uDhsdt61sL2oOBY362qM3lon1gyExkL0=" crossorigin="anonymous">
 <!-- clipboard.js --><script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" integrity="sha256-FiZwavyI2V6+EXO1U+xzLG3IKldpiTFf3153ea9zikQ=" crossorigin="anonymous"></script><!-- sticky kit --><script src="https://cdnjs.cloudflare.com/ajax/libs/sticky-kit/1.1.3/sticky-kit.min.js" integrity="sha256-c4Rlo1ZozqTPE2RLuvbusY3+SU1pQaJC0TjuhygMipw=" crossorigin="anonymous"></script><!-- pkgdown --><link href="../pkgdown.css" rel="stylesheet">
-<script src="../pkgdown.js"></script><meta property="og:title" content="Basic use">
+<script src="../pkgdown.js"></script><meta property="og:title" content="Area analysis">
 <meta property="og:description" content="">
 <meta name="twitter:card" content="summary">
 <!-- mathjax --><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js" integrity="sha256-nvJJv9wWKEm88qvoQl9ekL2J+k/RWIsaSScxxlsrv8k=" crossorigin="anonymous"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/config/TeX-AMS-MML_HTMLorMML.js" integrity="sha256-84DKXVJXs0/F8OTMzX4UR909+jtl4G7SPypPavF+GfA=" crossorigin="anonymous"></script><!--[if lt IE 9]>
@@ -82,46 +82,39 @@
       </header><div class="row">
   <div class="col-md-9 contents">
     <div class="page-header toc-ignore">
-      <h1>Basic use</h1>
+      <h1>Area analysis</h1>
             
       
       
-      <div class="hidden name"><code>basic-use.Rmd</code></div>
+      <div class="hidden name"><code>area-analysis.Rmd</code></div>
 
     </div>
 
     
     
 <div class="sourceCode" id="cb1"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb1-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/library">library</a></span>(navr)</a>
-<a class="sourceLine" id="cb1-2" title="2">obj &lt;-<span class="st"> </span>navr_object</a></code></pre></div>
-<div id="getters" class="section level2">
+<a class="sourceLine" id="cb1-2" title="2"><span class="co">#&gt; Loading required package: ggplot2</span></a>
+<a class="sourceLine" id="cb1-3" title="3"><span class="co">#&gt; Warning: package 'ggplot2' was built under R version 3.6.3</span></a></code></pre></div>
+<div id="area-analysis" class="section level1">
+<h1 class="hasAnchor">
+<a href="#area-analysis" class="anchor"></a>Area analysis</h1>
+<p>Areas define places within the space in which the subject can be at any point. It allows us to segment the environemnt to predefined spaces (e.g. starting zone, target zone) and analyse thte time spent at each of those spaces or number of visits during the experiment.</p>
+<div id="area-objects" class="section level2">
 <h2 class="hasAnchor">
-<a href="#getters" class="anchor"></a>Getters</h2>
-<div id="filtering-time" class="section level3">
-<h3 class="hasAnchor">
-<a href="#filtering-time" class="anchor"></a>Filtering time</h3>
-<p>Navr object can be filtered by time with <code>filter_times</code> function. The function takes either real time as is in the <code>$timestamp</code> column or can take <code>time_since_start</code> times if <code>zero_based = TRUE</code>. For that your object needs to be preprocessed with either <code>add_time_since_start</code>, <code>add_time_columns</code> or <code>add_columns_navr</code>. See loading and preprocessing vignette.</p>
-<p>So if you say for example only the first 10 seconds of your obj, you can do the following</p>
-<div class="sourceCode" id="cb2"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb2-1" title="1">obj_prep &lt;-<span class="st"> </span><span class="kw"><a href="../reference/prepare_navr.html">prepare_navr</a></span>(obj)</a>
-<a class="sourceLine" id="cb2-2" title="2">obj_first10 &lt;-<span class="st"> </span><span class="kw"><a href="../reference/filter_times.html">filter_times</a></span>(obj_prep, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">0</span>,<span class="dv">10</span>), <span class="dt">zero_based=</span><span class="ot">TRUE</span>)</a></code></pre></div>
-<p>If you on the other hand want to filter as per real timestamps, you can simply do so with</p>
-<div class="sourceCode" id="cb3"><pre class="sourceCode r"><code class="sourceCode r"><a class="sourceLine" id="cb3-1" title="1"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(obj_prep<span class="op">$</span>data[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb3-2" title="2"><span class="co">#&gt;   timestamp rotation_x rotation_y      fps             input</span></a>
-<a class="sourceLine" id="cb3-3" title="3"><span class="co">#&gt; 1  58204.13          0          0      Inf EyeTrackerSynchro</span></a>
-<a class="sourceLine" id="cb3-4" title="4"><span class="co">#&gt; 2  58204.19          0          0      Inf                  </span></a>
-<a class="sourceLine" id="cb3-5" title="5"><span class="co">#&gt; 3  58204.19          0          0      Inf                  </span></a>
-<a class="sourceLine" id="cb3-6" title="6"><span class="co">#&gt; 4  58204.24          0          0 126.4711                  </span></a>
-<a class="sourceLine" id="cb3-7" title="7"><span class="co">#&gt; 5  58204.57          0          0  78.4690                  </span></a>
-<a class="sourceLine" id="cb3-8" title="8"><span class="co">#&gt; 6  58204.68          0          0  22.7818</span></a>
-<a class="sourceLine" id="cb3-9" title="9">obj_filtered &lt;-<span class="st"> </span><span class="kw"><a href="../reference/filter_times.html">filter_times</a></span>(obj_prep, <span class="kw"><a href="https://www.rdocumentation.org/packages/base/topics/c">c</a></span>(<span class="dv">58250</span>,<span class="dv">58255</span>))</a>
-<a class="sourceLine" id="cb3-10" title="10"><span class="kw"><a href="https://www.rdocumentation.org/packages/utils/topics/head">head</a></span>(obj_filtered<span class="op">$</span>data[,<span class="dv">1</span><span class="op">:</span><span class="dv">5</span>])</a>
-<a class="sourceLine" id="cb3-11" title="11"><span class="co">#&gt;      timestamp rotation_x rotation_y     fps input</span></a>
-<a class="sourceLine" id="cb3-12" title="12"><span class="co">#&gt; 1111  58250.02   356.3000     3.6001 18.5315      </span></a>
-<a class="sourceLine" id="cb3-13" title="13"><span class="co">#&gt; 1112  58250.07   350.7000     3.8001 18.1309      </span></a>
-<a class="sourceLine" id="cb3-14" title="14"><span class="co">#&gt; 1113  58250.12   347.9001     3.8001 18.1133      </span></a>
-<a class="sourceLine" id="cb3-15" title="15"><span class="co">#&gt; 1114  58250.18   343.7000     3.9001 18.2432      </span></a>
-<a class="sourceLine" id="cb3-16" title="16"><span class="co">#&gt; 1115  58250.23   342.8000     4.0001 18.3267      </span></a>
-<a class="sourceLine" id="cb3-17" title="17"><span class="co">#&gt; 1116  58250.28   341.4001     3.9001 18.4166</span></a></code></pre></div>
+<a href="#area-objects" class="anchor"></a>Area Objects</h2>
+<p>Areas are defined by <code>AreaObject</code> object, which has name, type and other values.</p>
+</div>
+<div id="adding-areas" class="section level2">
+<h2 class="hasAnchor">
+<a href="#adding-areas" class="anchor"></a>Adding areas</h2>
+</div>
+<div id="calculating-time-spent-in-an-area" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculating-time-spent-in-an-area" class="anchor"></a>Calculating time spent in an area</h2>
+</div>
+<div id="calculating-number-of-visits" class="section level2">
+<h2 class="hasAnchor">
+<a href="#calculating-number-of-visits" class="anchor"></a>Calculating number of visits</h2>
 </div>
 </div>
   </div>
@@ -131,7 +124,14 @@
       <h2 class="hasAnchor">
 <a href="#tocnav" class="anchor"></a>Contents</h2>
       <ul class="nav nav-pills nav-stacked">
-<li><a href="#getters">Getters</a></li>
+<li>
+<a href="#area-analysis">Area analysis</a><ul class="nav nav-pills nav-stacked">
+<li><a href="#area-objects">Area Objects</a></li>
+      <li><a href="#adding-areas">Adding areas</a></li>
+      <li><a href="#calculating-time-spent-in-an-area">Calculating time spent in an area</a></li>
+      <li><a href="#calculating-number-of-visits">Calculating number of visits</a></li>
+      </ul>
+</li>
       </ul>
 </div>
       </div>
