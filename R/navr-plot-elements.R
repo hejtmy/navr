@@ -9,7 +9,7 @@
 #' @export
 #'
 #' @examples
-geom_navr_path <- function(obj, add_points = F, ...){
+geom_navr_path <- function(obj, add_points = FALSE, ...){
   df_position <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
   ls <- list(geom_path(data = df_position, aes(x, y), ...))
   if(add_points) ls <- c(ls, geom_point(data = df_position, aes(x, y)))
@@ -141,31 +141,106 @@ geom_navr_path_limits <- function(obj, padding){
   return(limits)
 }
 
+
 #' Plots positions of given events on a path
-#' @details Searches the timestamps for the closes time (more then event time)
-#' @description
 #'
-#' @param obj navr objects
-#' @param event_times numeric vector of event times. Times need to be on the same scale as the timestamps in `obj$data$timestamp`
-#' @param size point size **default** 2
-#' @param shape point shape **default** is 4
-#' @param color point color **default** is "blue"
+#' @description PLots marks or colors the path ior the duration of a certain event.
+#'
+#' @details Searches the timestamps for the closes time (more then event time)
+#'
+#' @param obj navr object
+#' @param event_times matrix of event times. It can have one or two dimensions,
+#' if single events or events with a duration are to be plotted
+#' \item{one dimension}{Each number represents a time in which an event occured.
+#' See \code{\link{geom_navr_path_points}}}
+#' \item{two dimentsions}{Each column of the matrix marks the begining and an end
+#' of the event. First row is the beginings and second is the ends. Path between
+#' the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}}
+#' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' @param size point or path size. *Defaults* to 2
+#' @param shape point shape. Only relevant if single events are drawn. *Default** to 4
+#' @param color point or path color *Default* to "blue"
 #' @param ...
 #'
-#' @return
+#' @return list of ggplot geoms
 #' @export
 #'
 #' @examples
 geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color = "blue", ...){
+  if(is.vector(event_times)){
+    return(geom_navr_path_points(obj, event_times, size, shape, color, ...))
+  }
+  if(is.matrix(event_times)){
+    if(length(dim(event_times)) != 2){
+      warning("The event times matrix has too many dimensions")
+      return(NULL)
+    }
+    if(dim(event_times)[1] == 1){
+      event_times <- as.vector(event_times)
+      return(geom_navr_path_points(obj, event_times, size, shape, color, ...))
+    } else {
+      return(geom_navr_path_segments(obj, event_times, size, color, ...))
+    }
+  }
+  warning("The event times are not in a correct format. Returning NULL")
+  return(NULL)
+}
+
+#' Plots position points at designated times
+#'
+#' @param obj navr object
+#' @param times Times of the positions. Takes the first position AFTER the designated time.
+#' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' @param size size of the point. *Default* is 4
+#' @param shape geom_point shape. *Default* is 18
+#' @param color color of the geom_point. *Default* is "blue
+#' @param ...
+#'
+#' @return ggplot geom_point with bound data
+#' @export
+#'
+#' @examples
+geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blue", ...){
   indices <- c()
   timestamps <- obj$data$timestamp
-  for(t in event_times){
-    i <- which(timestamps > t)[1]
-    if(!is.na(i)) indices <- c(indices, i)
-  }
+  indices <- sapply(times, function(x){which(timestamps >= x & x >= timestamps[1])[1]})
   if(length(indices) == 0) return(list())
   df <- data.frame(x = obj$data$position_x[indices], y = obj$data$position_y[indices])
   return(geom_point(data=df, aes(x, y), size = size, shape=shape, color=color, ...))
+}
+
+
+#' Plots paths during certain timewindows
+#'
+#' @description calls \link{\code{geom_navr_path}} under the hood. So any optional parameters,
+#' such as `add_points`, can be also added here
+#'
+#' @param obj navr object
+#' @param times matrix with two dimensions. Each column of the matrix marks the begining and an end
+#' of the segment First row is the beginings and second is the ends. Path between
+#' the beginning and end is then colored
+#' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' @param size size of the path. *Default* is 2
+#' @param color color of the geom_path. *Default* is "blue
+#' @param ... another optional parameters for the `geom_path` or `geom_navr_path`. See Description
+#'
+#' @return list of ggplot geom_paths
+#' @export
+#'
+#' @examples
+geom_navr_path_segments <- function(obj, times, size = 2, color = "blue", ...){
+  # check it has 2 x X dimensions
+  if(dim(times)[1] != 2){
+    warning("The matrix doesn't have two dimensions ")
+    return(NULL)
+  }
+  res <- list()
+  for(i in 1:dim(times)[2]){
+    segment_time <- times[,i]
+    nav <- filter_times(obj, segment_time)
+    res <- c(res, geom_navr_path(nav, color=color, size=size, ...))
+  }
+  return(res)
 }
 
 #' Creates geom of a circle to be inserted into the graph
@@ -247,7 +322,11 @@ geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
       warning("Durations have different length than event times")
     } else {
       df$duration <- durations
-      geoms <- c(geoms, geom_rect(data = df, aes(ymin = -Inf, ymax = Inf, xmin = time, xmax = time + duration), color=NA, alpha = 0.2))
+      geoms <- c(geoms, geom_rect(data = df, aes(ymin = -Inf,
+                                                 ymax = Inf,
+                                                 xmin = time,
+                                                 xmax = time + duration),
+                                  color=NA, alpha = 0.2))
     }
   }
   return(geoms)
