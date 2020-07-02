@@ -190,7 +190,7 @@ geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color 
 #'
 #' @param obj navr object
 #' @param times Times of the positions. Takes the first position AFTER the designated time.
-#' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' \n Times need to be on the same scale as the timestamps in `obj$data$timestamp`
 #' @param size size of the point. *Default* is 4
 #' @param shape geom_point shape. *Default* is 18
 #' @param color color of the geom_point. *Default* is "blue
@@ -201,7 +201,6 @@ geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color 
 #'
 #' @examples
 geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blue", ...){
-  indices <- c()
   timestamps <- obj$data$timestamp
   indices <- sapply(times, function(x){which(timestamps >= x & x >= timestamps[1])[1]})
   if(length(indices) == 0) return(list())
@@ -218,7 +217,7 @@ geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blu
 #' @param obj navr object
 #' @param times matrix with two dimensions. Each column of the matrix marks the begining and an end
 #' of the segment First row is the beginings and second is the ends. Path between
-#' the beginning and end is then colored
+#' the beginning and end is then colored. \n
 #' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
 #' @param size size of the path. *Default* is 2
 #' @param color color of the geom_path. *Default* is "blue
@@ -230,6 +229,10 @@ geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blu
 #' @examples
 geom_navr_path_segments <- function(obj, times, size = 2, color = "blue", ...){
   # check it has 2 x X dimensions
+  if(!is.matrix(times)){
+    warning("You need to pass in a 2D matrix")
+    return(NULL)
+  }
   if(dim(times)[1] != 2){
     warning("The matrix doesn't have two dimensions ")
     return(NULL)

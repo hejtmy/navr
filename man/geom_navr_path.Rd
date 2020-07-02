@@ -4,7 +4,7 @@
 \alias{geom_navr_path}
 \title{Geom of plotting navr path}
 \usage{
-geom_navr_path(obj, add_points = F, ...)
+geom_navr_path(obj, add_points = FALSE, ...)
 }
 \arguments{
 \item{obj}{NavrObject}

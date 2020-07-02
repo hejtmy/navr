@@ -7,7 +7,7 @@
 plot_path(obj, ...)
 }
 \arguments{
-\item{obj}{Object}
+\item{obj}{valid object}
 
 \item{...}{optional ggplot parameters}
 }

@@ -38,6 +38,36 @@ test_that("tests custom geoms", {
   expect_silent(plt + geom_navr_path_events(obj_prep, times))
 })
 
+
+test_that("tests navr path points", {
+  plt <- create_minimal_plot()
+  event_times <- c(0,10)
+  expect_silent(plt + geom_navr_path_points(obj_prep, times = event_times))
+  expect_silent(plt + geom_navr_path_events(obj_prep, event_times = event_times))
+  expect_equal(geom_navr_path_events(obj_prep, event_times, size = 2, color = "blue"),
+               geom_navr_path_points(obj_prep, event_times, size = 2, color = "blue"))
+})
+
+test_that("tests navr path segments", {
+  plt <- create_minimal_plot()
+  # need matrix
+  event_times <- c(0,10)
+  out <- c()
+  expect_warning(out <- geom_navr_path_segments(obj_prep, times = event_times))
+  expect_null(out)
+  # need matrix with two rows
+  event_times <- matrix(data = c(0,5,10,5,10,5), nrow = 3)
+  expect_warning(out <- geom_navr_path_segments(obj_prep, times = event_times))
+  expect_null(out)
+
+  event_times <- matrix(data = c(0,5,10,5), nrow = 2)
+  expect_silent(plt + geom_navr_path_segments(obj_prep, times = event_times))
+  # should return the same as the geomn_navr_path_events
+  expect_silent(plt + geom_navr_path_events(obj_prep, event_times = event_times))
+  expect_equal(geom_navr_path_events(obj_prep, event_times, size = 2, color = "blue"),
+               geom_navr_path_segments(obj_prep, event_times, size = 2, color = "blue"))
+})
+
 test_that("tests timeseries", {
   expect_silent(plt <- create_minimal_plot() + geom_navr_obj_timeseries(obj_prep, "position_x"))
   times <- obj_prep$data$timestamp[c(1000, 5500, 18000)]

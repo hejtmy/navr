@@ -11,7 +11,7 @@
 
 \item{add_points}{if points should be explicitely noted on the path}
 
-\item{...}{optional ggplot parameters for the path geom}
+\item{...}{optional ggplot parameters for the \link{\code{ggplot2::geom_path}}}
 }
 \value{
 ggplot

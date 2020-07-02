@@ -8,20 +8,30 @@ geom_navr_path_events(obj, event_times, size = 2, shape = 18,
   color = "blue", ...)
 }
 \arguments{
-\item{obj}{navr objects}
+\item{obj}{navr object}
 
-\item{event_times}{numeric vector of event times. Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
+\item{event_times}{matrix of event times. It can have one or two dimensions,
+if single events or events with a duration are to be plotted
+\item{one dimension}{Each number represents a time in which an event occured.
+See \code{\link{geom_navr_path_points}}}
+\item{two dimentsions}{Each column of the matrix marks the begining and an end
+of the event. First row is the beginings and second is the ends. Path between
+the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}}
+Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
 
-\item{size}{point size \strong{default} 2}
+\item{size}{point or path size. \emph{Defaults} to 2}
 
-\item{shape}{point shape \strong{default} is 4}
+\item{shape}{point shape. Only relevant if single events are drawn. \emph{Default}* to 4}
 
-\item{color}{point color \strong{default} is "blue"}
+\item{color}{point or path color \emph{Default} to "blue"}
 
 \item{...}{}
 }
+\value{
+list of ggplot geoms
+}
 \description{
-Plots positions of given events on a path
+PLots marks or colors the path ior the duration of a certain event.
 }
 \details{
 Searches the timestamps for the closes time (more then event time)
