@@ -5,7 +5,8 @@ obj <- smooth_speed(obj, type = "median", points = 11)
 
 test_that("testing search onset", {
   expect_silent(ls <- search_onsets(obj, speed_threshold = 5, min_duration = 2))
-  expect_equal(length(ls$time_since_start), length(ls$duration))
+  expect_equal(c("time", "time_since_start", "duration"), names(ls))
+  expect_equal(length(ls$time), length(ls$time_since_start), length(ls$duration))
   expect_gt(length(ls$time_since_start), 0)
   expect_silent(ls <- search_onsets(obj, speed_threshold = 5, min_duration = 2, still_duration = 2))
   expect_gt(length(ls$time_since_start), 0)

@@ -30,7 +30,7 @@ search_onsets(obj, speed_threshold, min_duration, ...)
 In seconds. \emph{Defaults} to 0}
 }
 \value{
-list with times (time since start) of onset and durations of movement
+list with times, time since start, and durations of movement epochs
 }
 \description{
 Searches for movement onsets and returns time since start for each event

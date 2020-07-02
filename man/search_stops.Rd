@@ -19,7 +19,7 @@ search_stops(obj, speed_threshold, min_duration, ...)
 \item{...}{}
 }
 \value{
-list with times (time since start) and durations of stillness
+list with times, time since start, and durations of stillness
 }
 \description{
 Searches for movement stops and returns time since start for each event
