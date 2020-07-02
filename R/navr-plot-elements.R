@@ -211,7 +211,7 @@ geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blu
 
 #' Plots paths during certain timewindows
 #'
-#' @description calls \link{\code{geom_navr_path}} under the hood. So any optional parameters,
+#' @description calls \code{\link{geom_navr_path}} under the hood. So any optional parameters,
 #' such as `add_points`, can be also added here
 #'
 #' @param obj navr object

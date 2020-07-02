@@ -36,7 +36,7 @@ plot_path <- function(obj, ...){
 #'
 #' @param obj valid navr object
 #' @param add_points if points should be explicitely noted on the path
-#' @param ... optional ggplot parameters for the \link{\code{ggplot2::geom_path}}
+#' @param ... optional ggplot parameters for the \code{\link{ggplot2::geom_path}}
 #'
 #' @return ggplot
 #' @export

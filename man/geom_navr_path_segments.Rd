@@ -24,6 +24,6 @@ Times need to be on the same scale as the timestamps in \code{obj$data$timestamp
 list of ggplot geom_paths
 }
 \description{
-calls \link{\code{geom_navr_path}} under the hood. So any optional parameters,
+calls \code{\link{geom_navr_path}} under the hood. So any optional parameters,
 such as \code{add_points}, can be also added here
 }
