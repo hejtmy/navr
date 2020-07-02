@@ -32,7 +32,7 @@
 
 <meta property="og:title" content="Plots positions of given events on a path — geom_navr_path_events" />
 
-<meta property="og:description" content="Plots positions of given events on a path" />
+<meta property="og:description" content="PLots marks or colors the path ior the duration of a certain event." />
 <meta name="twitter:card" content="summary" />
 
 
@@ -125,7 +125,7 @@
 
     <div class="ref-description">
     
-    <p>Plots positions of given events on a path</p>
+    <p>PLots marks or colors the path ior the duration of a certain event.</p>
     
     </div>
 
@@ -137,29 +137,41 @@
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>navr objects</p></td>
+      <td><p>navr object</p></td>
     </tr>
     <tr>
       <th>event_times</th>
-      <td><p>numeric vector of event times. Times need to be on the same scale as the timestamps in <code>obj$data$timestamp</code></p></td>
+      <td><p>matrix of event times. It can have one or two dimensions,
+if single events or events with a duration are to be plotted</p><ul>
+<li><p>one dimension: Each number represents a time in which an event occured.
+See <code><a href='geom_navr_path_points.html'>geom_navr_path_points</a></code></p></li>
+<li><p>two dimentsions: Each column of the matrix marks the begining and an end
+of the event. First row is the beginings and second is the ends. Path between
+the beginning and end is then colored. See <code><a href='geom_navr_path_segments.html'>geom_navr_path_segments</a></code>
+Times need to be on the same scale as the timestamps in <code>obj$data$timestamp</code></p></li>
+</ul></td>
     </tr>
     <tr>
       <th>size</th>
-      <td><p>point size <strong>default</strong> 2</p></td>
+      <td><p>point or path size. <em>Defaults</em> to 2</p></td>
     </tr>
     <tr>
       <th>shape</th>
-      <td><p>point shape <strong>default</strong> is 4</p></td>
+      <td><p>point shape. Only relevant if single events are drawn. <em>Default</em>* to 4</p></td>
     </tr>
     <tr>
       <th>color</th>
-      <td><p>point color <strong>default</strong> is "blue"</p></td>
+      <td><p>point or path color <em>Default</em> to "blue"</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td></td>
     </tr>
     </table>
+    
+    <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
+
+    <p>list of ggplot geoms</p>
     
     <h2 class="hasAnchor" id="details"><a class="anchor" href="#details"></a>Details</h2>
 
@@ -172,6 +184,8 @@
     <ul class="nav nav-pills nav-stacked">
       <li><a href="#arguments">Arguments</a></li>
       
+      <li><a href="#value">Value</a></li>
+
       <li><a href="#details">Details</a></li>
           </ul>
 

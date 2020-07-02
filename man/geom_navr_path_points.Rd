@@ -11,7 +11,7 @@ geom_navr_path_points(obj, times, size = 4, shape = 18,
 \item{obj}{navr object}
 
 \item{times}{Times of the positions. Takes the first position AFTER the designated time.
-\n Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
+Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
 
 \item{size}{size of the point. \emph{Default} is 4}
 

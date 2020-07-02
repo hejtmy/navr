@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Searches for movement onsets and returns time since start for each event — search_onsets • navr</title>
+<title>Plots position points at designated times — geom_navr_path_points • navr</title>
 
 <!-- jquery -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -30,9 +30,9 @@
 
 
 
-<meta property="og:title" content="Searches for movement onsets and returns time since start for each event — search_onsets" />
+<meta property="og:title" content="Plots position points at designated times — geom_navr_path_points" />
 
-<meta property="og:description" content="Searches for movement onsets and returns time since start for each event" />
+<meta property="og:description" content="Plots position points at designated times" />
 <meta name="twitter:card" content="summary" />
 
 
@@ -118,70 +118,53 @@
 <div class="row">
   <div class="col-md-9 contents">
     <div class="page-header">
-    <h1>Searches for movement onsets and returns time since start for each event</h1>
+    <h1>Plots position points at designated times</h1>
     
-    <div class="hidden name"><code>search_onsets.Rd</code></div>
+    <div class="hidden name"><code>geom_navr_path_points.Rd</code></div>
     </div>
 
     <div class="ref-description">
     
-    <p>Searches for movement onsets and returns time since start for each event</p>
+    <p>Plots position points at designated times</p>
     
     </div>
 
-    <pre class="usage"><span class='fu'>search_onsets</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='no'>min_duration</span>, <span class='no'>...</span>)
-
-<span class='co'># S3 method for navr</span>
-<span class='fu'>search_onsets</span>(<span class='no'>obj</span>, <span class='no'>speed_threshold</span>, <span class='kw'>min_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>still_speed_threshold</span> <span class='kw'>=</span> <span class='no'>speed_threshold</span>, <span class='kw'>still_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>,
-  <span class='kw'>pause_duration</span> <span class='kw'>=</span> <span class='fl'>0</span>)</pre>
+    <pre class="usage"><span class='fu'>geom_navr_path_points</span>(<span class='no'>obj</span>, <span class='no'>times</span>, <span class='kw'>size</span> <span class='kw'>=</span> <span class='fl'>4</span>, <span class='kw'>shape</span> <span class='kw'>=</span> <span class='fl'>18</span>,
+  <span class='kw'>color</span> <span class='kw'>=</span> <span class='st'>"blue"</span>, <span class='no'>...</span>)</pre>
     
     <h2 class="hasAnchor" id="arguments"><a class="anchor" href="#arguments"></a>Arguments</h2>
     <table class="ref-arguments">
     <colgroup><col class="name" /><col class="desc" /></colgroup>
     <tr>
       <th>obj</th>
-      <td><p>Valid object</p></td>
+      <td><p>navr object</p></td>
     </tr>
     <tr>
-      <th>speed_threshold</th>
-      <td><p>what is the speed considered to be the moving speed</p></td>
+      <th>times</th>
+      <td><p>Times of the positions. Takes the first position AFTER the designated time.
+ Times need to be on the same scale as the timestamps in <code>obj$data$timestamp</code></p></td>
     </tr>
     <tr>
-      <th>min_duration</th>
-      <td><p>in secouds how long should the person be moving</p></td>
+      <th>size</th>
+      <td><p>size of the point. <em>Default</em> is 4</p></td>
+    </tr>
+    <tr>
+      <th>shape</th>
+      <td><p>geom_point shape. <em>Default</em> is 18</p></td>
+    </tr>
+    <tr>
+      <th>color</th>
+      <td><p>color of the geom_point. <em>Default</em> is "blue</p></td>
     </tr>
     <tr>
       <th>...</th>
       <td></td>
     </tr>
-    <tr>
-      <th>still_speed_threshold</th>
-      <td><p>what is considered to be the still speed threshold.
-<em>Defualts</em> to `speed_threshold``</p></td>
-    </tr>
-    <tr>
-      <th>still_duration</th>
-      <td><p>how long before the onset should hte person be still in seconds.
-<em>Defaults</em> to 0</p></td>
-    </tr>
-    <tr>
-      <th>pause_duration</th>
-      <td><p>how long "non" moving can the person be to allow still counting as an onset?
-In seconds. <em>Defaults</em> to 0</p></td>
-    </tr>
     </table>
     
     <h2 class="hasAnchor" id="value"><a class="anchor" href="#value"></a>Value</h2>
 
-    <p>list with times, time since start, and durations of movement epochs</p>
-    
-    <h2 class="hasAnchor" id="methods-by-class-"><a class="anchor" href="#methods-by-class-"></a>Methods (by class)</h2>
-
-    <ul>
-<li><p><code>navr</code>: Searches onsets in navr object. THe navr object has to have
-calculated speeds, times etc.</p></li>
-</ul>
+    <p>ggplot geom_point with bound data</p>
     
 
   </div>
@@ -191,8 +174,6 @@ calculated speeds, times etc.</p></li>
       <li><a href="#arguments">Arguments</a></li>
       
       <li><a href="#value">Value</a></li>
-
-      <li><a href="#methods-by-class-">Methods (by class)</a></li>
           </ul>
 
   </div>

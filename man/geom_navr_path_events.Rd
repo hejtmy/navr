@@ -12,12 +12,14 @@ geom_navr_path_events(obj, event_times, size = 2, shape = 18,
 
 \item{event_times}{matrix of event times. It can have one or two dimensions,
 if single events or events with a duration are to be plotted
-\item{one dimension}{Each number represents a time in which an event occured.
-See \code{\link{geom_navr_path_points}}}
-\item{two dimentsions}{Each column of the matrix marks the begining and an end
+\itemize{
+\item one dimension: Each number represents a time in which an event occured.
+See \code{\link{geom_navr_path_points}}
+\item two dimentsions: Each column of the matrix marks the begining and an end
 of the event. First row is the beginings and second is the ends. Path between
-the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}}
-Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
+the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}
+Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}
+}}
 
 \item{size}{point or path size. \emph{Defaults} to 2}
 

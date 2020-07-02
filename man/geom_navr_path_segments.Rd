@@ -11,7 +11,7 @@ geom_navr_path_segments(obj, times, size = 2, color = "blue", ...)
 
 \item{times}{matrix with two dimensions. Each column of the matrix marks the begining and an end
 of the segment First row is the beginings and second is the ends. Path between
-the beginning and end is then colored. \n
+the beginning and end is then colored.
 Times need to be on the same scale as the timestamps in \code{obj$data$timestamp}}
 
 \item{size}{size of the path. \emph{Default} is 2}

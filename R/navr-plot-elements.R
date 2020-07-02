@@ -151,11 +151,11 @@ geom_navr_path_limits <- function(obj, padding){
 #' @param obj navr object
 #' @param event_times matrix of event times. It can have one or two dimensions,
 #' if single events or events with a duration are to be plotted
-#' \item{one dimension}{Each number represents a time in which an event occured.
-#' See \code{\link{geom_navr_path_points}}}
-#' \item{two dimentsions}{Each column of the matrix marks the begining and an end
+#' - one dimension: Each number represents a time in which an event occured.
+#' See \code{\link{geom_navr_path_points}}
+#' - two dimentsions: Each column of the matrix marks the begining and an end
 #' of the event. First row is the beginings and second is the ends. Path between
-#' the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}}
+#' the beginning and end is then colored. See \code{\link{geom_navr_path_segments}}
 #' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
 #' @param size point or path size. *Defaults* to 2
 #' @param shape point shape. Only relevant if single events are drawn. *Default** to 4
@@ -190,7 +190,7 @@ geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color 
 #'
 #' @param obj navr object
 #' @param times Times of the positions. Takes the first position AFTER the designated time.
-#' \n Times need to be on the same scale as the timestamps in `obj$data$timestamp`
+#' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
 #' @param size size of the point. *Default* is 4
 #' @param shape geom_point shape. *Default* is 18
 #' @param color color of the geom_point. *Default* is "blue
@@ -217,7 +217,7 @@ geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blu
 #' @param obj navr object
 #' @param times matrix with two dimensions. Each column of the matrix marks the begining and an end
 #' of the segment First row is the beginings and second is the ends. Path between
-#' the beginning and end is then colored. \n
+#' the beginning and end is then colored.
 #' Times need to be on the same scale as the timestamps in `obj$data$timestamp`
 #' @param size size of the path. *Default* is 2
 #' @param color color of the geom_path. *Default* is "blue
