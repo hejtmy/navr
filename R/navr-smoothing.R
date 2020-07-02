@@ -60,6 +60,10 @@ smooth_speed.navr <- function(obj, type, ...){
 #'
 #' @examples
 smooth_vector <- function(x, type, ...){
+  if(any(is.na(x))){
+    warning("There are NAs in the vector, replacing with last known value")
+    x <- replace_na(x, "last.known")
+  }
   if(type == "median") {
     return(smooth_median(x, ...))
   }
@@ -69,10 +73,6 @@ smooth_vector <- function(x, type, ...){
 }
 
 smooth_median <- function(x, points = 11){
-  if(any(is.na(x))){
-    warning("There are NAs in the vector, replacing with last known value")
-    x <- replace_na(x, "last.known")
-  }
   x <- runmed(x, points, endrule = "constant")
   return(x)
 }
