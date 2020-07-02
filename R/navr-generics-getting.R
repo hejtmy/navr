@@ -2,7 +2,7 @@
 #'
 #' @param obj object to filter
 #' @param times a vector of length 2, or a matrix with two columns, start time and end time in seconds
-#' @param zero_based signifying if you passed seconds from start or real time. defualts to FALSE (real time passed)
+#' @param zero_based signifying if you passed seconds from start or real time. *Defaults* to FALSE (real time passed)
 #' @param ... aditional arguments
 #'
 #' @return
@@ -13,8 +13,9 @@ filter_times <- function(obj, times, zero_based, ...){
   UseMethod("filter_times")
 }
 
+#' @describeIn filter_times Filtering navr object
 #' @export
-filter_times.navr <- function(obj, times, zero_based = F){
+filter_times.navr <- function(obj, times, zero_based = FALSE){
   # Do some validations of the passed times
   times <- matrix(times, ncol = 2) #tehcnically leaves times unchanged for the vector
   search_times <- obj$data$timestamp
@@ -33,7 +34,7 @@ filter_times.navr <- function(obj, times, zero_based = F){
 #'
 #' @param obj Navr Object
 #'
-#' @return
+#' @return returns vector of times since start
 get_times_since_start.navr <- function(obj){
   if(!is.null(obj$data$time_since_start)) return(obj$data$time_since_start)
   stop("The object doesn't have time_since_start column. Did you run *prepare_navr* on the object?")

@@ -108,7 +108,7 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
     # logical of length groups
     is_in_between <- df_moving$is_moving[groups-1] == "in_between"
     i_selected <- c((groups-1)[is_in_between], groups[!is_in_between])
-    #duration is either sum of "in_between" and "yes" or just "yes" for those blocks hwich are preceded with "no"
+    #duration is either sum of "in_between" and "yes" or just "yes" for those blocks which are preceded with "no"
     durations <- c(df_moving$duration[(groups-1)[is_in_between]] + df_moving$duration[(groups)[is_in_between]],
                    df_moving$duration[(groups)[!is_in_between]])
     i_start <- df_moving$index[i_selected]
@@ -133,7 +133,8 @@ search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, min_d
 #' @param time_diffs
 #' @param speed_threshold
 #' @param still_speed_threshold
-#' @param pause_duration . BEWARE, runs a for loop, so it might be slow
+#' @param pause_duration . BEWARE, runs a for loop, so it might be slow.
+#' SAME tolerance is applied for not moving and for moving
 #' @noRd
 calculate_is_moving_table <- function(speeds, time_diffs, speed_threshold,
                                       still_speed_threshold, pause_duration = 0){

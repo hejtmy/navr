@@ -137,6 +137,7 @@ add_speeds <- function(obj, ...){
   .Deprecated("prepare_navr")
   UseMethod("add_speeds")
 }
+
 #' @export
 add_speeds.navr <- function(obj){
   distances <- get_distances.navr(obj)
@@ -146,7 +147,20 @@ add_speeds.navr <- function(obj){
 
 #' Shorthand for picking speeds and then recalculating object
 #'
-#' @param obj
+#' @description Picks unreal speeds in the same way as \code{\link{pick_unreal_speed}}` but then removes
+#' given lines form the data, replaces them as per replacement parameter and returnes cleaned
+#' object
+#'
+#' @param obj valid navr object. See \code{\link{remvoe_unreal_speeds.navr}}
+#' @param cutoff cutoff value. see \code{\link{pick_unreal_speeds}}
+#' @param type what type of cutoof. see \code{\link{pick_unreal_speeds}}
+#' @param remove_distance shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
+#' jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
+#' by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. *Defaults* to TRUE
+#' @param total_recalculate if true, recalculates total_distance column to reflect removed distances, *Defaults* to TRUE
+#' @param replacement what to replace  unreal speeds with. *Defaults* to NA
+#' @param indices indices of speeds to clean out in case they were obtained separately.
+#' If empty, `type`, `cutoff` need to be defined and `pick_unreal_speeds` is called
 #' @param ...
 #'
 #' @return
@@ -157,21 +171,7 @@ remove_unreal_speeds <- function(obj, ...){
   UseMethod("remove_unreal_speeds")
 }
 
-#' Shorthand for picking speeds and then recalculating object
-#'
-#' @description Picks unreal speeds in the same way as `pick_unreal_speed` but then removes
-#' given lines form the data, replaces them as per replacement parameter and returnes cleaned
-#' object
-#' @param cutoff cutoff value. see `pick_unreal_speeds`
-#' @param type what type of cutoof. see `pick_unreal_speeds`
-#' @param remove_distance shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
-#' jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
-#' by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. *Defaults* to TRUE
-#' @param total_recalculate if true, recalculates total_distance column to reflect removed distances, *defaults* to TRUE
-#' @param replacement what to replace  unreal speeds with. *Defaults* to NA
-#' @param indices indices of speeds to clean out in case they were obtained separately.
-#' If empty, `type`, `cutoff` need to be defined and `pick_unreal_speeds` is called
-#'
+#' @describeIn remove_unreal_speeds clears out navr object
 #' @export
 remove_unreal_speeds.navr <- function(obj, cutoff = NULL, type = NULL,
                                       remove_distance = TRUE, total_recalculate = TRUE,

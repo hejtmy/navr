@@ -21,6 +21,7 @@ calculate_speeds <- function(distances, timestamps){
 #' @param type what type of cutoff. Possibilities value (above value is unreal),
 #' percent (move than certain percent increase), std (number of stds away from mean speed),
 #' quantile(percent of highest values)
+#' @param ...
 #'
 #' @return indices of speeds considered unreal
 #' @export
@@ -30,6 +31,7 @@ pick_unreal_speeds <- function(obj, cutoff, type="value", ...){
   UseMethod('pick_unreal_speeds')
 }
 
+#' @describeIn pick_unreal_speeds Pick unrela speeds from the navr object
 #' @export
 pick_unreal_speeds.navr <- function(obj, cutoff, type="value"){
   #needs to check of the speed even exists as a column

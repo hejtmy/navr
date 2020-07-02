@@ -2,17 +2,27 @@
 % Please edit documentation in R/navr-smoothing.R
 \name{smooth_speed}
 \alias{smooth_speed}
+\alias{smooth_speed.navr}
 \title{Smooths speed}
 \usage{
 smooth_speed(obj, type, ...)
+
+\method{smooth_speed}{navr}(obj, type, ...)
 }
 \arguments{
 \item{obj}{object to perfrom speed smoothing on}
 
-\item{type}{what type of smoothing to perform}
+\item{type}{type of smoothing. See \code{\link{smooth_vector}} vector for full description}
 
-\item{...}{}
+\item{...}{optional parameters for given smoothing, see  \code{\link{smooth_vector}} function}
 }
 \description{
-Smooths speed
+Smooths speed values with given type of smoothing. IMPORTANT! Does not change
+any positioning or other data, only smooths the speed values.
+Speed smothing is generally important for clear onset search
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Smooths navr object speeds
+}}
+

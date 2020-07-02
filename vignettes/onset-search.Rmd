@@ -75,7 +75,8 @@ plot_speed(obj) +
 If we want to include it, we can use the `pause_duration` parameter and set it to 1 s. Other option might be to better smooth the speeds with `smooth_speed`.
 
 ```{r}
-onsets <- search_onsets(obj, speed_threshold = 5, min_duration = 1, still_duration = 1, still_speed_threshold = 2, pause_duration = 1)
+onsets <- search_onsets(obj, speed_threshold = 5, min_duration = 1, still_duration = 1, 
+                        still_speed_threshold = 2, pause_duration = 1)
 plot_speed(obj) + 
   geom_navr_timeseries_events(onsets$time_since_start, onsets$duration, color="green", size=1.5) + 
   xlim(150,250) + geom_vline(xintercept=225, size = 1, color = "red")

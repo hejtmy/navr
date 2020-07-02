@@ -1,26 +1,18 @@
 #' Smooths positions of a given boject
 #'
-#' @param obj
+#' @param obj valid object to be smoothed
+#' @param type string: median, approx, spline
+#' @param .... optional parameters for smoothing
 #'
 #' @return
 #' @export
 #'
 #' @examples
-smooth_positions <- function(obj, ...){
+smooth_positions <- function(obj, type, ...){
   UseMethod("smooth_positions")
 }
-
-#' Smooth positions in a navr object
-#'
-#' @param obj navr object
-#'
-#' @param type string: median, approx, spline
-#' @param ....
-#'
-#' @return
+#' @describeIn smooth_positions position smoothing in the navr object
 #' @export
-#'
-#' @examples
 smooth_positions.navr <- function(obj, type, ....){
   if(is.null(ls)) return(NULL)
   obj$data$position_x <- smooth_vector(obj$data$position_x, type, ...)
@@ -30,9 +22,13 @@ smooth_positions.navr <- function(obj, type, ....){
 
 #' Smooths speed
 #'
+#' @description Smooths speed values with given type of smoothing. IMPORTANT! Does not change
+#' any positioning or other data, only smooths the speed values.
+#' Speed smothing is generally important for clear onset search
+#'
 #' @param obj object to perfrom speed smoothing on
-#' @param type what type of smoothing to perform
-#' @param ...
+#' @param type type of smoothing. See \code{\link{smooth_vector}} vector for full description
+#' @param ... optional parameters for given smoothing, see  \code{\link{smooth_vector}} function
 #'
 #' @return
 #' @export
@@ -42,21 +38,12 @@ smooth_speed <- function(obj, type, ...){
   UseMethod("smooth_speed")
 }
 
-#' Smooths speed vector in the navr object
-#'
-#' @param obj navr object
-#' @param type type of smoothing
-#' @param ... optional parameters for given smoothing, see `smooth_vector` function
-#'
-#' @return modified navr object
+#' @describeIn smooth_speed Smooths navr object speeds
 #' @export
-#'
-#' @examples
 smooth_speed.navr <- function(obj, type, ...){
   obj$data$speed <- smooth_vector(obj$data$speed, type, ...)
   return(obj)
 }
-
 
 #' Smooths positions of given vector
 #'

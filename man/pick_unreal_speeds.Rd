@@ -2,9 +2,12 @@
 % Please edit documentation in R/navr-speed-calculations.R
 \name{pick_unreal_speeds}
 \alias{pick_unreal_speeds}
+\alias{pick_unreal_speeds.navr}
 \title{Finds indices of impossible speed values}
 \usage{
 pick_unreal_speeds(obj, cutoff, type = "value", ...)
+
+\method{pick_unreal_speeds}{navr}(obj, cutoff, type = "value")
 }
 \arguments{
 \item{cutoff}{value after which we should consider speeds as invalid}
@@ -12,6 +15,8 @@ pick_unreal_speeds(obj, cutoff, type = "value", ...)
 \item{type}{what type of cutoff. Possibilities value (above value is unreal),
 percent (move than certain percent increase), std (number of stds away from mean speed),
 quantile(percent of highest values)}
+
+\item{...}{}
 
 \item{speeds}{speed vector of doubles}
 }
@@ -21,3 +26,8 @@ indices of speeds considered unreal
 \description{
 Finds indices of impossible speed values
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Pick unrela speeds from the navr object
+}}
+

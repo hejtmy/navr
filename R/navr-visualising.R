@@ -35,16 +35,16 @@ plot_path <- function(obj, ...){
 #' plots the _x and _X coordinates
 #'
 #' @param obj valid navr object
-#' @param ... optional ggplot parameters for the path geom
 #' @param add_points if points should be explicitely noted on the path
+#' @param ... optional ggplot parameters for the path geom
 #'
 #' @return ggplot
 #' @export
 #'
 #' @examples
-plot_path.navr <- function(obj, add_points = F, ...){
+plot_path.navr <- function(obj, add_points = FALSE, ...){
   plt <- create_void_plot()
-  plt$data <- obj$data[, "timestamp", drop = F]
+  plt$data <- obj$data[, "timestamp", drop = FALSE]
   plt <- plt + aes(timestamp) # allows for animations later
   #TODO - removes points that have surreal speeds
   plt <- plt + geom_navr_path(obj, add_points, ...)

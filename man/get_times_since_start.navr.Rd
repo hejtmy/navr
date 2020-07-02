@@ -9,6 +9,9 @@ get_times_since_start.navr(obj)
 \arguments{
 \item{obj}{Navr Object}
 }
+\value{
+returns vector of times since start
+}
 \description{
 Returns time since start column from the navr object if it has one
 }

@@ -4,7 +4,7 @@
 \alias{plot_path.navr}
 \title{plots the _x and _X coordinates}
 \usage{
-\method{plot_path}{navr}(obj, add_points = F, ...)
+\method{plot_path}{navr}(obj, add_points = FALSE, ...)
 }
 \arguments{
 \item{obj}{valid navr object}

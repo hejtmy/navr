@@ -2,13 +2,42 @@
 % Please edit documentation in R/navr-data-modifications.R
 \name{remove_unreal_speeds}
 \alias{remove_unreal_speeds}
+\alias{remove_unreal_speeds.navr}
 \title{Shorthand for picking speeds and then recalculating object}
 \usage{
 remove_unreal_speeds(obj, ...)
+
+\method{remove_unreal_speeds}{navr}(obj, cutoff = NULL, type = NULL,
+  remove_distance = TRUE, total_recalculate = TRUE, indices = c(),
+  replacement = NA)
 }
 \arguments{
+\item{obj}{valid navr object. See \code{\link{remvoe_unreal_speeds.navr}}}
+
 \item{...}{}
+
+\item{cutoff}{cutoff value. see \code{\link{pick_unreal_speeds}}}
+
+\item{type}{what type of cutoof. see \code{\link{pick_unreal_speeds}}}
+
+\item{remove_distance}{shoudl the distances be removed? in case unreal speeds are probably due to "teleportation" or bad measurements,
+jumpy tracking etc,  then the participant didn't really travel that distance and we can remove it. In case the unreal distances are caused
+by parts of the tracking missing, then the distances travelled are actually correct, just the speeds are not. \emph{Defaults} to TRUE}
+
+\item{total_recalculate}{if true, recalculates total_distance column to reflect removed distances, \emph{Defaults} to TRUE}
+
+\item{indices}{indices of speeds to clean out in case they were obtained separately.
+If empty, \code{type}, \code{cutoff} need to be defined and \code{pick_unreal_speeds} is called}
+
+\item{replacement}{what to replace  unreal speeds with. \emph{Defaults} to NA}
 }
 \description{
-Shorthand for picking speeds and then recalculating object
+Picks unreal speeds in the same way as \code{\link{pick_unreal_speed}}` but then removes
+given lines form the data, replaces them as per replacement parameter and returnes cleaned
+object
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: clears out navr object
+}}
+
