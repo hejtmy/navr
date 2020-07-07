@@ -61,8 +61,8 @@ search_stops <- function(obj, speed_threshold, min_duration, ...){
 search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
   speeds <- get_speeds.navr(obj)
   time_diffs <- get_time_diffs.navr(obj)
-  res <- search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
   time_since_start <- get_times_since_start.navr(obj)
+  res <- search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
   return(list(time = obj$data$timestamp[res$indices],
               time_since_start = time_since_start[res$indices],
               duration = res$durations))
@@ -111,11 +111,19 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
   return(list(indices = i_start, durations = durations))
 }
 
+#' Searches for times of stillness from passed speeds and time diffs
+#'
+#' @param speeds vector of speeds
+#' @param time_diffs vactor of time diffs
+#' @param speed_threshold what is considered to eb moving speed
+#' @param min_duration minímum stillness duration to be considered stop
+#'
+#' @return
 search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration){
   df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, speed_threshold)
-  groups <- df_moving[df_moving$duration > min_duration & df_moving$is_moving == "no", "group"]
-  i_start <- df_moving$index[groups]
-  durations <- df_moving$duration[groups]
+  indices <- df_moving$duration >= min_duration & df_moving$is_moving == "no"
+  i_start <- df_moving$index[indices]
+  durations <- df_moving$duration[indices]
   return(list(indices = i_start, durations = durations))
 }
 
@@ -136,7 +144,13 @@ calculate_is_moving_table <- function(speeds, time_diffs, speed_threshold,
   df$is_moving[df$speed < still_speed_threshold] <- "no"
   df$is_moving_group <- rep(1:length(rle(df$is_moving)$lengths), rle(df$is_moving)$lengths)
   df_index <- aggregate(1:nrow(df), by=list(group=df$is_moving_group), FUN=min)
-  df_moving <- aggregate(df$time_diff, by=list(is_moving=df$is_moving, group=df$is_moving_group), FUN=sum)
+  # THIS is quite tricky. Because speed at index 10 is basically speed for 9-10 difference,
+  # it actually starts at index 9. So we need to establish the time of that "event" start to
+  # be one index less that it appears in the data
+  df_index$x <- df_index$x - 1
+  df_moving <- aggregate(df$time_diff,
+                         by=list(is_moving=df$is_moving, group=df$is_moving_group),
+                         FUN=sum)
   if(pause_duration > 0){
     df_moving <- fill_in_pauses(df_moving, pause_duration, "yes")
     df_moving <- fill_in_pauses(df_moving, pause_duration, "no")
