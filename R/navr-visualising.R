@@ -74,11 +74,11 @@ animate_path <- function(plt, ...){
 
 #' PLots speed values in time
 #'
-#' @param obj
+#' @param obj valid object
 #' @param scaling type of scaling to implement, possibilities are "std", "minmax"
 #' @param scale if the values should be scaled to certain values - needs vector of length 2 c(0,1)
-#' @param ...
-#' @return ggplot
+#' @param ... additional parameters for the \code{\link{ggplot::geom_line}}
+#' @return ggplot plot
 #'
 #' @return
 #' @export
@@ -89,13 +89,13 @@ plot_speed <- function(obj, scaling = "none", scale = c(), ...){
 }
 
 #' PLots speed values in time
+#' @describeIn plot_speed Plot speed values for the nvar object
 #' @export
 plot_speed.navr <- function(obj, scaling = "none", scale = c(), ...){
-  #validates
   if(!has_column(obj$data, "speed")){
-    stop("Cannot plot speeds. No speed column present. Have you run add_speeds function on your object?")
+    stop("Cannot plot speeds. No speed column present. Have you
+         run add_speeds function on your object?")
   }
-  #plot value
   plt <- create_minimal_plot() +
     geom_navr_obj_timeseries(obj, "speed", scaling, scale, ...)
   return(plt)

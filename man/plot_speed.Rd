@@ -2,18 +2,32 @@
 % Please edit documentation in R/navr-visualising.R
 \name{plot_speed}
 \alias{plot_speed}
+\alias{plot_speed.navr}
 \title{PLots speed values in time}
 \usage{
 plot_speed(obj, scaling = "none", scale = c(), ...)
+
+\method{plot_speed}{navr}(obj, scaling = "none", scale = c(), ...)
 }
 \arguments{
+\item{obj}{valid object}
+
 \item{scaling}{type of scaling to implement, possibilities are "std", "minmax"}
 
 \item{scale}{if the values should be scaled to certain values - needs vector of length 2 c(0,1)}
+
+\item{...}{additional parameters for the \code{\link{ggplot::geom_line}}}
 }
 \value{
 ggplot
 }
 \description{
 PLots speed values in time
+
+PLots speed values in time
 }
+\section{Methods (by class)}{
+\itemize{
+\item \code{navr}: Plot speed values for the nvar object
+}}
+
