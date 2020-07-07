@@ -140,8 +140,7 @@ add_speeds <- function(obj, ...){
 
 #' @export
 add_speeds.navr <- function(obj){
-  distances <- get_distances.navr(obj)
-  obj$data$speed <- navr::calculate_speeds(distances, obj$data$timestamp)
+  obj$data$speed <- navr::calculate_speeds(get_distances.navr(obj), obj$data$timestamp)
   return(obj)
 }
 
