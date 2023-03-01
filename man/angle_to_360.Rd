@@ -9,6 +9,9 @@ angle_to_360(angle)
 \arguments{
 \item{angle}{}
 }
+\value{
+
+}
 \description{
 asumes it is not below -360
 390 is converted to 30, -40 to 320 etc

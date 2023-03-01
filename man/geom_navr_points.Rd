@@ -11,6 +11,9 @@ geom_navr_points(ls, ...)
 
 \item{...}{ggplot additional params}
 }
+\value{
+
+}
 \description{
 GGplot geom to add specified points to the given plot
 }

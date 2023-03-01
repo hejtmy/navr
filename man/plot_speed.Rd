@@ -5,21 +5,22 @@
 \alias{plot_speed.navr}
 \title{PLots speed values in time}
 \usage{
-plot_speed(obj, scaling = "none", scale = c(), ...)
+plot_speed(obj, scaling = "none", constraints = NULL, ...)
 
-\method{plot_speed}{navr}(obj, scaling = "none", scale = c(), ...)
+\method{plot_speed}{navr}(obj, scaling = "none", constraints = NULL, ...)
 }
 \arguments{
 \item{obj}{valid object}
 
-\item{scaling}{type of scaling to implement, possibilities are "std", "minmax"}
+\item{scaling}{type of scaling to implement, possibilities are "none", "std", "minmax".
+\emph{Default} is "none"}
 
-\item{scale}{if the values should be scaled to certain values - needs vector of length 2 c(0,1)}
+\item{constraints}{if the values should be scaled to certain values - needs numeric(2)}
 
 \item{...}{additional parameters for the \code{\link{ggplot::geom_line}}}
 }
 \value{
-ggplot
+ggplot plot
 }
 \description{
 PLots speed values in time

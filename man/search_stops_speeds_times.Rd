@@ -4,8 +4,7 @@
 \alias{search_stops_speeds_times}
 \title{Searches for times of stillness from passed speeds and time diffs}
 \usage{
-search_stops_speeds_times(speeds, time_diffs, speed_threshold,
-  min_duration)
+search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
 }
 \arguments{
 \item{speeds}{vector of speeds}
@@ -15,6 +14,9 @@ search_stops_speeds_times(speeds, time_diffs, speed_threshold,
 \item{speed_threshold}{what is considered to eb moving speed}
 
 \item{min_duration}{minímum stillness duration to be considered stop}
+}
+\value{
+
 }
 \description{
 Searches for times of stillness from passed speeds and time diffs

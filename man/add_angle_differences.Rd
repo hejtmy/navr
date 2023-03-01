@@ -9,6 +9,9 @@ add_angle_differences(variables)
 \arguments{
 \item{obj}{navr object}
 }
+\value{
+
+}
 \description{
 Adds extra diff column to each column that has "rotation" in its name
 }

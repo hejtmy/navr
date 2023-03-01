@@ -12,6 +12,9 @@ a single area, you should pass it as a list(your_area)}
 
 \item{...}{}
 }
+\value{
+
+}
 \description{
 adds a column which contains name of an area the current positions belongs to.
 beware that the areas can NOT overlap each other. Each point can only belong to a single area,

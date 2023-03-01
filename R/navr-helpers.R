@@ -9,7 +9,8 @@
 #' @examples
 rolling_sum <- function(vec, n_points){
   if(length(vec) < n_points) return(NULL)
-  rolling <- rowSums(outer(1:(length(vec) - n_points+1), 1:n_points, FUN=function(i,j){vec[(j - 1) + i]}))
+  rolling <- rowSums(outer(1:(length(vec) - n_points+1), 1:n_points,
+                           FUN = function(i,j){vec[(j - 1) + i]}))
   return(rolling)
 }
 
@@ -17,8 +18,8 @@ rolling_sum <- function(vec, n_points){
 #' @description
 #' Calculates euclidian distance between two points.
 #'
-#' @param point1 2D vector of X and Y position
-#' @param point2 2D vector of X and Y position
+#' @param point1 numeric position (usually length 2 or 3)
+#' @param point2 numeric position (usually length 2 or 3)
 #'
 #' @return numeric or NA if not valid
 #' @export
@@ -51,7 +52,7 @@ euclid_distance_between_rows <- function(points){
 
 #' Replaces na values with given type
 #'
-#' @param vec
+#' @param vec vector to replace numbers with
 #' @param replacement: "last.known", "number"
 #' @param ...
 #'

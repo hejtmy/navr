@@ -4,8 +4,14 @@
 \alias{geom_navr_path_events}
 \title{Plots positions of given events on a path}
 \usage{
-geom_navr_path_events(obj, event_times, size = 2, shape = 18,
-  color = "blue", ...)
+geom_navr_path_events(
+  obj,
+  event_times,
+  size = 2,
+  shape = 18,
+  color = "blue",
+  ...
+)
 }
 \arguments{
 \item{obj}{navr object}

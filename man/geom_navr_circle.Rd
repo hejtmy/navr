@@ -7,13 +7,16 @@
 geom_navr_circle(center, radius, precision = 100, ...)
 }
 \arguments{
-\item{center}{circle center as a numeric(2) \emph{default}: c(0,0)}
+\item{center}{circle center as a numeric(2) \emph{Default} is c(0,0)}
 
 \item{radius}{circle radius}
 
 \item{precision}{how many points will make the circle}
 
 \item{...}{}
+}
+\value{
+
 }
 \description{
 Creates geom of a circle to be inserted into the graph

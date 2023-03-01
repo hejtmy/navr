@@ -28,7 +28,7 @@ create_minimal_plot <- function(){
 #' @export
 #'
 #' @examples
-plot_path <- function(obj, ...){
+plot_path <- function(obj, ...) {
   UseMethod('plot_path')
 }
 
@@ -42,7 +42,7 @@ plot_path <- function(obj, ...){
 #' @export
 #'
 #' @examples
-plot_path.navr <- function(obj, add_points = FALSE, ...){
+plot_path.navr <- function(obj, add_points = FALSE, ...) {
   plt <- create_void_plot()
   plt$data <- obj$data[, "timestamp", drop = FALSE]
   plt <- plt + aes(timestamp) # allows for animations later
@@ -67,7 +67,7 @@ plot_path.navr <- function(obj, add_points = FALSE, ...){
 #' @import gganimate
 #'
 #' @examples
-animate_path <- function(plt, ...){
+animate_path <- function(plt, ...) {
   plt <- plt + gganimate::transition_reveal(plt$data$timestamp)
   return(plt)
 }
@@ -75,29 +75,30 @@ animate_path <- function(plt, ...){
 #' PLots speed values in time
 #'
 #' @param obj valid object
-#' @param scaling type of scaling to implement, possibilities are "std", "minmax"
-#' @param scale if the values should be scaled to certain values - needs vector of length 2 c(0,1)
+#' @param scaling type of scaling to implement, possibilities are "none", "std", "minmax".
+#' *Default* is "none"
+#' @param constraints if the values should be scaled to certain values - needs numeric(2)
 #' @param ... additional parameters for the \code{\link{ggplot::geom_line}}
 #' @return ggplot plot
 #'
-#' @return
 #' @export
 #'
 #' @examples
-plot_speed <- function(obj, scaling = "none", scale = c(), ...){
+plot_speed <- function(obj, scaling = "none", constraints = NULL, ...) {
   UseMethod("plot_speed")
 }
 
 #' PLots speed values in time
 #' @describeIn plot_speed Plot speed values for the nvar object
 #' @export
-plot_speed.navr <- function(obj, scaling = "none", scale = c(), ...){
+plot_speed.navr <- function(obj, scaling = "none", constraints = NULL, ...) {
   if(!has_column(obj$data, "speed")){
     stop("Cannot plot speeds. No speed column present. Have you
          run add_speeds function on your object?")
   }
   plt <- create_minimal_plot() +
-    geom_navr_obj_timeseries(obj, "speed", scaling, scale, ...)
+    geom_navr_obj_timeseries(obj, colname = "speed", scaling = scaling,
+                             constraints = constraints, ...)
   return(plt)
 }
 
@@ -111,7 +112,7 @@ plot_speed.navr <- function(obj, scaling = "none", scale = c(), ...){
 #' @export
 #'
 #' @examples
-plot_position_heatmap <- function(obj, bins, ...){
+plot_position_heatmap <- function(obj, bins, ...) {
   UseMethod('plot_position_heatmap')
 }
 

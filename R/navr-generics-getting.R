@@ -1,8 +1,10 @@
 #' Filters navr object to only include times in between
 #'
 #' @param obj object to filter
-#' @param times a vector of length 2, or a matrix with two columns, start time and end time in seconds
-#' @param zero_based signifying if you passed seconds from start or real time. *Defaults* to FALSE (real time passed)
+#' @param times a vector of length 2, or a matrix with two columns,
+#' start time and end time in seconds
+#' @param zero_based signifying if you passed seconds from start or real time.
+#' *Defaults* to FALSE (real time passed)
 #' @param ... aditional arguments
 #'
 #' @return

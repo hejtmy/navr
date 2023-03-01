@@ -4,8 +4,7 @@
 \alias{geom_navr_path_points}
 \title{Plots position points at designated times}
 \usage{
-geom_navr_path_points(obj, times, size = 4, shape = 18,
-  color = "blue", ...)
+geom_navr_path_points(obj, times, size = 4, shape = 18, color = "blue", ...)
 }
 \arguments{
 \item{obj}{navr object}

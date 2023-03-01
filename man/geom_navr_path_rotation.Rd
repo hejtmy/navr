@@ -4,8 +4,7 @@
 \alias{geom_navr_path_rotation}
 \title{Adds rotational information to the path data}
 \usage{
-geom_navr_path_rotation(obj, axis = "x", downsample = 10, length = 1,
-  ...)
+geom_navr_path_rotation(obj, axis = "x", downsample = 10, length = 1, ...)
 }
 \arguments{
 \item{obj}{navr object}
@@ -19,6 +18,9 @@ geoms. Therefore it is recommended to only sample each nth observation.}
 \item{length}{arrow length}
 
 \item{...}{}
+}
+\value{
+
 }
 \description{
 Adds rotational information to the path data

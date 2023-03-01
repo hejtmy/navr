@@ -16,6 +16,9 @@ smooth_positions(obj, type, ...)
 
 \item{....}{optional parameters for smoothing}
 }
+\value{
+
+}
 \description{
 Smooths positions of a given boject
 }

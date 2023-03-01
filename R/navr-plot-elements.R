@@ -248,7 +248,7 @@ geom_navr_path_segments <- function(obj, times, size = 2, color = "blue", ...){
 
 #' Creates geom of a circle to be inserted into the graph
 #'
-#' @param center circle center as a numeric(2) *default*: c(0,0)
+#' @param center circle center as a numeric(2) *Default* is c(0,0)
 #' @param radius circle radius
 #' @param precision how many points will make the circle
 #' @param ...
@@ -269,17 +269,17 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 #' @param obj NavrObject
 #' @param colname name of the column to be plotted
 #' @param scaling type of scaling to implemnent. "none", "std", "minmax"
-#' @param scale if the values should be scaled to given values
+#' @param constraints if the values should be scaled to given values
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", scale = c(), ...){
+geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", constraints = NULL, ...){
   times <- get_times_since_start.navr(obj)
   values <- obj$data[[colname]]
-  return(geom_navr_timeseries(times, values, scaling, scale, ...))
+  return(geom_navr_timeseries(times, values, scaling, constraints, ...))
 }
 
 #' Adds timeseries to the given plot
@@ -287,22 +287,22 @@ geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", scale = c()
 #' @param times times on the x axis
 #' @param values values on the y axis to plot
 #' @param scaling type of scaling to implemnent. "none", "std", "minmax"
-#' @param scale if the values should be scaled to given values
+#' @param constraints if the values should be scaled to given values
 #' @param ...
 #'
 #' @return
 #' @export
 #'
 #' @examples
-geom_navr_timeseries <- function(times, values, scaling = "none", scale = c(), ...){
+geom_navr_timeseries <- function(times, values, scaling = "none", constraints = NULL, ...){
   if(scaling == "std"){
     values <- scale(values)
   }
   if(scaling == "minmax"){
 
   }
-  if(length(scale == 2)){
-    #fits within a range
+  if(!is.null(constraints)){
+
   }
   df <- data.frame(time = times, value = values)
   return(geom_line(data = df, aes(time, value), ...))

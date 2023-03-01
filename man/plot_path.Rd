@@ -11,6 +11,9 @@ plot_path(obj, ...)
 
 \item{...}{optional ggplot parameters}
 }
+\value{
+
+}
 \description{
 Plots path of dataset
 }

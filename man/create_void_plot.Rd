@@ -6,6 +6,9 @@
 \usage{
 create_void_plot()
 }
+\value{
+
+}
 \description{
 Creates empty plot with invisible theme to clearly plot paths and points
 }

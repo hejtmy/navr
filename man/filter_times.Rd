@@ -12,11 +12,16 @@ filter_times(obj, times, zero_based, ...)
 \arguments{
 \item{obj}{object to filter}
 
-\item{times}{a vector of length 2, or a matrix with two columns, start time and end time in seconds}
+\item{times}{a vector of length 2, or a matrix with two columns,
+start time and end time in seconds}
 
-\item{zero_based}{signifying if you passed seconds from start or real time. \emph{Defaults} to FALSE (real time passed)}
+\item{zero_based}{signifying if you passed seconds from start or real time.
+\emph{Defaults} to FALSE (real time passed)}
 
 \item{...}{aditional arguments}
+}
+\value{
+
 }
 \description{
 Filters navr object to only include times in between

@@ -13,6 +13,9 @@ angle_from_positions(pos_from, pos_to, zero_vec = c(0, 1))
 
 \item{zero_vec}{defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)}
 }
+\value{
+
+}
 \description{
 Calculates angle from two 2d positions
 }

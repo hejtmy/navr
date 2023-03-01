@@ -13,6 +13,9 @@ plot_position_heatmap(obj, bins, ...)
 
 \item{...}{optional ggplot parameters}
 }
+\value{
+
+}
 \description{
 Plots position heatmap with given granularity
 }

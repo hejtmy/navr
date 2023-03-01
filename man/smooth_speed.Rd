@@ -16,6 +16,9 @@ smooth_speed(obj, type, ...)
 
 \item{...}{optional parameters for given smoothing, see  \code{\link{smooth_vector}} function}
 }
+\value{
+
+}
 \description{
 Smooths speed values with given type of smoothing. IMPORTANT! Does not change
 any positioning or other data, only smooths the speed values.

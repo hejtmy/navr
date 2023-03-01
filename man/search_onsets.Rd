@@ -7,9 +7,14 @@
 \usage{
 search_onsets(obj, speed_threshold, min_duration, ...)
 
-\method{search_onsets}{navr}(obj, speed_threshold, min_duration = 0,
-  still_speed_threshold = speed_threshold, still_duration = 0,
-  pause_duration = 0)
+\method{search_onsets}{navr}(
+  obj,
+  speed_threshold,
+  min_duration = 0,
+  still_speed_threshold = speed_threshold,
+  still_duration = 0,
+  pause_duration = 0
+)
 }
 \arguments{
 \item{obj}{Valid object}

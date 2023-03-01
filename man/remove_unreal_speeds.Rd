@@ -7,9 +7,15 @@
 \usage{
 remove_unreal_speeds(obj, ...)
 
-\method{remove_unreal_speeds}{navr}(obj, cutoff = NULL, type = NULL,
-  remove_distance = TRUE, total_recalculate = TRUE, indices = c(),
-  replacement = NA)
+\method{remove_unreal_speeds}{navr}(
+  obj,
+  cutoff = NULL,
+  type = NULL,
+  remove_distance = TRUE,
+  total_recalculate = TRUE,
+  indices = c(),
+  replacement = NA
+)
 }
 \arguments{
 \item{obj}{valid navr object. See \code{\link{remvoe_unreal_speeds.navr}}}
@@ -30,6 +36,9 @@ by parts of the tracking missing, then the distances travelled are actually corr
 If empty, \code{type}, \code{cutoff} need to be defined and \code{pick_unreal_speeds} is called}
 
 \item{replacement}{what to replace  unreal speeds with. \emph{Defaults} to NA}
+}
+\value{
+
 }
 \description{
 Picks unreal speeds in the same way as \code{\link{pick_unreal_speed}}` but then removes

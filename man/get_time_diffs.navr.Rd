@@ -9,6 +9,9 @@ get_time_diffs.navr(obj)
 \arguments{
 \item{obj}{Navr Object}
 }
+\value{
+
+}
 \description{
 Returns time_diffs column from the data if it has been caluclated
 }

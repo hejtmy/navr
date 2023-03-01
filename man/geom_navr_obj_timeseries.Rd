@@ -4,8 +4,13 @@
 \alias{geom_navr_obj_timeseries}
 \title{Adds timeseries to the given plot from navr object based on given column}
 \usage{
-geom_navr_obj_timeseries(obj, colname, scaling = "none", scale = c(),
-  ...)
+geom_navr_obj_timeseries(
+  obj,
+  colname,
+  scaling = "none",
+  constraints = NULL,
+  ...
+)
 }
 \arguments{
 \item{obj}{NavrObject}
@@ -14,9 +19,12 @@ geom_navr_obj_timeseries(obj, colname, scaling = "none", scale = c(),
 
 \item{scaling}{type of scaling to implemnent. "none", "std", "minmax"}
 
-\item{scale}{if the values should be scaled to given values}
+\item{constraints}{if the values should be scaled to given values}
 
 \item{...}{}
+}
+\value{
+
 }
 \description{
 Adds timeseries to the given plot from navr object based on given column

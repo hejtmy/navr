@@ -4,7 +4,7 @@
 \alias{geom_navr_timeseries}
 \title{Adds timeseries to the given plot}
 \usage{
-geom_navr_timeseries(times, values, scaling = "none", scale = c(), ...)
+geom_navr_timeseries(times, values, scaling = "none", constraints = NULL, ...)
 }
 \arguments{
 \item{times}{times on the x axis}
@@ -13,9 +13,12 @@ geom_navr_timeseries(times, values, scaling = "none", scale = c(), ...)
 
 \item{scaling}{type of scaling to implemnent. "none", "std", "minmax"}
 
-\item{scale}{if the values should be scaled to given values}
+\item{constraints}{if the values should be scaled to given values}
 
 \item{...}{}
+}
+\value{
+
 }
 \description{
 Adds timeseries to the given plot
