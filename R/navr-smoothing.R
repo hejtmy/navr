@@ -8,13 +8,12 @@
 #' @export
 #'
 #' @examples
-smooth_positions <- function(obj, type, ...){
+smooth_positions <- function(obj, type, ...) {
   UseMethod("smooth_positions")
 }
 #' @describeIn smooth_positions position smoothing in the navr object
 #' @export
-smooth_positions.navr <- function(obj, type, ....){
-  if(is.null(ls)) return(NULL)
+smooth_positions.navr <- function(obj, type, ...) {
   obj$data$position_x <- smooth_vector(obj$data$position_x, type, ...)
   obj$data$position_y <- smooth_vector(obj$data$position_y, type, ...)
   return(obj)
@@ -34,13 +33,13 @@ smooth_positions.navr <- function(obj, type, ....){
 #' @export
 #'
 #' @examples
-smooth_speed <- function(obj, type, ...){
+smooth_speed <- function(obj, type, ...) {
   UseMethod("smooth_speed")
 }
 
 #' @describeIn smooth_speed Smooths navr object speeds
 #' @export
-smooth_speed.navr <- function(obj, type, ...){
+smooth_speed.navr <- function(obj, type, ...) {
   obj$data$speed <- smooth_vector(obj$data$speed, type, ...)
   return(obj)
 }
@@ -59,30 +58,30 @@ smooth_speed.navr <- function(obj, type, ...){
 #' @export
 #'
 #' @examples
-smooth_vector <- function(x, type, ...){
-  if(any(is.na(x))){
+smooth_vector <- function(x, type, ...) {
+  if (any(is.na(x))) {
     warning("There are NAs in the vector, replacing with last known value")
     x <- replace_na(x, "last.known")
   }
-  if(type == "median") {
+  if (type == "median") {
     return(smooth_median(x, ...))
   }
-  if(type == "spline") {
+  if (type == "spline") {
     return(smooth_spline(x, ...))
   }
 }
 
-smooth_median <- function(x, points = 11){
+smooth_median <- function(x, points = 11) {
   x <- runmed(x, points, endrule = "constant")
   return(x)
 }
 
-smooth_approx <- function(x){
+smooth_approx <- function(x) {
   x  <- approx(x)
   return(x)
 }
 
-smooth_spline <- function(x, spar = NULL, nknots = .nknots.smspl){
+smooth_spline <- function(x, spar = NULL, nknots = .nknots.smspl) {
   x <- smooth.spline(x, spar = spar, nknots = nknots)$y
   return(x)
 }
