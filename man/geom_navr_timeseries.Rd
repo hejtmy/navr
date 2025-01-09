@@ -17,9 +17,6 @@ geom_navr_timeseries(times, values, scaling = "none", constraints = NULL, ...)
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Adds timeseries to the given plot
 }

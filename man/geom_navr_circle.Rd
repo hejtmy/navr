@@ -15,9 +15,6 @@ geom_navr_circle(center, radius, precision = 100, ...)
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Creates geom of a circle to be inserted into the graph
 }

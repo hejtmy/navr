@@ -7,9 +7,9 @@
 euclid_distance(point1, point2)
 }
 \arguments{
-\item{point1}{2D vector of X and Y position}
+\item{point1}{numeric position (usually length 2 or 3)}
 
-\item{point2}{2D vector of X and Y position}
+\item{point2}{numeric position (usually length 2 or 3)}
 }
 \value{
 numeric or NA if not valid

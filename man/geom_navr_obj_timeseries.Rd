@@ -23,9 +23,6 @@ geom_navr_obj_timeseries(
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Adds timeseries to the given plot from navr object based on given column
 }

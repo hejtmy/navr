@@ -11,9 +11,6 @@ animate_path(plt, ...)
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 The timing of the plot animation is built arount the plot$data$timestamp field,
 which is added in the \code{plot_path} function. If you didn't create your plot in this way, you can either

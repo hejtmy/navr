@@ -13,9 +13,6 @@ geom_navr_heatmap(obj, bins = 25, ...)
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 geom to add stat_density2d position heatmap
 }

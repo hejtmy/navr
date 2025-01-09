@@ -13,9 +13,6 @@ geom_navr_background(image_path, xlim = NULL, ylim = NULL)
 
 \item{ylim}{background poistions as vector of length 2, c(-100,400)}
 }
-\value{
-
-}
 \description{
 GGplot geom to add custom PNG background to the plot
 }

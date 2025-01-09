@@ -19,9 +19,6 @@ geoms. Therefore it is recommended to only sample each nth observation.}
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 Adds rotational information to the path data
 }

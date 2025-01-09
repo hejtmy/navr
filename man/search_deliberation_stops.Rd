@@ -30,14 +30,11 @@ search_deliberation_stops(
 
 \item{...}{}
 }
-\value{
-
-}
 \description{
 if min_rotation is 0, then it can be replaced by search stops.
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: Searches for deliberation stops in navr object
-}}
+\item \code{search_deliberation_stops(navr)}: Searches for deliberation stops in navr object
 
+}}

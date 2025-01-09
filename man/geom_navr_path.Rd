@@ -15,9 +15,6 @@ geom_navr_path(obj, add_points = FALSE, ...)
 
 \item{add_rotation}{if each point should also have a directional arrow attached}
 }
-\value{
-
-}
 \description{
 Geom of plotting navr path
 }

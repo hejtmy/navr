@@ -15,9 +15,6 @@ geom_position_heatmap(x, y, bins = 25, ...)
 
 \item{...}{other ggpolot arguments}
 }
-\value{
-
-}
 \description{
 geom to add stat_density2d position heatmap
 }

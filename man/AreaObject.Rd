@@ -14,9 +14,6 @@ AreaObject(name, type = "rectangle", points = c())
 \item{points}{numeric matrix (npoints, 2) with each row representing a single point and
 columns representing X and Y positions}
 }
-\value{
-
-}
 \description{
 Definition of an area object used in designating area presence
 }

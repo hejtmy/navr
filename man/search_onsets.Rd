@@ -42,7 +42,7 @@ Searches for movement onsets and returns time since start for each event
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: Searches onsets in navr object. THe navr object has to have
+\item \code{search_onsets(navr)}: Searches onsets in navr object. THe navr object has to have
 calculated speeds, times etc.
-}}
 
+}}

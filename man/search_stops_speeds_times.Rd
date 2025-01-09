@@ -15,9 +15,6 @@ search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
 
 \item{min_duration}{minímum stillness duration to be considered stop}
 }
-\value{
-
-}
 \description{
 Searches for times of stillness from passed speeds and time diffs
 }

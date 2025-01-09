@@ -29,6 +29,6 @@ PLots speed values in time
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: Plot speed values for the nvar object
-}}
+\item \code{plot_speed(navr)}: Plot speed values for the nvar object
 
+}}

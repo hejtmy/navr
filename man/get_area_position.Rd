@@ -9,9 +9,6 @@ get_area_position(obj, area)
 \arguments{
 \item{area}{}
 }
-\value{
-
-}
 \description{
 Returns only data with area
 }

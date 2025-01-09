@@ -9,9 +9,6 @@ radian_to_angle(radian)
 \arguments{
 \item{radian}{}
 }
-\value{
-
-}
 \description{
 Converts Pi radian angle to degrees
 }

@@ -7,7 +7,7 @@
 \usage{
 smooth_positions(obj, type, ...)
 
-\method{smooth_positions}{navr}(obj, type, ....)
+\method{smooth_positions}{navr}(obj, type, ...)
 }
 \arguments{
 \item{obj}{valid object to be smoothed}
@@ -16,14 +16,11 @@ smooth_positions(obj, type, ...)
 
 \item{....}{optional parameters for smoothing}
 }
-\value{
-
-}
 \description{
 Smooths positions of a given boject
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: position smoothing in the navr object
-}}
+\item \code{smooth_positions(navr)}: position smoothing in the navr object
 
+}}

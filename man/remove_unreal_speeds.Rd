@@ -37,9 +37,6 @@ If empty, \code{type}, \code{cutoff} need to be defined and \code{pick_unreal_sp
 
 \item{replacement}{what to replace  unreal speeds with. \emph{Defaults} to NA}
 }
-\value{
-
-}
 \description{
 Picks unreal speeds in the same way as \code{\link{pick_unreal_speed}}` but then removes
 given lines form the data, replaces them as per replacement parameter and returnes cleaned
@@ -47,6 +44,6 @@ object
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: clears out navr object
-}}
+\item \code{remove_unreal_speeds(navr)}: clears out navr object
 
+}}

@@ -28,6 +28,6 @@ Finds indices of impossible speed values
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: Pick unrela speeds from the navr object
-}}
+\item \code{pick_unreal_speeds(navr)}: Pick unrela speeds from the navr object
 
+}}

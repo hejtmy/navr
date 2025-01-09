@@ -20,14 +20,11 @@ start time and end time in seconds}
 
 \item{...}{aditional arguments}
 }
-\value{
-
-}
 \description{
 Filters navr object to only include times in between
 }
 \section{Methods (by class)}{
 \itemize{
-\item \code{navr}: Filtering navr object
-}}
+\item \code{filter_times(navr)}: Filtering navr object
 
+}}

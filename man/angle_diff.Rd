@@ -11,9 +11,6 @@ angle_diff(angle1, angle2)
 
 \item{angle2}{}
 }
-\value{
-
-}
 \description{
 Calculates angular difference between passed angle matrices
 }
