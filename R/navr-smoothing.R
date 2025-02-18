@@ -2,6 +2,7 @@
 #'
 #' @param obj valid object to be smoothed
 #' @param type string: median, approx, spline
+#' @param recalculate_stats boolean: recalculate stats (disntaces, speed, etcc.) after smoothing
 #' @param .... optional parameters for smoothing
 #'
 #' @return
@@ -13,9 +14,12 @@ smooth_positions <- function(obj, type, ...) {
 }
 #' @describeIn smooth_positions position smoothing in the navr object
 #' @export
-smooth_positions.navr <- function(obj, type, ...) {
+smooth_positions.navr <- function(obj, type, recalculate_stats = TRUE, ...) {
   obj$data$position_x <- smooth_vector(obj$data$position_x, type, ...)
   obj$data$position_y <- smooth_vector(obj$data$position_y, type, ...)
+  if (recalculate_stats) {
+    obj <- prepare_navr(obj)
+  }
   return(obj)
 }
 

@@ -7,12 +7,14 @@
 \usage{
 smooth_positions(obj, type, ...)
 
-\method{smooth_positions}{navr}(obj, type, ...)
+\method{smooth_positions}{navr}(obj, type, recalculate_stats = TRUE, ...)
 }
 \arguments{
 \item{obj}{valid object to be smoothed}
 
 \item{type}{string: median, approx, spline}
+
+\item{recalculate_stats}{boolean: recalculate stats (disntaces, speed, etcc.) after smoothing}
 
 \item{....}{optional parameters for smoothing}
 }

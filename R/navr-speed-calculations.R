@@ -7,9 +7,9 @@
 #' @export
 #'
 #' @examples
-calculate_speeds <- function(distances, timestamps){
+calculate_speeds <- function(distances, timestamps) {
   time_diffs <- calculate_time_diffs(timestamps, NA)
-  speeds <- distances/time_diffs
+  speeds <- distances / time_diffs
   speeds[is.infinite(abs(speeds))] <- NA
   return(speeds)
 }
@@ -27,31 +27,32 @@ calculate_speeds <- function(distances, timestamps){
 #' @export
 #'
 #' @examples
-pick_unreal_speeds <- function(obj, cutoff, type="value", ...){
+pick_unreal_speeds <- function(obj, cutoff, type = "value", ...) {
   UseMethod('pick_unreal_speeds')
 }
 
 #' @describeIn pick_unreal_speeds Pick unrela speeds from the navr object
 #' @export
-pick_unreal_speeds.navr <- function(obj, cutoff, type="value"){
+pick_unreal_speeds.navr <- function(obj, cutoff, type = "value") {
   #needs to check of the speed even exists as a column
-  if(!("speed" %in% colnames(obj$data))){
-    warning("The object doesn't have speed column. You need to add it first using add_speeds function")
+  if (!("speed" %in% colnames(obj$data))) {
+    warning("The object doesn't have speed column. 
+             You need to add it first using add_speeds function")
     return(NULL)
   }
   return(pick_unreal_speeds(obj$data$speed, cutoff, type))
 }
 
 #' @export
-pick_unreal_speeds.double <- function(speeds, cutoff, type="value"){
-  if(type=="value"){
+pick_unreal_speeds.double <- function(speeds, cutoff, type = "value") {
+  if (type == "value") {
     return(which(speeds > cutoff))
   }
-  if(type=="std"){
+  if (type == "std") {
     scaled_speeds <- scale(speeds)
     return(which(scaled_speeds > cutoff))
   }
-  if(type=="quantile"){
+  if (type == "quantile") {
 
   }
 }

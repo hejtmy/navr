@@ -54,12 +54,12 @@ add_time_columns.navr <- function(obj){
 #' @export
 #'
 #' @examples
-add_times_since_start <- function(obj, ...){
+add_times_since_start <- function(obj, ...) {
   .Deprecated("prepare_navr")
   UseMethod("add_times_since_start")
 }
 #' @export
-add_times_since_start.navr <- function(obj){
+add_times_since_start.navr <- function(obj) {
   obj$data$time_since_start <- calculate_times_since_start(obj$data$timestamp)
   return(obj)
 }
