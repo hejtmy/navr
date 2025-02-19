@@ -76,13 +76,17 @@ search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
 #' @param min_duration  what is the minimum duration of movemnet
 #' @param still_speed_threshold what is considered not moving (defaults to speed)
 #' @param still_duration how long before movement should the person be still
-#' @param pause_duration length time under the speed threshold which does not break the movement duration
+#' @param pause_duration length time under the speed threshold which does
+#' not break the movement duration
 #' @noRd
 search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration,
                                  still_speed_threshold, still_duration, pause_duration = 0){
-  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, still_speed_threshold, pause_duration)
-  groups <- df_moving[df_moving$duration > min_duration & df_moving$is_moving == "yes", "group"]
-  if(still_duration > 0){ #could be dropped, but we don't wanna run the for loop unless we need to
+  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold,
+                                         still_speed_threshold, pause_duration)
+  groups <- df_moving[df_moving$duration > min_duration &
+                        df_moving$is_moving == "yes", "group"]
+  if(still_duration > 0) {
+    # could be dropped, but we don't wanna run the for loop unless we need to
     still_groups <- integer(0)
     for(group in groups){
       # finds previous no group
@@ -100,8 +104,10 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
     # logical of length groups
     is_in_between <- df_moving$is_moving[groups-1] == "in_between"
     i_selected <- c((groups-1)[is_in_between], groups[!is_in_between])
-    #duration is either sum of "in_between" and "yes" or just "yes" for those blocks which are preceded with "no"
-    durations <- c(df_moving$duration[(groups-1)[is_in_between]] + df_moving$duration[(groups)[is_in_between]],
+    # duration is either sum of "in_between" and "yes" or just "yes"
+    # for those blocks which are preceded with "no"
+    durations <- c(df_moving$duration[(groups-1)[is_in_between]] +
+                     df_moving$duration[(groups)[is_in_between]],
                    df_moving$duration[(groups)[!is_in_between]])
     i_start <- df_moving$index[i_selected]
   } else {
@@ -172,13 +178,14 @@ fill_in_pauses <- function(df_moving, pause_duration, group){
     break_duration <- sum(df_moving$x[i_between])
     if(break_duration < pause_duration){
       # adds the break length to the duration
-      df_moving$x[i_previous] <- df_moving$x[i_previous] + df_moving$x[i_current] + break_duration
+      df_moving$x[i_previous] <- df_moving$x[i_previous] +
+        df_moving$x[i_current] + break_duration
       group <- df_moving$group[i_previous]
       #changes group index to the first group
       df_moving$group[c(i_between, i_current)] <- group
       # This weird indexing is here to allow also changinbg all previous
       # filled in breaks.
-      df_moving[df_moving$group == group, ] <- df_moving[i_previous,]
+      df_moving[df_moving$group == group, ] <- df_moving[i_previous, ]
     }
   }
   df_moving <- unique(df_moving)

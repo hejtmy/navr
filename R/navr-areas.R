@@ -207,7 +207,7 @@ get_area_visits <- function(obj, to, from = NULL, between_allowed = 0){
 #' @export
 #'
 #' @examples
-geom_navr_area <- function(area, fill = NA, color = "red", size = 1.25, ...){
+geom_navr_area <- function(area, fill = NA, color = "red", size = 1.25, ...) {
   df <- as.data.frame(area$points)
   colnames(df) <- c("x", "y")
   return(geom_polygon(data = df, aes(x, y), fill = fill,

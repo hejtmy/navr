@@ -2,7 +2,8 @@
 #'
 #' @param obj valid object to be smoothed
 #' @param type string: median, approx, spline
-#' @param recalculate_stats boolean: recalculate stats (disntaces, speed, etcc.) after smoothing
+#' @param recalculate_stats boolean: recalculate stats (disntaces, speed, etcc.)
+#' after smoothing
 #' @param .... optional parameters for smoothing
 #'
 #' @return
@@ -25,8 +26,8 @@ smooth_positions.navr <- function(obj, type, recalculate_stats = TRUE, ...) {
 
 #' Smooths speed
 #'
-#' @description Smooths speed values with given type of smoothing. IMPORTANT! Does not change
-#' any positioning or other data, only smooths the speed values.
+#' @description Smooths speed values with given type of smoothing. IMPORTANT!
+#' Does not change any positioning or other data, only smooths the speed values.
 #' Speed smothing is generally important for clear onset search
 #'
 #' @param obj object to perfrom speed smoothing on

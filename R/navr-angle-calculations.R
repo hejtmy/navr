@@ -1,4 +1,5 @@
-#' Creates a series of angle_diffs conversted to degrees of angukar difference where it calculates angle difference between rows
+#' Creates a series of angle_diffs conversted to degrees of angukar difference
+#' where it calculates angle difference between rows
 #'
 #' @param rotations vector of angles in 360
 calculate_angle_differences <- function(rotations){
@@ -83,7 +84,8 @@ angle_to_radian <- function(angle){
 #'
 #' @param pos_from numeric(2) vector of original position
 #' @param pos_to numeric(2) vector of position towards the target
-#' @param zero_vec defines which axis should correspond to 0 degrees. defaults to c(0,1) (Y axis)
+#' @param zero_vec defines which axis should correspond to 0 degrees.
+#' defaults to c(0,1) (Y axis)
 #'
 #' @return
 #' @export
