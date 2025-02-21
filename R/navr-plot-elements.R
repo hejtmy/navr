@@ -12,7 +12,7 @@
 geom_navr_path <- function(obj, add_points = FALSE, ...){
   df_position <- data.frame(x = obj$data$position_x, y = obj$data$position_y)
   ls <- list(geom_path(data = df_position, aes(x, y), ...))
-  if(add_points) ls <- c(ls, geom_point(data = df_position, aes(x, y)))
+  if (add_points) ls <- c(ls, geom_point(data = df_position, aes(x, y)))
   return(ls)
 }
 
@@ -32,7 +32,7 @@ geom_navr_path <- function(obj, add_points = FALSE, ...){
 #' @export
 #'
 #' @examples
-geom_navr_path_rotation <- function(obj, axis = "x", downsample = 10, length = 1, ...){
+geom_navr_path_rotation <- function(obj, axis = "x", downsample = 10, length = 1, ...) {
   rot_name <- paste0("rotation_", axis)
   df <- data.frame(x = obj$data$position_x, y = obj$data$position_y, angle=obj$data[[rot_name]])
   df <- df[seq(1, nrow(df), downsample), ]
@@ -77,7 +77,8 @@ geom_navr_background <- function(image_path, xlim = NULL, ylim = NULL){
 #' @examples
 geom_navr_points <- function(ls, ...){
   list_names <- names(ls)
-  df <- data.frame(point_x = numeric(0), point_y = numeric(0), point_name = character(), stringsAsFactors = F)
+  df <- data.frame(point_x = numeric(0), point_y = numeric(0), 
+                   point_name = character(), stringsAsFactors = FALSE)
   for (i in 1:length(ls)){
     df[i, 1] <- ls[[i]][1]
     df[i, 2] <- ls[[i]][2]
@@ -99,13 +100,15 @@ geom_navr_points <- function(ls, ...){
 #' @export
 #'
 #' @examples geom_navr_direction(c(0,0), 180, 5, color = "red")
-geom_navr_direction <- function(position, angle, length = 1, ...){
+geom_navr_direction <- function(position, angle, length = 1, ...) {
   ARROW_DEF <- arrow(length = unit(0.25, "cm"))
   arrow_line <- create_direction_line(position, angle, length)
   return(geom_segment(data = arrow_line,
-                            aes(x = x, y = y, xend = xend, yend = yend),
-                            arrow = ARROW_DEF, ... ))
+                      aes(x = x, y = y, xend = xend, yend = yend),
+                      arrow = ARROW_DEF, ... ))
 }
+
+ge
 
 #' Adds limits to the plot from the area_boundaries list field
 #' @description for better control, just use regular xlim and ylim functions, this is just a shorthand
@@ -118,9 +121,9 @@ geom_navr_direction <- function(position, angle, length = 1, ...){
 #' @examples
 geom_navr_limits <- function(obj){
   ls <- list()
-  if(is.null(obj$area_boundaries)) return(ls)
-  if(!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
-  if(!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
+  if (is.null(obj$area_boundaries)) return(ls)
+  if (!is.null(obj$area_boundaries$x)) ls <- c(ls, xlim(obj$area_boundaries$x))
+  if (!is.null(obj$area_boundaries$y)) ls <- c(ls, ylim(obj$area_boundaries$y))
   return(ls)
 }
 
@@ -133,7 +136,7 @@ geom_navr_limits <- function(obj){
 #' @export
 #'
 #' @examples
-geom_navr_path_limits <- function(obj, padding){
+geom_navr_path_limits <- function(obj, padding) {
   padding <- c(-padding, padding)
   x <- range(obj$data$position_x) + padding
   y <- range(obj$data$position_y) + padding
@@ -166,7 +169,8 @@ geom_navr_path_limits <- function(obj, padding){
 #' @export
 #'
 #' @examples
-geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color = "blue", ...){
+geom_navr_path_events <- function(obj, event_times, size = 2, 
+                                  shape = 18, color = "blue", ...) {
   if(is.vector(event_times)){
     return(geom_navr_path_points(obj, event_times, size, shape, color, ...))
   }
@@ -200,7 +204,7 @@ geom_navr_path_events <- function(obj, event_times, size = 2, shape = 18, color 
 #' @export
 #'
 #' @examples
-geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blue", ...){
+geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blue", ...) {
   timestamps <- obj$data$timestamp
   indices <- sapply(times, function(x){which(timestamps >= x & x >= timestamps[1])[1]})
   if(length(indices) == 0) return(list())
@@ -227,21 +231,21 @@ geom_navr_path_points <- function(obj, times, size = 4, shape = 18, color = "blu
 #' @export
 #'
 #' @examples
-geom_navr_path_segments <- function(obj, times, size = 2, color = "blue", ...){
+geom_navr_path_segments <- function(obj, times, size = 2, color = "blue", ...) {
   # check it has 2 x X dimensions
-  if(!is.matrix(times)){
+  if (!is.matrix(times)){
     warning("You need to pass in a 2D matrix")
     return(NULL)
   }
-  if(dim(times)[1] != 2){
+  if (dim(times)[1] != 2){
     warning("The matrix doesn't have two dimensions ")
     return(NULL)
   }
   res <- list()
-  for(i in 1:dim(times)[2]){
+  for (i in 1:dim(times)[2]){
     segment_time <- times[,i]
     nav <- filter_times(obj, segment_time)
-    res <- c(res, geom_navr_path(nav, color=color, size=size, ...))
+    res <- c(res, geom_navr_path(nav, color = color, size = size, ...))
   }
   return(res)
 }
@@ -276,7 +280,8 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 #' @export
 #'
 #' @examples
-geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", constraints = NULL, ...){
+geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", 
+                                     constraints = NULL, ...){
   times <- get_times_since_start.navr(obj)
   values <- obj$data[[colname]]
   return(geom_navr_timeseries(times, values, scaling, constraints, ...))
@@ -294,7 +299,8 @@ geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", constraints
 #' @export
 #'
 #' @examples
-geom_navr_timeseries <- function(times, values, scaling = "none", constraints = NULL, ...){
+geom_navr_timeseries <- function(times, values, scaling = "none", 
+                                 constraints = NULL, ...){
   if(scaling == "std"){
     values <- scale(values)
   }
@@ -348,7 +354,8 @@ geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
 #' @examples
 geom_position_heatmap <- function(x, y, bins = 25, ...){
   df <- data.frame(x=x, y=y)
-  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), n = bins, geom = "polygon", ...))
+  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), 
+                        n = bins, geom = "polygon", ...))
 }
 
 #' geom to add stat_density2d position heatmap
