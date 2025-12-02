@@ -77,7 +77,7 @@ geom_navr_background <- function(image_path, xlim = NULL, ylim = NULL){
 #' @examples
 geom_navr_points <- function(ls, ...){
   list_names <- names(ls)
-  df <- data.frame(point_x = numeric(0), point_y = numeric(0), 
+  df <- data.frame(point_x = numeric(0), point_y = numeric(0),
                    point_name = character(), stringsAsFactors = FALSE)
   for (i in 1:length(ls)){
     df[i, 1] <- ls[[i]][1]
@@ -107,8 +107,6 @@ geom_navr_direction <- function(position, angle, length = 1, ...) {
                       aes(x = x, y = y, xend = xend, yend = yend),
                       arrow = ARROW_DEF, ... ))
 }
-
-ge
 
 #' Adds limits to the plot from the area_boundaries list field
 #' @description for better control, just use regular xlim and ylim functions, this is just a shorthand
@@ -169,7 +167,7 @@ geom_navr_path_limits <- function(obj, padding) {
 #' @export
 #'
 #' @examples
-geom_navr_path_events <- function(obj, event_times, size = 2, 
+geom_navr_path_events <- function(obj, event_times, size = 2,
                                   shape = 18, color = "blue", ...) {
   if(is.vector(event_times)){
     return(geom_navr_path_points(obj, event_times, size, shape, color, ...))
@@ -280,7 +278,7 @@ geom_navr_circle <- function(center, radius, precision = 100, ...){
 #' @export
 #'
 #' @examples
-geom_navr_obj_timeseries <- function(obj, colname, scaling = "none", 
+geom_navr_obj_timeseries <- function(obj, colname, scaling = "none",
                                      constraints = NULL, ...){
   times <- get_times_since_start.navr(obj)
   values <- obj$data[[colname]]
@@ -299,7 +297,7 @@ geom_navr_obj_timeseries <- function(obj, colname, scaling = "none",
 #' @export
 #'
 #' @examples
-geom_navr_timeseries <- function(times, values, scaling = "none", 
+geom_navr_timeseries <- function(times, values, scaling = "none",
                                  constraints = NULL, ...){
   if(scaling == "std"){
     values <- scale(values)
@@ -354,7 +352,7 @@ geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
 #' @examples
 geom_position_heatmap <- function(x, y, bins = 25, ...){
   df <- data.frame(x=x, y=y)
-  return(stat_density2d(data = df, aes(x, y, fill = stat(level)), 
+  return(stat_density2d(data = df, aes(x, y, fill = stat(level)),
                         n = bins, geom = "polygon", ...))
 }
 
