@@ -299,15 +299,7 @@ geom_navr_obj_timeseries <- function(obj, colname, scaling = "none",
 #' @examples
 geom_navr_timeseries <- function(times, values, scaling = "none",
                                  constraints = NULL, ...){
-  if(scaling == "std"){
-    values <- scale(values)
-  }
-  if(scaling == "minmax"){
-
-  }
-  if(!is.null(constraints)){
-
-  }
+  if (scaling == "std") values <- scale(values)
   df <- data.frame(time = times, value = values)
   return(geom_line(data = df, aes(time, value), ...))
 }
@@ -324,8 +316,8 @@ geom_navr_timeseries <- function(times, values, scaling = "none",
 geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
   df <- data.frame(time = event_times)
   geoms <- geom_vline(data = df, aes(xintercept = time), ...)
-  if(length(durations) > 0){
-    if(length(durations) != length(event_times)){
+  if (length(durations) > 0) {
+    if (length(durations) != length(event_times)) {
       warning("Durations have different length than event times")
     } else {
       df$duration <- durations
@@ -350,8 +342,8 @@ geom_navr_timeseries_events <- function(event_times, durations = c(), ...){
 #' @export
 #'
 #' @examples
-geom_position_heatmap <- function(x, y, bins = 25, ...){
-  df <- data.frame(x=x, y=y)
+geom_position_heatmap <- function(x, y, bins = 25, ...) {
+  df <- data.frame(x = x, y = y)
   return(stat_density2d(data = df, aes(x, y, fill = stat(level)),
                         n = bins, geom = "polygon", ...))
 }
@@ -366,7 +358,6 @@ geom_position_heatmap <- function(x, y, bins = 25, ...){
 #' @export
 #'
 #' @examples
-geom_navr_heatmap <- function(obj, bins = 25, ...){
+geom_navr_heatmap <- function(obj, bins = 25, ...) {
   return(geom_position_heatmap(obj$data$position_x, obj$data$position_y, bins, ...))
 }
-
