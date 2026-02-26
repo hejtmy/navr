@@ -3,42 +3,41 @@
 #' @param obj Valid object
 #' @param speed_threshold what is the speed considered to be the moving speed
 #' @param min_duration in secouds how long should the person be moving
-#' @param still_speed_threshold what is considered to be the still speed threshold.
-#' *Defualts* to `speed_threshold``
-#' @param still_duration how long before the onset should hte person be still in seconds.
-#' *Defaults* to 0
-#' @param pause_duration how long "non" moving can the person be to allow still counting as an onset?
-#' In seconds. *Defaults* to 0
+#' @param still_speed_threshold what is considered to be the still
+#' speed threshold. *Defualts* to `speed_threshold``
+#' @param still_duration how long before the onset should hte person be
+#' still in seconds. *Defaults* to 0
+#' @param pause_duration how long "non" moving can the person be to allow still
+#' counting as an onset? In seconds. *Defaults* to 0
 #' @param ...
 #'
 #' @return list with times, time since start, and durations of movement epochs
 #' @export
 #'
 #' @examples
-search_onsets <- function(obj, speed_threshold, min_duration, ...){
+search_onsets <- function(obj, speed_threshold, min_duration, ...) {
   UseMethod("search_onsets")
 }
-#' @describeIn search_onsets Searches onsets in navr object. THe navr object has to have
-#' calculated speeds, times etc.
+#' @describeIn search_onsets Searches onsets in navr object. THe navr 
+#' object has to have calculated speeds, times etc.
 #' @export
 search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
                                still_speed_threshold = speed_threshold,
-                               still_duration = 0, pause_duration = 0){
+                               still_duration = 0, pause_duration = 0) {
   speeds <- get_speeds.navr(obj)
   # some form of validation in case speeds have not been calculated
   time_diffs <- get_time_diffs.navr(obj)
   res <- search_onsets_speeds_times(speeds = speeds, time_diffs = time_diffs,
-                                   speed_threshold = speed_threshold,
-                                   min_duration = min_duration,
-                                   still_speed_threshold = still_speed_threshold,
-                                   still_duration = still_duration,
-                                   pause_duration = pause_duration)
+                                    speed_threshold = speed_threshold,
+                                    min_duration = min_duration,
+                                    still_speed_threshold = still_speed_threshold,
+                                    still_duration = still_duration,
+                                    pause_duration = pause_duration)
   time_since_start <- get_times_since_start.navr(obj)
   return(list(time = obj$data$timestamp[res$indices],
               time_since_start = time_since_start[res$indices],
               duration = res$durations))
 }
-
 
 #' Searches for movement stops and returns time since start for each event
 #'
@@ -51,18 +50,19 @@ search_onsets.navr <- function(obj, speed_threshold, min_duration = 0,
 #' @export
 #'
 #' @examples
-search_stops <- function(obj, speed_threshold, min_duration, ...){
+search_stops <- function(obj, speed_threshold, min_duration, ...) {
   UseMethod("search_stops")
 }
 
-#' @describeIn search_stops Searches stops in navr object. THe navr object has to have
-#' calculated speeds, times etc.
+#' @describeIn search_stops Searches stops in navr object. 
+#' THe navr object has to have calculated speeds, times etc.
 #' @export
 search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
   speeds <- get_speeds.navr(obj)
   time_diffs <- get_time_diffs.navr(obj)
   time_since_start <- get_times_since_start.navr(obj)
-  res <- search_stops_speeds_times(speeds, time_diffs, speed_threshold, min_duration)
+  res <- search_stops_speeds_times(speeds, time_diffs,
+                                   speed_threshold, min_duration)
   return(list(time = obj$data$timestamp[res$indices],
               time_since_start = time_since_start[res$indices],
               duration = res$durations))
@@ -79,31 +79,34 @@ search_stops.navr <- function(obj, speed_threshold, min_duration = 0){
 #' @param pause_duration length time under the speed threshold which does
 #' not break the movement duration
 #' @noRd
-search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration,
-                                 still_speed_threshold, still_duration, pause_duration = 0){
+search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold,
+                                       min_duration, still_speed_threshold,
+                                       still_duration, pause_duration = 0){
   df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold,
                                          still_speed_threshold, pause_duration)
   groups <- df_moving[df_moving$duration > min_duration &
                         df_moving$is_moving == "yes", "group"]
-  if(still_duration > 0) {
+  if (still_duration > 0) {
     # could be dropped, but we don't wanna run the for loop unless we need to
     still_groups <- integer(0)
-    for(group in groups){
+    for (group in groups) {
       # finds previous no group
-      prev <- df_moving[df_moving$is_moving == "no" & df_moving$group %in% c(group-1, group-2), ]
+      prev <- df_moving[df_moving$is_moving == "no" &
+                          df_moving$group %in% c(group - 1, group - 2), ]
       # if the two previous groups were not no - it means they were yes and so there was no "stop"
-      if(nrow(prev) < 1) next
-      if(prev$duration > still_duration) still_groups <- c(still_groups, group)
+      if (nrow(prev) < 1) next
+      if (prev$duration > still_duration) still_groups <- c(still_groups, group)
     }
     groups <- still_groups
   }
   # if there are in_between groups, we consider as a start the in_between start
-  # Some moving groups have "no" moving before them,  so those start when the is_moving is yes
-  # But some have "in_between". We consider those to have started moving at the start of "in_between"
-  if(still_speed_threshold != speed_threshold){
+  # Some moving groups have "no" moving before them, so those start when
+  # the is_moving is yes But some have "in_between". We consider those to
+  # have started moving at the start of "in_between"
+  if(still_speed_threshold != speed_threshold) {
     # logical of length groups
-    is_in_between <- df_moving$is_moving[groups-1] == "in_between"
-    i_selected <- c((groups-1)[is_in_between], groups[!is_in_between])
+    is_in_between <- df_moving$is_moving[groups - 1] == "in_between"
+    i_selected <- c((groups - 1)[is_in_between], groups[!is_in_between])
     # duration is either sum of "in_between" and "yes" or just "yes"
     # for those blocks which are preceded with "no"
     durations <- c(df_moving$duration[(groups-1)[is_in_between]] +
@@ -125,8 +128,10 @@ search_onsets_speeds_times <- function(speeds, time_diffs, speed_threshold, min_
 #' @param min_duration minímum stillness duration to be considered stop
 #'
 #' @return
-search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, min_duration){
-  df_moving <- calculate_is_moving_table(speeds, time_diffs, speed_threshold, speed_threshold)
+search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, 
+                                      min_duration) {
+  df_moving <- calculate_is_moving_table(speeds, time_diffs,
+                                         speed_threshold, speed_threshold)
   indices <- df_moving$duration >= min_duration & df_moving$is_moving == "no"
   i_start <- df_moving$index[indices]
   durations <- df_moving$duration[indices]
@@ -143,21 +148,26 @@ search_stops_speeds_times <- function(speeds, time_diffs, speed_threshold, min_d
 #' SAME tolerance is applied for not moving and for moving
 #' @noRd
 calculate_is_moving_table <- function(speeds, time_diffs, speed_threshold,
-                                      still_speed_threshold, pause_duration = 0){
+                                      still_speed_threshold,
+                                      pause_duration = 0){
   df <- data.frame(speed = speeds, time_diff = time_diffs)
   df$is_moving <- "in_between"
   df$is_moving[df$speed >= speed_threshold] <- "yes"
   df$is_moving[df$speed < still_speed_threshold] <- "no"
-  df$is_moving_group <- rep(1:length(rle(df$is_moving)$lengths), rle(df$is_moving)$lengths)
-  df_index <- aggregate(1:nrow(df), by=list(group=df$is_moving_group), FUN=min)
-  # THIS is quite tricky. Because speed at index 10 is basically speed for 9-10 difference,
-  # it actually starts at index 9. So we need to establish the time of that "event" start to
+  df$is_moving_group <- rep(1:length(rle(df$is_moving)$lengths),
+                            (df$is_moving)$lengths)
+  df_index <- aggregate(seq_len(nrow(df)),
+                        by = list(group = df$is_moving_group),
+                        FUN = min)
+  # THIS is quite tricky. Because speed at index 10 is basically
+  # speed for 9-10 difference,it actually starts at index 9.
+  #So we need to establish the time of that "event" start to
   # be one index less that it appears in the data
   df_index$x <- df_index$x - 1
-  df_moving <- aggregate(df$time_diff,
-                         by=list(is_moving=df$is_moving, group=df$is_moving_group),
-                         FUN=sum)
-  if(pause_duration > 0){
+  df_moving <- aggregate(df$time_diff, by = list(is_moving = df$is_moving,
+                                                 group = df$is_moving_group),
+                         FUN = sum)
+  if(pause_duration > 0) {
     df_moving <- fill_in_pauses(df_moving, pause_duration, "yes")
     df_moving <- fill_in_pauses(df_moving, pause_duration, "no")
   }
@@ -173,10 +183,10 @@ fill_in_pauses <- function(df_moving, pause_duration, group){
   i_group <- which(df_moving$is_moving == group)
   for(i in 2:length(i_group)){
     i_current <- i_group[i]
-    i_previous <- i_group[i-1]
-    i_between <- (i_previous+1):(i_current-1)
+    i_previous <- i_group[i - 1]
+    i_between <- (i_previous + 1):(i_current - 1)
     break_duration <- sum(df_moving$x[i_between])
-    if(break_duration < pause_duration){
+    if (break_duration < pause_duration) {
       # adds the break length to the duration
       df_moving$x[i_previous] <- df_moving$x[i_previous] +
         df_moving$x[i_current] + break_duration
